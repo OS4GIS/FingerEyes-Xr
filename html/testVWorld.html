@@ -1,0 +1,193 @@
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<html>
+<head>
+	<style>
+        body
+	    {
+            margin:0px;
+            padding:0px;
+	    }
+
+	    #mainLayout
+	    {
+			position:relative;
+			width:100%;
+			height:100%;
+			border: none; 		
+	    }
+
+		#mapDiv {
+            top:0px;
+            left:0px;
+			position:relative;
+			width:100%;
+			height:100%;
+			border: none; 		
+            overflow:auto;	
+		}	
+
+        #title {
+            top:12px;
+            left:12px;
+            padding: 12px;
+			position:absolute;
+            background:rgba(0,0,0,0.7);
+			border:none; 		
+            overflow:auto;
+            border-radius: 12px;
+            font-size: 24px;
+            color: #ffffff;
+            font-family: "나눔명조OTF ExtraBold";
+		}
+	</style>
+
+	<script src="../js/Xr.js"></script>
+
+	<script type="text/javascript">
+		var map = null;
+		
+		function diplayBaseMap(bShow) {
+		    var baseMap = map.layers("baseMap");
+		    var satelliteMap = map.layers("satelliteMap");
+		    var hybridMap = map.layers("hybridMap");
+
+		    baseMap.visibility().visible(bShow);
+		    satelliteMap.visibility().visible(!bShow);
+		    hybridMap.visibility().visible(!bShow);
+		}
+
+		function load() {
+			map = new Xr.Map("mapDiv", {});
+			var lyrBase = new Xr.layers.TMSLayer(
+				"baseMap", 
+				{
+				    // http://xdworld.vworld.kr:8080/2d/Satellite/201301/${z}/${x}/${y}.jpeg
+				    // http://xdworld.vworld.kr:8080/2d/Hybrid/201310/${z}/${x}/${y}.png
+				    urls: ["http://xdworld.vworld.kr:8080/2d/Base/201310/${z}/${x}/${y}.png"],
+					upps: [ 
+						78000, 39000, 19600, 9800, 4900, 2400, //Dummy
+						1222.99, 611.495, 305.7475, 152.87375, 76.436875, 38.2184375, 19.10921875, 9.554609375, 4.777304688, 2.388652344, 
+						1.194326172, 0.597163086
+					], 
+					mbr: new Xr.MBR(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244), 
+					imageSize: 256,
+					reversedRows: true
+				}
+			);
+
+			var lyrSatellite = new Xr.layers.TMSLayer(
+				"satelliteMap",
+				{
+				    urls: ["http://xdworld.vworld.kr:8080/2d/Satellite/201301/${z}/${x}/${y}.jpeg"],
+				    upps: [
+						78000, 39000, 19600, 9800, 4900, 2400, //Dummy
+						1222.99, 611.495, 305.7475, 152.87375, 76.436875, 38.2184375, 19.10921875, 9.554609375, 4.777304688, 2.388652344,
+						1.194326172, 0.597163086
+				    ],
+				    mbr: new Xr.MBR(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244),
+				    imageSize: 256,
+				    reversedRows: true
+				}
+			);
+
+			var lyrHybrid = new Xr.layers.TMSLayer(
+				"hybridMap",
+				{
+				    urls: ["http://xdworld.vworld.kr:8080/2d/Hybrid/201310/${z}/${x}/${y}.png"],
+				    upps: [
+						78000, 39000, 19600, 9800, 4900, 2400, //Dummy
+						1222.99, 611.495, 305.7475, 152.87375, 76.436875, 38.2184375, 19.10921875, 9.554609375, 4.777304688, 2.388652344,
+						1.194326172, 0.597163086
+				    ],
+				    mbr: new Xr.MBR(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244),
+				    imageSize: 256,
+				    reversedRows: true
+				}
+			);
+
+			var lm = map.layers();
+			lm.add(lyrBase);
+			lm.add(lyrSatellite);
+			lm.add(lyrHybrid);
+
+			diplayBaseMap(true);
+		
+			var ctrl = new Xr.ui.ScaleBarControl("sbc", map);
+			map.userControls().add(ctrl);
+ 
+			var ctrl2 = new Xr.ui.ZoomLevelControl("zlc", map);
+			ctrl2.mapScales([
+                1692.7457555905532, 3385.4915111811065, 6770.983022362213,
+                13541.966044724426, 27083.932086614208, 54167.864173228416,
+                108335.72834645683, 216671.45669291366, 433342.9133858273,
+                866685.8267716546, 1733371.6535433093, 3466743.3070866186]);
+			map.userControls().add(ctrl2);
+
+			var ctrl3 = new Xr.ui.IndexMapControl("imc", map, "http://222.237.78.208:8080/Xr?layerName=KOREA");
+			ctrl3.size(160, 300);
+			map.userControls().add(ctrl3);
+
+			map.onLayersAllReady(function () {
+			    var cm = map.coordMapper();
+			    
+				cm.moveTo(14289580, 4436964);
+				cm.zoomByMapScale(cm.mapScaleFromMetersPerOnePixel(2.388652344));
+
+				map.update();
+			}); 
+		}
+
+		function onUpdate() {
+		    map.update();
+		}
+
+		function onRotateMap() {
+		    var cm = map.coordMapper();
+		    cm.rotate(10);
+		    map.update();
+		}
+
+		function onRevRotateMap() {
+		    var cm = map.coordMapper();
+		    cm.rotate(-10);
+		    map.update();
+		}
+
+		function onZoomInMap() {
+		    var cm = map.coordMapper();
+		    cm.zoomByMapScale(cm.mapScale()*0.5);
+		    map.update();
+		}
+
+		function onZoomOutMap() {
+		    var cm = map.coordMapper();
+		    cm.zoomByMapScale(cm.mapScale() * 2);
+		    map.update();
+		}
+
+		function onBaseMapChanged(/* CheckBox */ cb) {
+		    diplayBaseMap(!cb.checked);
+		    map.update();
+		}
+
+	</script>
+</head>
+
+<body onload="load()">
+    <div id="mainLayout">
+        <div id="mapDiv""></div>
+
+        <div id="title">
+            FingerEyes-Xr for HTML5 : <font color="#349bd6">Pan/Zoom/Rotate Example</font>
+            <br />
+            <input type="button" value="확대" onclick="onZoomInMap();">
+            <input type="button" value="축소" onclick="onZoomOutMap();">
+            <input type="button" value="10도 회전" onclick="onRotateMap();">
+            <input type="button" value="-10도 회전" onclick="onRevRotateMap();">
+            <font size="2" color="#ffff00"><span> 배경지도 : 브이월드(VWorld)</span></font>
+            <input type="checkbox" onchange="onBaseMapChanged(this)" />
+            <font size="3" color="#ffffff"><span>항공영상</span></font>
+        </div>
+    </div>
+</body>
+</html>
