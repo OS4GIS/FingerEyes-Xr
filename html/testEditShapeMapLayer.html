@@ -1,0 +1,631 @@
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<html>
+<head title="FingerEyes-Xr">
+	<style>
+	    body
+	    {
+            margin:0px;
+            padding:0px;
+	    }
+
+	    #mainLayout
+	    {
+			position:relative;
+			width:100%;
+			height:100%;
+			border:none; 		
+	    }
+
+		#mapDiv {
+            top:0px;
+            left:0px;
+			position:absolute;
+			width:100%;
+			height:100%;
+			border:none; 		
+            overflow:auto;
+		}	
+
+        #titleDiv {
+            top:12px;
+            left:12px;
+            padding: 12px;
+			position:absolute;
+            background:rgba(0,0,0,0.7);
+			border:none; 		
+            overflow:auto;
+            border-radius: 12px;
+            font-size: 24px;
+            color: #ffffff;
+            font-family: "나눔명조OTF ExtraBold";
+		}
+
+	    table
+	    {
+            color: #ffffff;
+	    }
+
+        td {
+            height: 25px;
+            text-align: right;
+        }
+
+        #attributeDiv {
+            top:100px;
+            left:12px;
+            padding: 12px;
+			position:absolute;
+            background:#000000;
+			border:none; 		
+            overflow:auto;
+            font-size: 14px;
+            border: 1px solid white;
+            color: #ffffff;
+            font-family: "나눔명조OTF ExtraBold";
+            display: none;
+		}
+	</style>
+
+	<script src="../js/Xr.js"></script>
+    <script src="js/ModifyAttributeCommand.js"></script>
+     
+	<script type="text/javascript">
+	    var map = null;
+	    var isNew = false;
+
+		function load() {
+			map = new Xr.Map("mapDiv", {});
+
+			var lyr = new Xr.layers.TileMapLayer("basemap", 
+				{
+				    proxy: "http://222.237.78.208:8080/Xr",
+				    url: "http://222.237.78.208:8080/muan_tilemaps",
+					ext: "jpg"
+				}
+			);
+
+			var jibunLyr = new Xr.layers.ShapeMapLayer("jibun",
+				{
+				    url: "http://222.237.78.208:8080/Xr?layerName=BML_PARC_AS"
+				}
+			);
+
+			{
+			    jibunLyr.visibility().visibleByScale(true);
+			    jibunLyr.visibility().fromScale(0); // 포함
+			    jibunLyr.visibility().toScale(1001); // 미포함
+
+			    var theme = jibunLyr.theme();
+			    var pen = theme.penSymbol();
+			    var brush = theme.brushSymbol();
+
+			    pen.color('#ffff00');
+			    pen.width(2);
+
+			    brush.color('#ff0000');
+			    brush.opacity(0.0);
+
+			    var label = jibunLyr.label();
+			    label.visibility().visibleByScale(true);
+			    label.visibility().fromScale(0); // 포함
+			    label.visibility().toScale(2001); // 미포함
+			    label.enable(true);
+			    label.formatter().fieldName("PAR_LBL");// OPE_MAN_ID"); // "jibun"
+
+			    var labelTheme = label.theme();
+			    labelTheme.symbol().strokeColor("#000000");
+			    labelTheme.symbol().strokeWidth(2);
+
+			    labelTheme.symbol().size(14);
+			    labelTheme.symbol().fontFamily('나눔명조OTF ExtraBold');
+			    labelTheme.symbol().color("#ff0000");
+			}
+
+			var bldLyr = new Xr.layers.ShapeMapLayer("bld",
+				{
+				    url: "http://222.237.78.208:8080/Xr?layerName=MUAN_BLD"
+				}
+			);
+
+			{
+			    bldLyr.needAttribute(true);
+
+			    bldLyr.visibility().visibleByScale(true);
+			    bldLyr.visibility().fromScale(0); // 포함
+			    bldLyr.visibility().toScale(4000); // 미포함
+
+			    var theme = bldLyr.theme();
+			    var pen = theme.penSymbol();
+			    var brush = theme.brushSymbol();
+
+			    pen.color('#ff0000');
+			    pen.width(2);
+
+			    brush.color('#ffffff');
+			    brush.opacity(0.5);
+			}
+
+			var lm = map.layers();
+
+			lm.add(lyr);
+			lm.add(jibunLyr);
+			lm.add(bldLyr);
+
+			var graphicLyr = new Xr.layers.GraphicLayer("gl");
+
+			btnUndo.disabled = true;
+			btnRedo.disabled = true;
+
+			map.addEventListener(Xr.Events.UndoStateChanged, onUndoStateChanged);
+			map.addEventListener(Xr.Events.RedoStateChanged, onRedoStateChanged);
+
+			map.edit().targetGraphicLayer(graphicLyr);
+			map.edit().snap().add(bldLyr);
+			map.edit().snap().add(jibunLyr);
+			map.edit().snap().vertexSnapMode(true);
+			map.edit().snap().edgeSnapMode(true);
+
+			lm.add(graphicLyr);
+
+			var ctrl = new Xr.ui.ScaleBarControl("sbc", map);
+			map.userControls().add(ctrl);
+
+			var ctrl2 = new Xr.ui.ZoomLevelControl("zlc", map);
+			ctrl2.mapScales([383.06022560915073, 766.1204512466478, 1915.3011281307926, 3830.6022556379635, 7661.204511956243, 19153.011279550446, 38305.7388117497, 76612.04511893881, 153224.09023821776]);
+			map.userControls().add(ctrl2);
+
+			var ctrl3 = new Xr.ui.IndexMapControl("imc", map, "http://222.237.78.208:8080/Xr?layerName=INDEXMAP");
+			ctrl3.size(200, 270);
+			map.userControls().add(ctrl3);
+
+			map.onLayersAllReady(function () {
+			    var mbr = bldLyr.MBR();
+			    var cm = map.coordMapper();
+			    
+			    cm.moveTo(151531, 246679);
+			    cm.zoomByMapScale(766.1204512466478);
+
+			    map.update();
+
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(0.13513513514));//	500
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(0.27027027029));//	1000
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(0.67567567573));//	2500
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(1.35135135124));//	5000
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(2.70270270272));//	10000
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(6.75675675668));//	25000
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(13.51341341360));//	50000
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(27.02702702698));//	100000
+			    //console.log(cm.mapScaleFromMetersPerOnePixel(54.05405405408));//	200000
+			    
+			});
+
+			map.addEventListener(Xr.Events.MapClick, function (e) {
+			    if (map.userMode() == Xr.UserModeEnum.EDIT) {
+			        var fids = bldLyr.IdByMousePoint(e.viewX, e.viewY, true);
+			        var currentSketch = map.edit().currentSketch();
+			        var oldId = -1;
+
+			        if (currentSketch) {
+			            oldId = currentSketch.id();
+			            if (currentSketch.hitTest(e.viewX, e.viewY, map.coordMapper())) return;
+			        }
+
+			        if (fids.length > 0) {
+			            var id = fids[0];
+			            isNew = false;
+
+			            if (currentSketch && (oldId != id) && map.edit().history().undoable()) {
+			                var yes = confirm("편집된 내용이 있습니다. 편집 내용을 무시하고 진행 하시겠습니까?")
+			                if (yes) {
+			                    map.edit().history().reset();
+			                } else {
+			                    currentSketch.stay(true);
+			                    return;
+			                }
+			            }
+			            
+			            if (!currentSketch || (currentSketch && (oldId != id))) {
+			                selectShape(bldLyr, graphicLyr, id);
+			                selectAttribute(bldLyr, id);
+
+			                attributeDiv.style.display = "block";
+
+			                if (currentSketch) {
+			                    currentSketch.stay(false);
+			                }
+			            } else {
+			                if (currentSketch) {
+			                    currentSketch.stay(true);
+			                }
+			            }
+			        } else {
+			            if (map.edit().history().undoable() && !e.ctrlKey && (currentSketch && !currentSketch.isNew())) {
+			                var yes = confirm("편집된 내용이 있습니다. 편집 내용을 무시하고 진행 하시겠습니까?")
+			                if (yes) {
+			                    map.edit().history().reset();
+			                } else {
+			                    currentSketch.stay(true);
+			                    return;
+			                }
+			            }
+
+			            var bRemoveAll = !e.ctrlKey && (!currentSketch || (currentSketch && !currentSketch.isNew()));
+			            if(bRemoveAll) {
+			                map.edit().cancelSketch();
+			                graphicLyr.reset();
+			                graphicLyr.refresh();
+			                attributeDiv.style.display = "none";
+			            }
+			        }
+			    }
+			});
+		}
+
+		function selectShape(/* ShapeMapLayer */ bldLyr, /* GraphicLayer */ graphicLyr, /* int */ id) {
+		    var row = bldLyr.shapeRowSet().row(id);
+		    var shapeData = row.shapeData().clone();
+		    var polygonGraphicRow = new Xr.data.PolygonGraphicRow(id, shapeData);
+
+		    polygonGraphicRow.penSymbol().color('#ffff00');
+		    polygonGraphicRow.penSymbol().width(3);
+		    polygonGraphicRow.penSymbol().dash("3 3");
+
+		    polygonGraphicRow.brushSymbol().color('#ff0000');
+		    polygonGraphicRow.brushSymbol().opacity(0.2);
+
+		    graphicLyr.removeAll();
+		    graphicLyr.rowSet().add(polygonGraphicRow);
+		    graphicLyr.refresh();
+		}
+
+		function selectAttribute(/* ShapeMapLayer */ bldLyr, /* int */ id) {
+		    var attribute = bldLyr.attributeById(id);
+		    var fieldSet = bldLyr.fieldSet();
+
+		    var idx_buld_nm = fieldSet.fieldIndex("buld_nm");
+		    var idx_buld_nm_dc = fieldSet.fieldIndex("buld_nm_dc");
+		    var idx_zip = fieldSet.fieldIndex("zip");
+		    var idx_lnbr_mnnm = fieldSet.fieldIndex("lnbr_mnnm");
+		    var idx_lnbr_slno = fieldSet.fieldIndex("lnbr_slno");
+		    var idx_gro_flo_co = fieldSet.fieldIndex("gro_flo_co");
+		    var idx_und_flo_co = fieldSet.fieldIndex("und_flo_co");
+
+		    var val_buld_nm = attribute.valueAsString(idx_buld_nm);
+		    var val_buld_nm_dc = attribute.valueAsString(idx_buld_nm_dc);
+		    var val_zip = attribute.valueAsString(idx_zip);
+		    var val_lnbr_mnnm = attribute.valueAsString(idx_lnbr_mnnm);
+		    var val_lnbr_slno = attribute.valueAsString(idx_lnbr_slno);
+		    var val_gro_flo_co = attribute.valueAsString(idx_gro_flo_co);
+		    var val_und_flo_co = attribute.valueAsString(idx_und_flo_co);
+
+		    txt_buld_nm.value = val_buld_nm;
+		    txt_buld_nm_dc.value = val_buld_nm_dc;
+		    txt_zip.value = val_zip;
+		    txt_lnbr_mnnm.value = val_lnbr_mnnm;
+		    txt_lnbr_slno.value = val_lnbr_slno;
+		    txt_gro_flo_co.value = val_gro_flo_co;
+		    txt_und_flo_co.value = val_und_flo_co;
+
+		    oldAttributesObj.buld_nm = val_buld_nm;
+		    oldAttributesObj.buld_nm_dc = val_buld_nm_dc;
+		    oldAttributesObj.zip = val_zip;
+		    oldAttributesObj.lnbr_mnnm = val_lnbr_mnnm;
+		    oldAttributesObj.lnbr_slno = val_lnbr_slno;
+		    oldAttributesObj.gro_flo_co = val_gro_flo_co;
+		    oldAttributesObj.und_flo_co = val_und_flo_co;
+		}
+
+		function onView() {
+		    var bEdited = map.edit().history().undoable();
+		    var bDoEditMode = true;
+
+		    if (bEdited) {
+		        bDoEditMode = confirm("편집된 내용이 있습니다. 편집 내용을 무시하고 진행 하시겠습니까?")
+		    }
+		    
+		    if (bDoEditMode) {
+		        var graphicLyr = map.layers("gl");
+		        graphicLyr.reset();
+		        attributeDiv.style.display = "none";
+		        map.edit().history().reset();
+		        map.userMode(Xr.UserModeEnum.VIEW);
+		    }
+		}
+
+		function onEdit() {
+		    map.userMode(Xr.UserModeEnum.EDIT);
+		}
+
+		function onNew() {
+		    var currentSketch = map.edit().currentSketch();
+
+		    if (currentSketch && map.edit().history().undoable()) {
+		        var yes = confirm("편집된 내용이 있습니다. 편집 내용을 무시하고 진행 하시겠습니까?");
+		        if(!yes) return;
+		    }
+
+		    if (!map.edit().newPolygon(0)) {
+		        alert("편집 모드가 아닙니다.");
+		    } else {
+		        isNew = true;
+
+		        var graphicLyr = map.layers("gl");
+		        graphicLyr.reset();
+
+		        map.edit().history().reset();
+		        this.resetAttributeInputUI();
+		        attributeDiv.style.display = "block";
+		    }
+		}
+
+		function onRemove() {
+		    if (map.userMode() == Xr.UserModeEnum.EDIT) {
+		        var currentSketch = map.edit().currentSketch();
+		        if (currentSketch) {
+		            var yes = confirm("선택한 건물을 정말 제거 하시겠습니까?");
+		            if (!yes) return;
+
+		            var id = currentSketch.id();
+		            var xhr = new XMLHttpRequest();
+
+		            xhr.open('POST', 'http://222.237.78.208:8080/Xr?uptbl2|postgis', true);
+		            xhr.responseType = 'text';
+		            xhr.onreadystatechange = function (e) {
+		                if (xhr.readyState == 4) {
+		                    if (xhr.status == 200) {
+		                        var bldLayer = map.layers("bld");
+		                        var graphicLyr = map.layers("gl");
+
+		                        bldLayer.reset();
+		                        map.update();
+		                        graphicLyr.reset();
+		                        map.edit().cancelSketch();
+		                        map.edit().history().reset();
+		                        attributeDiv.style.display = "none";
+
+		                        alert("선택했던 건물을 제거하였습니다.");
+		                    } else {
+		                        alert("제거 실패: " + sql);
+		                    }
+		                }
+		            };
+
+		            var sql = "DELETE FROM public.\"muan_bld\" WHERE fid = " + id;
+		            xhr.send(sql);
+		        } else {
+		            alert("제거할 건물을 먼저 선택하세요.");
+		        }
+		    } else {
+		        alert("편집 모드가 아닙니다.");
+		    }
+		}
+
+		function resetAttributeInputUI() {
+		    txt_buld_nm.value = "";
+		    txt_buld_nm_dc.value = "";
+		    txt_zip.value = "";
+		    txt_lnbr_mnnm.value = '0';
+		    txt_lnbr_slno.value = '0';
+		    txt_gro_flo_co.value = '0';
+		    txt_und_flo_co.value = '0';		
+		}
+
+		function onCommit() {
+		    if (map.userMode() == Xr.UserModeEnum.EDIT) {
+		        var currentSketch = map.edit().currentSketch();
+
+		        if (!currentSketch || !map.edit().history().undoable()) {
+		            alert("편집된 내용이 없습니다.");
+		            return;
+		        }
+
+		        var yes = confirm("편집 내용을 정말로 저장하시겠습니까?");
+		        if (!yes) return;
+
+		        var id = currentSketch.id();
+		        var graphicLyr = map.layers("gl");
+		        if (graphicLyr) {
+		            var xhr = new XMLHttpRequest();
+		            xhr.open('POST', 'http://222.237.78.208:8080/Xr?uptbl2|postgis', true);
+		            xhr.responseType = 'text';
+		            xhr.onreadystatechange = function (e) {
+		                if (xhr.readyState == 4) {
+		                    if (xhr.status == 200) {
+		                        var bldLayer = map.layers("bld");
+		                        bldLayer.reset();
+		                        if (isNew) {
+		                            graphicLyr.reset();
+		                            map.edit().cancelSketch();
+		                        }
+
+		                        map.update();
+		                        map.edit().history().reset();
+
+		                        alert("편집 내용을 저장하였습니다.");
+		                    } else {
+		                        alert("편집 내용 저장 실패: " + sql);
+		                    }
+		                }
+		            };
+
+		            var row = graphicLyr.rowSet().row(id);
+		            var data = row.graphicData();
+		            var wkt = data.toWKT(true);
+		            var sql;
+
+		            if (isNew) {
+		                sql = "INSERT INTO public.\"muan_bld\" (" +
+                            "the_geom, fid, buld_nm, buld_nm_dc, zip, lnbr_mnnm, lnbr_slno, gro_flo_co, und_flo_co) VALUES (" +
+                            "ST_GeomFromText('" + wkt + "')" +
+                            ", currval('muan_bld_gid_seq'::regclass)-1" +
+                            ", '" + txt_buld_nm.value + "' " +
+                            ", '" + txt_buld_nm_dc.value + "' " +
+                            ", '" + txt_zip.value + "' " +
+                            ", " + txt_lnbr_mnnm.value +
+                            ", " + txt_lnbr_slno.value +
+                            ", " + txt_gro_flo_co.value +
+                            ", " + txt_und_flo_co.value +
+                            ")";
+
+		                attributeDiv.style.display = "none";
+		            } else {
+		                sql = "UPDATE public.\"muan_bld\" " +
+		                    "SET the_geom = ST_GeomFromText('" + wkt + "')" +
+                            ", buld_nm = '" + txt_buld_nm.value + "' " +
+                            ", buld_nm_dc = '" + txt_buld_nm_dc.value + "' " +
+                            ", zip = '" + txt_zip.value + "' " +
+                            ", lnbr_mnnm = " + txt_lnbr_mnnm.value +
+                            ", lnbr_slno = " + txt_lnbr_slno.value +
+                            ", gro_flo_co = " + txt_gro_flo_co.value +
+                            ", und_flo_co = " + txt_und_flo_co.value +
+                            " WHERE fid = " + id;
+		            }
+
+		            xhr.send(sql);
+		        }
+		    } else {
+		        alert("편집 모드가 아닙니다.");
+		    }
+		}
+
+		function onUndo() {
+		    map.edit().history().undo();
+		}
+
+		function onRedo() {
+		    map.edit().history().redo();
+		}
+
+		function onUndoStateChanged(e) {
+		    btnUndo.disabled = e.disabled;
+		}
+
+		function onRedoStateChanged(e) {
+		    btnRedo.disabled = e.disabled;
+		}
+
+		var oldAttributesObj = {
+		    buld_nm: "",
+		    buld_nm_dc: "",
+		    zip: "",
+		    lnbr_mnnm: "",
+            lnbr_slno: "",
+            gro_flo_co: "",
+            und_flo_co: ""
+		};
+
+		function runModifyAttribute() {
+		    // 변경된 내용이 없다면 return
+		    if (oldAttributesObj.buld_nm == txt_buld_nm.value &&
+		        oldAttributesObj.buld_nm_dc == txt_buld_nm_dc.value &&
+    		    oldAttributesObj.zip == txt_zip.value &&
+    		    oldAttributesObj.lnbr_mnnm == txt_lnbr_mnnm.value &&
+		        oldAttributesObj.lnbr_slno == txt_lnbr_slno.value &&
+		        oldAttributesObj.gro_flo_co == txt_gro_flo_co.value &&
+    		    oldAttributesObj.und_flo_co == txt_und_flo_co.value) return;
+
+		    // 숫자값에 문자값을 입력했을 경우 처리
+		    if (isNaN(txt_lnbr_mnnm.value)) txt_lnbr_mnnm.value = '0';
+		    if (isNaN(txt_lnbr_slno.value.length)) txt_lnbr_slno.value = '0';
+		    if (isNaN(txt_gro_flo_co.value.length)) txt_gro_flo_co.value = '0';
+		    if (isNaN(txt_und_flo_co.value.length)) txt_und_flo_co.value = '0';
+
+		    // 새롭게 입력된 값
+		    var newAttributesObj = {
+		        buld_nm: txt_buld_nm.value,
+		        buld_nm_dc: txt_buld_nm_dc.value,
+		        zip: txt_zip.value,
+		        lnbr_mnnm: txt_lnbr_mnnm.value,
+		        lnbr_slno: txt_lnbr_slno.value,
+		        gro_flo_co: txt_gro_flo_co.value,
+		        und_flo_co: txt_und_flo_co.value
+		    };
+
+		    // 이전에 입력된 값
+		    var oldAttributesObjClone = {
+		        buld_nm: oldAttributesObj.buld_nm,
+		        buld_nm_dc: oldAttributesObj.buld_nm_dc,
+		        zip: oldAttributesObj.zip,
+		        lnbr_mnnm: oldAttributesObj.lnbr_mnnm,
+		        lnbr_slno: oldAttributesObj.lnbr_slno,
+		        gro_flo_co: oldAttributesObj.gro_flo_co,
+		        und_flo_co: oldAttributesObj.und_flo_co
+		    };
+
+		    // 이전에 입력된 값 저장
+		    oldAttributesObj.buld_nm = txt_buld_nm.value;
+		    oldAttributesObj.buld_nm_dc = txt_buld_nm_dc.value;
+		    oldAttributesObj.zip = txt_zip.value;
+		    oldAttributesObj.lnbr_mnnm = txt_lnbr_mnnm.value;
+		    oldAttributesObj.lnbr_slno = txt_lnbr_slno.value;
+		    oldAttributesObj.gro_flo_co = txt_gro_flo_co.value;
+		    oldAttributesObj.und_flo_co = txt_und_flo_co.value;
+
+		    // 명령 실행
+		    var cmd = new ModifyAttributeCommand(map.edit().currentSketch().id(), oldAttributesObjClone, newAttributesObj);
+		    map.edit().synchronize(cmd);
+		}
+
+		function onKeyPress(e) {
+		    if(e.keyCode == 13)
+		    {
+		        runModifyAttribute();
+		    }
+		}
+
+		function onBlur(e) {
+		    runModifyAttribute();
+		}
+	</script>
+</head>
+
+<body onload="load()">
+    <div id="mainLayout">
+        <div id="mapDiv"></div>
+        <div id="titleDiv">
+            FingerEyes-Xr for HTML5 : <font color="#349bd6">Edit ShapeMapLayer</font>
+            <br />
+            <button onclick="onView();">맵뷰 모드</button>
+            <button onclick="onEdit();">편집 모드</button>
+            <button onclick="onNew();" />신규 건물</button>
+            <button onclick="onRemove();" />건물 제거</button>
+            <button onclick="onUndo();" id="btnUndo" />Undo</button>
+            <button onclick="onRedo();" id="btnRedo" />Redo</button>
+            <button onclick="onCommit();" />커밋(Commit)</button>
+        </div>
+
+        <div id="attributeDiv">
+            <table>
+                <tr>
+                    <td>건물명</td>
+                    <td><input type="text" id="txt_buld_nm" onblur="onBlur(event)" onkeypress="onKeyPress(event)"></td>
+                </tr>
+                <tr>
+                    <td>상세건물명</td>
+                    <td><input type="text" id="txt_buld_nm_dc" onblur="onBlur(event)" onkeypress="onKeyPress(event)"></td>
+                </tr>
+                <tr>
+                    <td>본번</td>
+                    <td><input type="text" id="txt_lnbr_mnnm" onblur="onBlur(event)" onkeypress="onKeyPress(event)"></td>
+                </tr>
+                <tr>
+                    <td>부번</td>
+                    <td><input type="text" id="txt_lnbr_slno" onblur="onBlur(event)" onkeypress="onKeyPress(event)"></td>
+                </tr>
+                <tr>
+                    <td>우편번호</td>
+                    <td><input type="text" id="txt_zip" onblur="onBlur(event)" onkeypress="onKeyPress(event)"></td>
+                </tr>
+                <tr>
+                    <td>지상층수</td>
+                    <td><input type="text" id="txt_gro_flo_co" onblur="onBlur(event)" onkeypress="onKeyPress(event)"></td>
+                </tr>
+                <tr>
+                    <td>지하층수</td>
+                    <td><input type="text" id="txt_und_flo_co" onblur="onBlur(event)" onkeypress="onKeyPress(event)"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
