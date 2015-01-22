@@ -154,6 +154,8 @@ Xr.Map = Xr.Class({
 			    } else {
 			        this._bMapPanning = !this.map._editManager.mouseDown(e);
 			    }
+			} else if (this.map._userMode == Xr.UserModeEnum.VIEW) {
+			    this.map.layers().update(Xr.MouseActionEnum.MOUSE_DOWN, 0 ,0);
 			}
 
 			this.map._userControlManager.mouseDown(e);

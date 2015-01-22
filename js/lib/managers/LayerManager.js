@@ -40,8 +40,11 @@ Xr.managers.LayerManager = Xr.Class({
 		layer: function(name) {
 			var cntLayers = this._layers.length;
 			
-			for(var iLyr=0; iLyr<cntLayers; iLyr++) {
-				if(this._layers[iLyr].name() == name) return this._layers[iLyr];
+			for (var iLyr = 0; iLyr < cntLayers; iLyr++) {
+			    var thatLayerName = this._layers[iLyr].name();
+			    if (thatLayerName == name) {
+			        return this._layers[iLyr];
+			    }
 			}
 			
 			return null;
@@ -90,10 +93,11 @@ Xr.managers.LayerManager = Xr.Class({
 		remove: function(name) {
 			var index = this.index(name);
 			if(index != -1) {
-				this._layers.splice(index, 1);
-
-				var container = this.layer(name).container();
+				var lyr = this.layer(name);
+				var container = lyr.container();
 				this._mapDiv.removeChild(container);
+
+				this._layers.splice(index, 1);
 			}
 		},
 		

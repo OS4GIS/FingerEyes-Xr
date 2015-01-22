@@ -51,6 +51,19 @@ Xr.ui.ZoomLevelControl = Xr.Class({
 	        }
 	    },
 
+	    unitPerPixels: function ( /* Array */ list) {
+	        var cm = this._map.coordMapper();
+	        var mapScales = new Array();
+	        var cntItems = list.length;
+	        for (var i = 0; i < cntItems; i++) {
+	            var mapScale = cm.mapScaleFromMetersPerOnePixel(list[i]);
+	            mapScales.push(mapScale);
+	        }
+
+	        this._mapScales = mapScales;
+	        this.update();
+	    },
+
 	    mapScales: function(/* optional Array */ mapScales) {
 	        if (mapScales.length == 0) return this._mapScales;
 	        else {

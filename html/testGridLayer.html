@@ -1,0 +1,184 @@
+﻿<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<html>
+<head title="FingerEyes-Xr">
+	<style>
+        body
+	    {
+            margin:0px;
+            padding:0px;
+	    }
+
+	    #mainLayout
+	    {
+			width:100%;
+			height:100%;
+			border:none; 		
+	    }
+
+		#mapDiv {
+            top:0px;
+            left:0px;
+			position:relative;
+			width:100%;
+			height:100%;
+			border:none; 		
+            overflow:hidden;	
+		}	
+		
+        #title {
+            top:12px;
+            left:12px;
+            padding: 12px;
+			position:absolute;
+            background:rgba(0,0,0,0.7);
+			border:none; 		
+            overflow:auto;
+            border-radius: 12px;
+            font-size: 24px;
+            color: #ffffff;
+            font-family: "맑은 고딕";
+		}
+
+        #progressbar-bg
+        {
+            width: 510px;
+            background: gray;
+        }
+
+        #progressbar
+        {
+            height: 16px;
+            margin: 3px 0px;
+	        color: #fff;
+            padding: 5px;
+	        background: rgb(0,0,0);
+            font-size: 14px;
+        }
+	</style>
+
+	<script src="../js/Xr.js"></script>
+
+	<script type="text/javascript">
+	    var map = null;
+	    var bUsingWeightedValue = false;
+
+	    function load() {
+	        map = new Xr.Map("mapDiv", {});
+
+	        var lyr = new Xr.layers.TileMapLayer("basemap",
+				{
+				    proxy: "http://222.237.78.208:8080/Xr",
+				    url: "http://www.geoservice.co.kr/tilemap1",
+				    ext: "png"
+				}
+			);
+
+	        var shpLyr = new Xr.layers.ShapeMapLayer("population", { url: "http://www.geoservice.co.kr:8080/Xr?layerName=population" });
+
+	        shpLyr.needAttribute(true);
+	        shpLyr.visibility().visibleByScale(true);
+	        shpLyr.visibility().fromScale(0);
+	        shpLyr.visibility().toScale(15000);
+            
+	        var label = shpLyr.label();
+	        label.visibility().visibleByScale(true);
+	        label.visibility().fromScale(0); // 포함
+	        label.visibility().toScale(15000); // 미포함
+	        label.enable(true);
+	        label.formatter().fieldName("A00_11");// OPE_MAN_ID"); // "jibun"
+
+	        var labelTheme = label.theme();
+	        labelTheme.symbol().strokeColor("#000000");
+	        labelTheme.symbol().strokeWidth(2);
+
+	        labelTheme.symbol().size(12);
+	        labelTheme.symbol().fontFamily('맑은 고딕');
+	        labelTheme.symbol().color("#ffff00");
+
+	        var theme = shpLyr.theme();
+	        var pen = theme.penSymbol();
+	        var brush = theme.brushSymbol();
+
+	        pen.color('#ff0000');
+	        pen.width(2);
+	        brush.color('#ffff00');
+
+	        var lm = map.layers();
+	        lm.add(lyr);
+	        lm.add(shpLyr);
+
+	        var ctrl = new Xr.ui.ScaleBarControl("sbc", map);
+	        map.userControls().add(ctrl);
+
+	        var ctrl2 = new Xr.ui.ZoomLevelControl("zlc", map);
+	        ctrl2.mapScales([1533, 2682, 5746, 10726, 21988, 38307, 84274, 191531, 352416, 612897, 1379017, 2298362]);
+
+	        map.userControls().add(ctrl2);
+
+	        map.onLayersAllReady(function () {
+	            var cm = map.coordMapper();
+
+	            cm.moveTo(317782, 544590);
+	            cm.zoomByMapScale(1534);
+
+	            map.update();
+	        });
+	    }
+
+	    function progressCallback(/* number */ percentage) {
+	        progressbar.innerHTML = parseInt(percentage) + '%';
+	        progressbar.style.width = (percentage * 5) + 'px';
+	    }
+
+	    function onDensity() {
+	        var coordMapper = map.coordMapper();
+	        var mbr = coordMapper.viewportMBR();
+	        var resolution = coordMapper.metersPerOnePixel() * 1;
+	        var radius = coordMapper.metersPerOnePixel() * 250;
+	        var gridLyr = new Xr.layers.GridLayer("grid",
+                {
+                    mbr: new Xr.MBR(mbr.minX, mbr.minY, mbr.maxX, mbr.maxY),
+                    resolution: resolution
+                }
+            );
+
+	        map.layers().remove("grid");
+	        map.layers().add(gridLyr);
+
+	        //alert("그리드 해상도 : " + resolution + " 미터 \n밀도분석 반경: " + radius + " 미터");
+
+	        var shapeLyr = map.layers("population");
+	        var clrTbl = new Xr.ColorTable(16);
+	        clrTbl.set(0, 0, 255, 0, 0);
+	        clrTbl.set(7, 255, 255, 0, 180);
+	        clrTbl.set(15, 255, 0, 0, 240);
+	        if (clrTbl.build()) {
+	            //if (!gridLyr.cellValuesByLayer(shapeLyr)) {
+	            if (!gridLyr.densityByLayer(shapeLyr, radius, clrTbl.colors(), bUsingWeightedValue ? "A00_11" : undefined, progressCallback)) {
+	                alert("Error setting CellValues By ShapeMapLayer");
+	            }
+	        } else {
+	            alert("색상 테이블 생성 실패");
+	        }
+	    }
+
+	    function onUsingWeightedValueChanged(/* CheckBox */ cb) {
+	        bUsingWeightedValue = cb.checked;
+	    }
+	</script>
+</head>
+
+<body onload="load()">
+    <div id="mainLayout">
+        <div id="mapDiv"></div>
+        <div id="title">
+            FingerEyes-Xr for HTML5 : <font color="#349bd6">GridLayer Example</font>
+            <br />
+            <input type="button" value="Density" onclick="onDensity();">
+            <input type="checkbox" onchange="onUsingWeightedValueChanged(this)" />
+            <font size="2" color="#ffffff"><span>가중치값 사용</span></font>
+            <div id="progressbar-bg"><div id="progressbar"></div></div>
+        </div>
+    </div>
+</body>
+</html>

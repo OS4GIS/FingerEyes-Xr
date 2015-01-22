@@ -4,7 +4,7 @@
     http://www.gisdeveloper.co.kr / http://www.geoservice.co.kr
     (c) 2014 - 2015
     저작권자(Copyright)(주)지오서비스, GEOSERVICE Co.
-    라이선스 : 소스코드 변경 없이 사용할 경우 제한 없음
+    라이선스 : LGPL
     상기 주석 제거는 저작권자의 권리관리정보 훼손으로 저작권을 침해하는 행위입니다.
 */
 
@@ -24,6 +24,9 @@
         }
     }
 
+    /*
+        하단의 jsFiles 배열 요소에 대한 모든 js 파일은 LGPL 라이선스를 따릅니다.
+    */
 	var jsFiles = 
 		[
             // Base package
@@ -64,6 +67,9 @@
 			'view/layers/ShapeMapLayer/ShapeMapQueryRequest.js',
 		
             'view/layers/GraphicLayer/GraphicLayer.js',
+
+            'view/layers/GridLayer/GridLayer.js',
+            'view/layers/GridLayer/ColorTable.js',
 
             'view/label/Label.js',
             'view/label/formatter/ILabelFormatter.js',
@@ -221,6 +227,8 @@
 			} 
 
 			return constructor;
-		}
+		} 
 	};
+
+	window.Xr.jsPath = host;
 })();

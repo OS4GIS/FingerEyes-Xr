@@ -9,11 +9,11 @@ Xr.data.Field = Xr.Class({
 	},
  	
 	methods: {
-		fieldName: function() {
+		name: function() {
 			return this._fieldName;
 		},
 
-		fieldType: function() {
+		type: function() {
 			return this._fieldType;
 		}
 	}

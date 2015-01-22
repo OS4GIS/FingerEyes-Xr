@@ -148,7 +148,7 @@ Xr.layers.ShapeMapQueryRequest = Xr.Class({
 				    var Y = dataview.getFloat32(cursor, true);
 				    cursor += 4;
 
-				    var mbr = new MBR(X, Y, X, Y);
+				    var mbr = new MBRClass(X, Y, X, Y);
 				    var shapeData = new PointShapeDataClass(mbr);
 				    var row = new PointShapeRowClass(fid, shapeData);
 

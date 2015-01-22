@@ -12,7 +12,7 @@ Xr.data.FieldSet = Xr.Class({
 		add: function(/* Field */ field) {
 			var cntFields = this._fields.length;
 			this._fields[cntFields] = field;
-			this._fieldTypes[cntFields] = field.fieldType();
+			this._fieldTypes[cntFields] = field.type();
 		},
 
 		/* Field */ field: function(/* int */ index) {
@@ -24,14 +24,14 @@ Xr.data.FieldSet = Xr.Class({
 		},
 
 	    /* String */ fieldName: function(/* int */ index) {
-	        return this._fields[index].fieldName();
+	        return this._fields[index].name();
 	    },
 
 		/* int */ fieldIndex: function(/* String */ fieldName) {
 			var cntFields = this._fields.length;
 			for(var iField=0; iField<cntFields; iField++) {
 				var field = this.field(iField);
-				var thatFieldName = field.fieldName();
+				var thatFieldName = field.name();
 
 				if(thatFieldName == fieldName) {
 					return iField;
@@ -41,6 +41,21 @@ Xr.data.FieldSet = Xr.Class({
 			return -1;
 		},
 		
+		fieldType: function(/* String */ fieldName) {
+		    var cntFields = this._fields.length;
+		    for (var iField = 0; iField < cntFields; iField++) {
+		        var field = this.field(iField);
+		        var fieldType = field.type();
+		        var thatFieldName = field.name();
+
+		        if (thatFieldName == fieldName) {
+		            return fieldType;
+		        }
+		    }
+
+		    return undefined;
+		},
+
 		/* Array */ fieldTypes: function() {
 			return this._fieldTypes;
 		}

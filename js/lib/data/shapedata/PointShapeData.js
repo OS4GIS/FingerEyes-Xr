@@ -6,8 +6,8 @@ Xr.data.PointShapeData = Xr.Class({
 
 	construct: function (/* MBR or PointD */ arg) {
 	    if (arg instanceof Xr.MBR) {
-	        this._mbr = mbr;
-	        this._point = new Xr.PointD(mbr.minX, mbr.minY);
+	        this._mbr = arg;
+	        this._point = new Xr.PointD(arg.minX, arg.minY);
 	    } else if (arg instanceof Xr.PointD) {
 	        this._mbr = new Xr.MBR(arg.x, arg.y, arg.x, arg.y);
 	        this._point = new Xr.PointD(arg.x, arg.y);
