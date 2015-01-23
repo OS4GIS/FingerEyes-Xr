@@ -24,12 +24,12 @@ FingerEyes-Xr은 완벽한 웹기반의 높은 수준의 GIS 시스템 개발을 위한 HTML5 기술을 
 
 ### 관련 동영상
 
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/tms_vworld.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/tms_vworld.png?width=510)
 
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/identify.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/identify.png?width=510)
 
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/graphiclayer.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/graphiclayer.png?width=510)
 
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/basic_edit.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/basic_edit.png?width=510)
 
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/advance_edit.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/advance_edit.png?width=510)
