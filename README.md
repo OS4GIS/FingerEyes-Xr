@@ -11,7 +11,7 @@ FingerEyes-Xr은 완벽한 웹기반의 높은 수준의 GIS 시스템 개발을 위한 HTML5 기술을 
 * 웹 기반의 완벽한 공간 데이터 편집(Undo/Redo, Snapping, Split, Merge, Substract, Buffer 등) 
 
 ### 라이선스(License)
-* FingerEyes-Xr은 [LGPL](http://www.gnu.org/licenses/lgpl.html) 기반의 라이선스입니다 ㅡ [License guide](http://docs.geotools.org/latest/userguide/welcome/license.html)
+* FingerEyes-Xr은 [LGPL](http://www.gnu.org/licenses/lgpl.html) 기반의 라이선스입니다.
 * 소스코드에서 저작권자를 식별할 수 있는 정보 제거 또는 변경은 저작권을 침해하는 행위입니다.
 * 소프트웨어 저작권에 대한 올바른 준수는 소프트웨어 업계를 발전시키는 매우 중요한 초석입니다. 
 
