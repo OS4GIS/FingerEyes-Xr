@@ -18,12 +18,14 @@ Xr.layers.GridLayer = Xr.Class({
         this._div.style.height = "100%";
         this._div.style.overflow = "hidden";
         this._div.style.setProperty("pointer-events", "none");
-
+        
         this._img = document.createElement("img");
         this._img.style.position = "absolute";
         this._img.style.setProperty("pointer-events", "none");
         this._img.style.setProperty("user-select", "none");
         this._img.style.overflow = "hidden";
+        this._img.style.display = "none";
+
         this.container().appendChild(this._img);
 
         if (params.mbr) {
@@ -133,9 +135,6 @@ Xr.layers.GridLayer = Xr.Class({
                     if (progressCallback) {
                         progressCallback(dataProcessed);
                     }
-
-                    //progressbar.innerHTML = dataProcessed + '%';
-                    //progressbar.style.width = dataProcessed + 'px';
                 } else {
                     that._minValue = dataProcessed.minValue;
                     that._maxValue = dataProcessed.maxValue;
@@ -145,6 +144,7 @@ Xr.layers.GridLayer = Xr.Class({
                     context.putImageData(imageData, 0, 0);
 
                     that._img.src = canvas.toDataURL();
+                    that._img.style.display = "block";
                     that.refresh();
 
                     canvas = undefined;
