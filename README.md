@@ -1,19 +1,19 @@
 ## FingerEyes-Xr for HTML5
 
 ### Overview
-FingerEyes-XrÀº ¿Ïº®ÇÑ À¥±â¹İÀÇ ³ôÀº ¼öÁØÀÇ GIS ½Ã½ºÅÛ °³¹ßÀ» À§ÇÑ HTML5¸¦ »ç¿ëÇÑ JavaScript ¶óÀÌºê·¯¸®ÀÔ´Ï´Ù. 
+FingerEyes-XrÀº ¿Ïº®ÇÑ À¥±â¹İÀÇ ³ôÀº ¼öÁØÀÇ GIS ½Ã½ºÅÛ °³¹ßÀ» À§ÇÑ HTML5 ±â¼úÀ» ÀÌ¿ëÇÑ JavaScript ¶óÀÌºê·¯¸®ÀÔ´Ï´Ù.
 
 ### ÁÖ¿ä±â´É
-* ´Ù¾çÇÑ µ¥ÀÌÅÍ ¼Ò½º(TMS, WFS, WMS, Custom)¸¦ ÅëÇÑ À¥ ±â¹İÀÇ ºü¸¥ °ø°£ µ¥ÀÌÅÍ Ç¥Ãâ
+* ´Ù¾çÇÑ µ¥ÀÌÅÍ ¼Ò½º(TMS, WFS, WMS, Custom Spec)¸¦ ÅëÇÑ À¥ ±â¹İÀÇ ºü¸¥ °ø°£ µ¥ÀÌÅÍ Ç¥Ãâ
 * °ø°£ µ¥ÀÌÅÍ¿Í ¿¬°èÇÑ ¼Ó¼º µ¥ÀÌÅÍ Ã³¸®
-* Grid, Vector µ¥ÀÌÅÍ ±â¹İÀÇ ºĞ¼® ±â´É(Density, IDW µî)
+* Grid, Vector µ¥ÀÌÅÍ ±â¹İÀÇ ºĞ¼®
 * Áöµµ À§ÀÇ ´Ù¾çÇÑ ¸Å½¬¾÷(Mashup) ±â´É ¹× ÆíÁı
 * À¥ ±â¹İÀÇ ¿Ïº®ÇÑ °ø°£ µ¥ÀÌÅÍ ÆíÁı(Undo/Redo, Snapping, Split, Merge, Substract, Buffer µî) 
 
 ### ¶óÀÌ¼±½º(License)
-* FingerEyes-XrÀº [LGPL](http://www.gnu.org/licenses/lgpl.html) ±â¹İÀÇ ¶óÀÌ¼±½ºÀÔ´Ï´Ù.
-* ¼Ò½ºÄÚµå¿¡ ¾ğ±ŞµÈ ÀúÀÛ±ÇÀÚ¸¦ ÆÇ´ÜÇÒ ¼ö ÀÖ´Â Á¤º¸ Á¦°Å´Â ÀúÀÛ±ÇÀ» Ä§ÇØÇÏ´Â ÇàÀ§ÀÔ´Ï´Ù.
-* ¼ÒÇÁÆ®¿ş¾î ÀúÀÛ±Ç¿¡ ´ëÇÑ ¿Ç¹Ù¸¥ ÁØ¼ö´Â ¼ÒÇÁÆ®¿ş¾î ¾÷°è¸¦ ¹ßÀü½ÃÅ°´Â ¸Å¿ì Áß¿äÇÑ ÃÊ¼®ÀÔ´Ï´Ù. 
+* FingerEyes-XrÀº [LGPL](http://www.gnu.org/licenses/lgpl.html) ±â¹İÀÇ ¶óÀÌ¼±½ºÀÔ´Ï´Ù ¤Ñ [License guide](http://docs.geotools.org/latest/userguide/welcome/license.html)
+* ¼Ò½ºÄÚµå¿¡ ¾ğ±ŞµÈ ÀúÀÛ±ÇÀÚ¸¦ ÆÇ´ÜÇÒ ¼ö ÀÖ´Â ÄÚµå, ÁÖ¼®ÀÇ Á¦°Å´Â ÀúÀÛ±ÇÀ» Ä§ÇØÇÏ´Â ÇàÀ§ÀÔ´Ï´Ù.
+* ¼ÒÇÁÆ®¿ş¾î ÀúÀÛ±Ç¿¡ ´ëÇÑ ¿Ã¹Ù¸¥ ÁØ¼ö´Â ¼ÒÇÁÆ®¿ş¾î ¾÷°è¸¦ ¹ßÀü½ÃÅ°´Â ¸Å¿ì Áß¿äÇÑ ÃÊ¼®ÀÔ´Ï´Ù. 
 
 ### °ü·Ã »çÀÌÆ®
 * FingerEyes-XrÀº [(ÁÖ)Áö¿À¼­ºñ½º](http://www.geoservice.co.kr)ÀÇ Áö¿øÀ» ¹Ş½À´Ï´Ù.
@@ -24,8 +24,8 @@ FingerEyes-XrÀº ¿Ïº®ÇÑ À¥±â¹İÀÇ ³ôÀº ¼öÁØÀÇ GIS ½Ã½ºÅÛ °³¹ßÀ» À§ÇÑ HTML5¸¦ »ç¿ëÇ
 
 ### °ü·Ã µ¿¿µ»ó
 
-* TMS ±â¹İÀÇ ¹è°æÁöµµ·Î½á VWorld È°¿ë [(YouTube Link)](http://www.youtube.com/watch?v=YljW7m81aTg)
-* ¼±ÅÃµÈ °ø°£ µ¥ÀÌÅÍ¿¡ ´ëÇÑ ¼Ó¼º È®ÀÎ [(YouTube Link)](http://www.youtube.com/watch?v=svRgKdMVbeM)
-* ±×·¡ÇÈ ·¹ÀÌ¾îÀÇ µµÇü ÆíÁı [(YouTube Link)](http://www.youtube.com/watch?v=gVs9O6qZPYA)
-* °ø°£ µ¥ÀÌÅÍ ±âº» ÆíÁı [(YouTube Link)](http://www.youtube.com/watch?v=y4JsEHZEog0)
-* °ø°£ µ¥ÀÌÅÍ °í±Ş ÆíÁı [(YouTube Link)](http://www.youtube.com/watch?v=iUZm-14yM1w0)
+![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/tms_vworld.png)
+![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/identify.png)
+![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/graphiclayer.png)
+![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/basic_edit.png)
+![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/advance_edit.png)
