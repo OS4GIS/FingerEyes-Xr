@@ -25,21 +25,7 @@ FingerEyes-XrÀº ¿Ïº®ÇÑ À¥±â¹İÀÇ ³ôÀº ¼öÁØÀÇ GIS ½Ã½ºÅÛ °³¹ßÀ» À§ÇÑ HTML5¸¦ »ç¿ëÇ
 ### °ü·Ã µ¿¿µ»ó
 
 * TMS ±â¹İÀÇ ¹è°æÁöµµ·Î½á VWorld È°¿ë [(YouTube Link)](http://www.youtube.com/watch?v=YljW7m81aTg)
-
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/tms_vworld.png)
-
 * ¼±ÅÃµÈ °ø°£ µ¥ÀÌÅÍ¿¡ ´ëÇÑ ¼Ó¼º È®ÀÎ [(YouTube Link)](http://www.youtube.com/watch?v=svRgKdMVbeM)
-
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/identify.png)
-
-* ±×·¡ÇÈ ·¹ÀÌ¾îÀÇ µµÇü ÆíÁı [(YouTube Link)] (http://www.youtube.com/watch?v=gVs9O6qZPYA)
-
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/graphiclayer.png)
-
-* °ø°£ µ¥ÀÌÅÍ ±âº» ÆíÁı [(YouTube Link)] (http://www.youtube.com/watch?v=y4JsEHZEog0)
-
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/basic_edit.png)
-
-* °ø°£ µ¥ÀÌÅÍ °í±Ş ÆíÁı [(YouTube Link)] (http://www.youtube.com/watch?v=iUZm-14yM1w0)
-
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/advance_edit.png)
+* ±×·¡ÇÈ ·¹ÀÌ¾îÀÇ µµÇü ÆíÁı [(YouTube Link)](http://www.youtube.com/watch?v=gVs9O6qZPYA)
+* °ø°£ µ¥ÀÌÅÍ ±âº» ÆíÁı [(YouTube Link)](http://www.youtube.com/watch?v=y4JsEHZEog0)
+* °ø°£ µ¥ÀÌÅÍ °í±Ş ÆíÁı [(YouTube Link)](http://www.youtube.com/watch?v=iUZm-14yM1w0)
