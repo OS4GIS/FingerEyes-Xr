@@ -23,9 +23,8 @@ FingerEyes-Xr은 완벽한 웹기반의 높은 수준의 GIS 시스템 개발을 위한 HTML5 기술을 
 * 김형준(Dip2K) (hjkim@geoservice.co.kr)
 
 ### 관련 동영상
-
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/tms_vworld.png)
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/identify.png)
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/graphiclayer.png)
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/basic_edit.png)
-![screenshot]https://github.com/FingerEyes-Xr/src/blob/master/doc/img/advance_edit.png)
+* [TMS 스펙을 지원하는 VWorld 배경지도 연동](http://www.youtube.com/watch?v=YljW7m81aTg)
+* [선택된 공간 도형의 속성 확인](http://www.youtube.com/watch?v=svRgKdMVbeM)
+* [그래픽 레이어 매쉬업 편집](http://www.youtube.com/watch?v=gVs9O6qZPYA)
+* [공간 데이터 기본 편집](http://www.youtube.com/watch?v=y4JsEHZEog0)
+* [공간 데이터 고급 편집](http://www.youtube.com/watch?v=iUZm-14yM1w)
