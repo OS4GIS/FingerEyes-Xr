@@ -4,7 +4,7 @@
 FingerEyes-Xr은 완벽한 웹기반의 높은 수준의 GIS 시스템 개발을 위한 HTML5를 사용한 JavaScript 라이브러리입니다. 
 
 ### 주요기능
-* 다양한 데이터 소스(TMS, WFS, WMS, Custom Spec)를 통한 웹 기반의 빠른 공간 데이터 표출
+* 다양한 데이터 소스(TMS, WFS, WMS, Custom)를 통한 웹 기반의 빠른 공간 데이터 표출
 * 공간 데이터와 연계한 속성 데이터 처리
 * Grid, Vector 데이터 기반의 분석 기능(Density, IDW 등)
 * 지도 위의 다양한 매쉬업(Mashup) 기능 및 편집
