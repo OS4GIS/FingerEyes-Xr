@@ -23,6 +23,14 @@ Xr.data.FieldSet = Xr.Class({
 			return this._fields.length;
 		},
 
+	    /* int */ size: function () {
+	        return this._fields.length;
+	    },
+
+	    /* int */ length: function () {
+	        return this._fields.length;
+	    },
+
 	    /* String */ fieldName: function(/* int */ index) {
 	        return this._fields[index].name();
 	    },

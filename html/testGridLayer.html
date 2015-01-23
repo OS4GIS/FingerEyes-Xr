@@ -48,7 +48,7 @@
         #progressbar
         {
             height: 16px;
-            margin: 3px 0px;
+            margin: 1px 0px;
 	        color: #fff;
             padding: 5px;
 	        background: rgb(0,0,0);
@@ -60,7 +60,6 @@
 
 	<script type="text/javascript">
 	    var map = null;
-	    var bUsingWeightedValue = false;
 
 	    function load() {
 	        map = new Xr.Map("mapDiv", {});
@@ -84,8 +83,7 @@
 	        label.visibility().visibleByScale(true);
 	        label.visibility().fromScale(0); // 포함
 	        label.visibility().toScale(15000); // 미포함
-	        label.enable(true);
-	        label.formatter().fieldName("A00_11");// OPE_MAN_ID"); // "jibun"
+	        label.enable(false);
 
 	        var labelTheme = label.theme();
 	        labelTheme.symbol().strokeColor("#000000");
@@ -103,9 +101,14 @@
 	        pen.width(2);
 	        brush.color('#ffff00');
 
+	        var graphicLyr = new Xr.layers.GraphicLayer("gl");
+
+	        map.edit().targetGraphicLayer(graphicLyr);
+
 	        var lm = map.layers();
 	        lm.add(lyr);
 	        lm.add(shpLyr);
+	        lm.add(graphicLyr);
 
 	        var ctrl = new Xr.ui.ScaleBarControl("sbc", map);
 	        map.userControls().add(ctrl);
@@ -115,26 +118,111 @@
 
 	        map.userControls().add(ctrl2);
 
-	        map.onLayersAllReady(function () {
-	            var cm = map.coordMapper();
+	        map.addEventListener(Xr.Events.MapViewChanged, onMapViewChanged);
+	        map.addEventListener(Xr.Events.EditCompleted, onEditCompleted);
 
-	            cm.moveTo(317782, 544590);
-	            cm.zoomByMapScale(1534);
+	        map.onLayersAllReady(onLayersAllReady);
+	    }
 
-	            map.update();
-	        });
+	    function onMapViewChanged(e) {
+	        var coordMapper = map.coordMapper();
+	        var mbr = coordMapper.viewportMBR();
+	        var resolution = coordMapper.metersPerOnePixel() * 1;
+	        var radius = coordMapper.metersPerOnePixel() * 250;
+
+	        var txtResolution = document.getElementById("resolution");
+	        var txtRadius = document.getElementById("radius");
+
+	        txtResolution.value = resolution.toFixed(4);
+	        txtRadius.value = radius.toFixed(4);
+	    }
+
+	    function onLayersAllReady() {
+	        // Add field name has number type to combobox.
+	        var attributes = document.getElementById("attributes");
+	        var option = document.createElement("option");
+	        option.text = "사용 않함";
+	        attributes.add(option);
+
+	        var shpLyr = map.layers("population");
+	        var fieldSet = shpLyr.attributeRowSet().fieldSet();
+	        var cntFields = fieldSet.size();
+	        for (var iField = 0; iField < cntFields; ++iField) {
+	            var field = fieldSet.field(iField);
+	            if (field.type() != Xr.data.FieldType.STRING) {
+	                option = document.createElement("option");
+	                option.text = field.name();
+	                attributes.add(option);
+	            }
+	        }
+	        // .
+
+	        var cm = map.coordMapper();
+
+	        cm.moveTo(317782, 544590);
+	        cm.zoomByMapScale(1534);
+
+	        map.update();
 	    }
 
 	    function progressCallback(/* number */ percentage) {
 	        progressbar.innerHTML = parseInt(percentage) + '%';
 	        progressbar.style.width = (percentage * 5) + 'px';
+
+	        if (percentage == 100) {
+	            var btn = document.getElementById("density");
+	            var btn2 = document.getElementById("density2");
+
+	            btn.disabled = false;
+	            btn2.disabled = false;
+
+	            var yes = confirm("밀도 분석이 완료되었습니다. 분석된 영역으로 이동하시겠습니까?")
+	            if (yes) {
+	                var gridLyr = map.layers("grid");
+	                var mbr = gridLyr.MBR();
+	                map.coordMapper().zoomByMBR(mbr);
+	            }
+
+	            map.layers("gl").reset();
+	            map.update();
+	        }
+	    }
+
+	    function onDensity2() {
+	        var gl = map.layers("gl");
+	        gl.reset();
+	        map.userMode(Xr.UserModeEnum.EDIT);
+	        map.edit().newRectangle(0);
+	    }
+
+	    function onEditCompleted(e) {
+	        if (e.editCommandType == Xr.edit.NewCommand.TYPE) {
+	            map.edit().history().reset();
+
+	            var gl = map.layers("gl");
+	            var target = gl.rowSet().row(0);
+	            var mbr = target.MBR();
+
+	            runDensity(mbr);
+	        }
+
+	        map.userMode(Xr.UserModeEnum.VIEW);
 	    }
 
 	    function onDensity() {
 	        var coordMapper = map.coordMapper();
 	        var mbr = coordMapper.viewportMBR();
-	        var resolution = coordMapper.metersPerOnePixel() * 1;
-	        var radius = coordMapper.metersPerOnePixel() * 250;
+
+	        runDensity(mbr);
+	    }
+
+	    function runDensity(/* MBR */ mbr) {
+	        var coordMapper = map.coordMapper();
+	        var txtResolution = document.getElementById("resolution");
+	        var txtRadius = document.getElementById("radius");
+	        var resolution = parseFloat(txtResolution.value);
+	        var radius = parseFloat(txtRadius.value);
+
 	        var gridLyr = new Xr.layers.GridLayer("grid",
                 {
                     mbr: new Xr.MBR(mbr.minX, mbr.minY, mbr.maxX, mbr.maxY),
@@ -145,25 +233,43 @@
 	        map.layers().remove("grid");
 	        map.layers().add(gridLyr);
 
-	        //alert("그리드 해상도 : " + resolution + " 미터 \n밀도분석 반경: " + radius + " 미터");
-
 	        var shapeLyr = map.layers("population");
+	        var label = shapeLyr.label();
 	        var clrTbl = new Xr.ColorTable(16);
 	        clrTbl.set(0, 0, 255, 0, 0);
 	        clrTbl.set(7, 255, 255, 0, 180);
 	        clrTbl.set(15, 255, 0, 0, 240);
 	        if (clrTbl.build()) {
-	            //if (!gridLyr.cellValuesByLayer(shapeLyr)) {
-	            if (!gridLyr.densityByLayer(shapeLyr, radius, clrTbl.colors(), bUsingWeightedValue ? "A00_11" : undefined, progressCallback)) {
+	            var fieldName = label.enable() ? label.formatter().fieldName() : undefined;
+	            if (!gridLyr.densityByLayer(shapeLyr, radius, clrTbl.colors(), fieldName, progressCallback)) {
 	                alert("Error setting CellValues By ShapeMapLayer");
+	            } else {
+	                var btn = document.getElementById("density");
+	                btn.disabled = true;
+
+	                var btn2 = document.getElementById("density2");
+	                btn2.disabled = true;
 	            }
 	        } else {
 	            alert("색상 테이블 생성 실패");
 	        }
 	    }
 
-	    function onUsingWeightedValueChanged(/* CheckBox */ cb) {
-	        bUsingWeightedValue = cb.checked;
+	    function onWeightedValueFieldChange() {
+	        var attributes = document.getElementById("attributes");
+	        var selectedIdx = attributes.selectedIndex;
+	        var shpLyr = map.layers("population");
+	        var label = shpLyr.label();
+
+	        if (selectedIdx == 0) {
+	            label.enable(false);
+	        } else {
+	            label.enable(true);
+	            var fieldName = attributes.options[selectedIdx].value;
+	            label.formatter().fieldName(fieldName)
+	        }
+
+	        map.update();
 	    }
 	</script>
 </head>
@@ -172,11 +278,16 @@
     <div id="mainLayout">
         <div id="mapDiv"></div>
         <div id="title">
-            FingerEyes-Xr for HTML5 : <font color="#349bd6">GridLayer Example</font>
+            FingerEyes-Xr for HTML5 : <font color="#349bd6">GridLayer for Density Example</font>
             <br />
-            <input type="button" value="Density" onclick="onDensity();">
-            <input type="checkbox" onchange="onUsingWeightedValueChanged(this)" />
-            <font size="2" color="#ffffff"><span>가중치값 사용</span></font>
+            <input type="button" id="density" value="밀도분석실행" onclick="onDensity();">
+            <input type="button" id="density2" value="영역지정 밀도분석실행" onclick="onDensity2();">
+            <font size="2" color="#ffffff"><span>가중치값 필드</span>
+            <SELECT id='attributes' size='1' style="width:120px" onchange="onWeightedValueFieldChange()"></SELECT>
+            <br />
+            <span>그리드해상도</span> <input type="text" style="width:120px" id="resolution">
+            </span>밀도분석반경 </span><input type="text" style="width:120px" id="radius">
+            </font>
             <div id="progressbar-bg"><div id="progressbar"></div></div>
         </div>
     </div>

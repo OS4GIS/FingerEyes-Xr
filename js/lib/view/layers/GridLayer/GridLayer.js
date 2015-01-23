@@ -98,17 +98,22 @@ Xr.layers.GridLayer = Xr.Class({
                     if (weightedFieldIndex == -1) return false;
                 }
 
+
+                var mbr = this.MBR();
                 for (var fid in shpRows) {
                     var shpRow = shpRows[fid];
                     var rPt = shpRow.shapeData().representativePoint();
-                    var value = 1;
 
-                    if (weightedFieldIndex != -1) {
-                        var attRow = attRows[fid];
-                        value = attRow.valueAsFloat(weightedFieldIndex);
+                    if(mbr.contain(rPt)) {
+                        var value = 1;
+
+                        if (weightedFieldIndex != -1) {
+                            var attRow = attRows[fid];
+                            value = attRow.valueAsFloat(weightedFieldIndex);
+                        }
+
+                        data.push({value: value, x: rPt.x, y: rPt.y});
                     }
-
-                    data.push({value: value, x: rPt.x, y: rPt.y});
                 }
             } else {
                 return false;

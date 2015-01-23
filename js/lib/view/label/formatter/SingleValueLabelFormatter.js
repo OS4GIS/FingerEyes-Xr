@@ -28,6 +28,7 @@ Xr.label.SingleValueLabelFormatter = Xr.Class({
                 return this._fieldName;
             } else {
                 this._fieldName = fieldName;
+                this._fieldIndex = -1;
             }
         }
     }
