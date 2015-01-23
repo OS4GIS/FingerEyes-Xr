@@ -1,7 +1,7 @@
 ## FingerEyes-Xr for HTML5
 
 ### Overview
-FingerEyes-Xr은 완벽한 웹기반의 높은 수준의 GIS 시스템 개발을 위한 HTML5 기술을 이용한 JavaScript 라이브러리입니다.
+FingerEyes-Xr은 완벽한 웹기반의 높은 수준의 GIS 시스템 개발을 위한 HTML5를 사용한 JavaScript 라이브러리입니다. 
 
 ### 주요기능
 * 다양한 데이터 소스(TMS, WFS, WMS, Custom Spec)를 통한 웹 기반의 빠른 공간 데이터 표출
@@ -11,7 +11,7 @@ FingerEyes-Xr은 완벽한 웹기반의 높은 수준의 GIS 시스템 개발을 위한 HTML5 기술을 
 * 웹 기반의 완벽한 공간 데이터 편집(Undo/Redo, Snapping, Split, Merge, Substract, Buffer 등) 
 
 ### 라이선스(License)
-* FingerEyes-Xr은 [LGPL](http://www.gnu.org/licenses/lgpl.html) 기반의 라이선스입니다 ㅡ [License guide](http://docs.geotools.org/latest/userguide/welcome/license.html)
+* FingerEyes-Xr은 [LGPL](http://www.gnu.org/licenses/lgpl.html) 기반의 라이선스입니다.
 * 소스코드에 언급된 저작권자를 판단할 수 있는 정보 제거는 저작권을 침해하는 행위입니다.
 * 소프트웨어 저작권에 대한 옳바른 준수는 소프트웨어 업계를 발전시키는 매우 중요한 초석입니다. 
 
@@ -26,20 +26,20 @@ FingerEyes-Xr은 완벽한 웹기반의 높은 수준의 GIS 시스템 개발을 위한 HTML5 기술을 
 
 * TMS 기반의 배경지도로써 VWorld 활용 [(YouTube Link)](http://www.youtube.com/watch?v=YljW7m81aTg)
 
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/tms_vworld.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/tms_vworld.png)
 
 * 선택된 공간 데이터에 대한 속성 확인 [(YouTube Link)](http://www.youtube.com/watch?v=svRgKdMVbeM)
 
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/identify.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/identify.png)
 
 * 그래픽 레이어의 도형 편집 [(YouTube Link)] (http://www.youtube.com/watch?v=gVs9O6qZPYA)
 
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/graphiclayer.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/graphiclayer.png)
 
 * 공간 데이터 기본 편집 [(YouTube Link)] (http://www.youtube.com/watch?v=y4JsEHZEog0)
 
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/basic_edit.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/basic_edit.png)
 
 * 공간 데이터 고급 편집 [(YouTube Link)] (http://www.youtube.com/watch?v=iUZm-14yM1w0)
 
-![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/advance_edit.png?width=510)
+![screenshot](https://github.com/FingerEyes-Xr/src/blob/master/doc/img/advance_edit.png)
