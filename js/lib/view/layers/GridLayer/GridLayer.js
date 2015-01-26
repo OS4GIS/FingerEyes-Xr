@@ -290,11 +290,25 @@ Xr.layers.GridLayer = Xr.Class({
                     var cm = this._coordMapper;
                     var lt = cm.W2V(new Xr.PointD(this._mbr.minX, this._mbr.maxY));
                     var rb = cm.W2V(new Xr.PointD(this._mbr.maxX, this._mbr.minY));
+                    var rt = cm.W2V(new Xr.PointD(this._mbr.maxX, this._mbr.maxY));
 
+                    this._img.style.setProperty("transform-origin", "0px 0px");
+                    this._img.style.transform = "rotate(" + cm.rotationAngle() + "deg)";
+
+                    /////////////////
+                    /*
                     this._img.style.top = lt.y;
                     this._img.style.left = lt.x;
                     this._img.style.width = (rb.x - lt.x);
                     this._img.style.height = (rb.y - lt.y);
+                    */
+
+                    this._img.style.top = Math.floor(lt.y);// + "px";
+                    this._img.style.left = Math.floor(lt.x);// + "px";
+
+                    this._img.style.width = Math.ceil(Math.sqrt(Math.pow(lt.x - rt.x, 2.0) + Math.pow(lt.y - rt.y, 2.0)));// + "px";
+                    this._img.style.height = Math.ceil(Math.sqrt(Math.pow(rt.x - rb.x, 2.0) + Math.pow(rt.y - rb.y, 2.0)));// + "px";
+                    /////////////////
 
                     var mapContainer = this.container().parentNode;
                     if (mapContainer) {

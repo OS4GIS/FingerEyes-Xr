@@ -149,8 +149,9 @@ Xr.layers.XYZLayer = Xr.Class({
 		                        newImg = oldImg;
 		                    }
 
-		                    //newImg.style.setProperty("transform", "rotate(" + coordMapper.rotationAngle() + "deg)");
+		                    newImg.style.setProperty("transform-origin", "0px 0px");
 		                    newImg.style.transform = "rotate(" + coordMapper.rotationAngle() + "deg)";
+
 
 		                    /*@!
 						    var tileMinX = piramid.getMinX() + iColumn * piramid.getTileMapWidth();
@@ -182,7 +183,7 @@ Xr.layers.XYZLayer = Xr.Class({
 		                    newImg.style.width = Math.ceil(Math.sqrt(Math.pow(vPtLT.x - vPtRT.x, 2.0) + Math.pow(vPtLT.y - vPtRT.y, 2.0)));// + "px";
 		                    newImg.style.height = Math.ceil(Math.sqrt(Math.pow(vPtRT.x - vPtRB.x, 2.0) + Math.pow(vPtRT.y - vPtRB.y, 2.0)));// + "px";
 
-		                    console.log(newImg.style.width + " x " + newImg.style.height);
+		                    //console.log(newImg.style.width + " x " + newImg.style.height);
 		                }
 		            }
 

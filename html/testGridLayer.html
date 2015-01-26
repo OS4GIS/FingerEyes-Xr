@@ -128,7 +128,7 @@
 	        var coordMapper = map.coordMapper();
 	        var mbr = coordMapper.viewportMBR();
 	        var resolution = coordMapper.metersPerOnePixel() * 1;
-	        var radius = coordMapper.metersPerOnePixel() * 250;
+	        var radius = coordMapper.metersPerOnePixel() * 200;
 
 	        var txtResolution = document.getElementById("resolution");
 	        var txtRadius = document.getElementById("radius");
@@ -236,9 +236,11 @@
 	        var shapeLyr = map.layers("population");
 	        var label = shapeLyr.label();
 	        var clrTbl = new Xr.ColorTable(16);
+
 	        clrTbl.set(0, 0, 255, 0, 0);
 	        clrTbl.set(7, 255, 255, 0, 180);
 	        clrTbl.set(15, 255, 0, 0, 240);
+
 	        if (clrTbl.build()) {
 	            var fieldName = label.enable() ? label.formatter().fieldName() : undefined;
 	            if (!gridLyr.densityByLayer(shapeLyr, radius, clrTbl.colors(), fieldName, progressCallback)) {
@@ -271,6 +273,18 @@
 
 	        map.update();
 	    }
+
+	    function onRotateMap() {
+	        var cm = map.coordMapper();
+	        cm.rotate(10);
+	        map.update();
+	    }
+
+	    function onRevRotateMap() {
+	        var cm = map.coordMapper();
+	        cm.rotate(-10);
+	        map.update();
+	    }
 	</script>
 </head>
 
@@ -282,9 +296,11 @@
             <br />
             <input type="button" id="density" value="밀도분석실행" onclick="onDensity();">
             <input type="button" id="density2" value="영역지정 밀도분석실행" onclick="onDensity2();">
+            <input type="button" value="10도 회전" onclick="onRotateMap();">
+            <input type="button" value="-10도 회전" onclick="onRevRotateMap();">
+            <br />
             <font size="2" color="#ffffff"><span>가중치값 필드</span>
             <SELECT id='attributes' size='1' style="width:120px" onchange="onWeightedValueFieldChange()"></SELECT>
-            <br />
             <span>그리드해상도</span> <input type="text" style="width:120px" id="resolution">
             </span>밀도분석반경 </span><input type="text" style="width:120px" id="radius">
             </font>
