@@ -28,8 +28,10 @@ Xr.layers.TMSLayer = Xr.Class({
 			
 			for(var iLevel=0; iLevel<cntLevels; ++iLevel) {
 			    var mapScale = coordMapper.mapScaleFromMetersPerOnePixel(this._upps[iLevel]);
+
 			    console.log(mapScale);
-				var tileMapWidth = this._tileImageSize * this._upps[iLevel];
+
+			    var tileMapWidth = this._tileImageSize * this._upps[iLevel];
 				var tileMapHeight = this._tileImageSize * this._upps[iLevel];
 				var minX = this._mbr.minX;
 				var minY = this._mbr.minY;
@@ -37,7 +39,9 @@ Xr.layers.TMSLayer = Xr.Class({
 				var columns = (this._mbr.maxX - this._mbr.minX) / tileMapWidth;
 				
 				var levelData = new Xr.layers.TMSLevelData(mapScale, this._upps[iLevel], tileMapWidth, tileMapHeight, minX, minY, rows, columns);
-				this._levelDataList[iLevel] = levelData;  
+				this._levelDataList[iLevel] = levelData;
+
+				console.log(iLevel, mapScale, this._upps[iLevel], tileMapWidth, tileMapHeight, minX, minY, rows, columns);
 			}
 		},
 	
