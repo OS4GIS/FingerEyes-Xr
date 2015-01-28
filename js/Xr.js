@@ -62,9 +62,10 @@
 			'view/layers/TMSLayer/TMSConnectionRequest.js',
 			'view/layers/TMSLayer/TMSLayer.js',
 			
-			'view/layers/ShapeMapLayer/ShapeMapLayer.js',
-			'view/layers/ShapeMapLayer/ShapeMapConnectionRequest.js',
-			'view/layers/ShapeMapLayer/ShapeMapQueryRequest.js',
+            'view/layers/CoordinateLayer/CoordinateLayer.js',
+			'view/layers/CoordinateLayer/ShapeMapLayer/ShapeMapLayer.js',
+			'view/layers/CoordinateLayer/ShapeMapLayer/ShapeMapConnectionRequest.js',
+			'view/layers/CoordinateLayer/ShapeMapLayer/ShapeMapQueryRequest.js',
 		
             'view/layers/GraphicLayer/GraphicLayer.js',
 
@@ -182,6 +183,8 @@
 		document.write(scriptTags.join(""));
 	}
 
+	window.__XR_CLASS_LOADING_TIME__ = "XrClassLoadingTime",
+
 	window.Xr = 
 	{
 		LICENSE: 'LGPL',
@@ -202,7 +205,7 @@
 			var statics = x.statics || {};
 			var requires = x.requires || [];
 			
-			var proto = new superclass();
+			var proto = new superclass(__XR_CLASS_LOADING_TIME__);
 
 			for(var p in proto) if(proto.hasOwnProperty(p)) delete proto[p];
 
