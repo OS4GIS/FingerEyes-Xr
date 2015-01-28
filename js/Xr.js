@@ -71,6 +71,8 @@
             'view/layers/GridLayer/GridLayer.js',
             'view/layers/GridLayer/ColorTable.js',
 
+            'view/layers/WMSLayer/WMSLayer.js',
+
             'view/label/Label.js',
             'view/label/formatter/ILabelFormatter.js',
             'view/label/formatter/ProgrammableLabelFormatter.js',
