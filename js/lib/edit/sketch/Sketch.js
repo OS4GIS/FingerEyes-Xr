@@ -4,7 +4,7 @@ Xr.edit.Sketch = Xr.Class({
     name: "Sketch",
 
     construct: function (/* EditManager */ editManager, /* IShapeData */ shapeData, /* int */ id, /* boolean */ isNew) {
-        if (arguments.length == 0) return; // for preventing Erorr in Xr.Class
+        if (arguments[0] === __XR_CLASS_LOADING_TIME__) return; // for preventing Erorr in Xr.Class
         
         this._shapeData = shapeData.clone();
         this._id = id;
