@@ -18,7 +18,7 @@ Xr.layers.GridLayer = Xr.Class({
         this._div.style.height = "100%";
         this._div.style.overflow = "hidden";
         this._div.style.setProperty("pointer-events", "none");
-        
+
         this._img = document.createElement("img");
         this._img.style.position = "absolute";
         this._img.style.setProperty("pointer-events", "none");
@@ -40,7 +40,7 @@ Xr.layers.GridLayer = Xr.Class({
         if (this._connected) {
             this._countRows = parseInt(Math.ceil((this._mbr.maxY - this._mbr.minY) / this._resolution));
             this._countColumns = parseInt(Math.ceil((this._mbr.maxX - this._mbr.minX) / this._resolution));
-            
+
             var countCells = this._countRows * this._countColumns;
             this._cells = new Float64Array(countCells);
 
@@ -59,7 +59,7 @@ Xr.layers.GridLayer = Xr.Class({
     },
 
     methods: {
-        reset: function() {
+        reset: function () {
             var countCells = this._countRows * this._countColumns;
             //Not Yet Supported
             //this._cells.fill(NaN);
@@ -72,14 +72,14 @@ Xr.layers.GridLayer = Xr.Class({
             this._minValue = Number.MAX_VALUE;
         },
 
-        minValue: function() {
+        minValue: function () {
             return this._minValue;
         },
 
-        maxValue: function() {
+        maxValue: function () {
             return this._maxValue;
         },
-        
+
         /* boolean */ densityByLayer: function (/* ILayer */ lyr, /* number */ radius, /* Array */ colorTable, /* optinal string */ weightedFieldName, /* function */ progressCallback) {
             var data = new Array();
 
@@ -104,7 +104,7 @@ Xr.layers.GridLayer = Xr.Class({
                     var shpRow = shpRows[fid];
                     var rPt = shpRow.shapeData().representativePoint();
 
-                    if(mbr.contain(rPt)) {
+                    if (mbr.contain(rPt)) {
                         var value = 1;
 
                         if (weightedFieldIndex != -1) {
@@ -112,7 +112,7 @@ Xr.layers.GridLayer = Xr.Class({
                             value = attRow.valueAsFloat(weightedFieldIndex);
                         }
 
-                        data.push({value: value, x: rPt.x, y: rPt.y});
+                        data.push({ value: value, x: rPt.x, y: rPt.y });
                     }
                 }
             } else {
@@ -172,7 +172,7 @@ Xr.layers.GridLayer = Xr.Class({
             return true;
         },
 
-        /* boolean */ cellValuesByLayer: function(/* ILayer */ lyr, /* optional String */ weightedFieldName) {
+        /* boolean */ cellValuesByLayer: function (/* ILayer */ lyr, /* optional String */ weightedFieldName) {
             if (lyr instanceof Xr.layers.ShapeMapLayer) {
                 var shpRows = lyr.shapeRowSet().rows();
                 var attRows = lyr.attributeRowSet().rows();
@@ -197,7 +197,7 @@ Xr.layers.GridLayer = Xr.Class({
                         var attRow = attRows[fid];
                         value = attrRow.valueAsFloat(weightedFieldIndex);
                     }
-                    
+
                     this.value(rPt.x, rPt.y, value);
                 }
             } else {
@@ -207,7 +207,7 @@ Xr.layers.GridLayer = Xr.Class({
             return true;
         },
 
-        /* SVG */ container: function () {
+        /* DIV */ container: function () {
             return this._div;
         },
 
@@ -215,7 +215,7 @@ Xr.layers.GridLayer = Xr.Class({
             this._coordMapper = coordMapper;
         },
 
-        /* value */ valueByIndex: function(/* int */ row, /* int */ column, /* optional number */ value) {
+        /* value */ valueByIndex: function (/* int */ row, /* int */ column, /* optional number */ value) {
             if (arguments.length == 2) {
                 return this._cells[row * this._countColumns + column];
             } else {
@@ -223,7 +223,7 @@ Xr.layers.GridLayer = Xr.Class({
             }
         },
 
-        /* number */ accumulate: function(/* number */ mapX, /* number */ mapY, /* number */ value) {
+        /* number */ accumulate: function (/* number */ mapX, /* number */ mapY, /* number */ value) {
             var v = this.value(mapX, mapY);
             if (v != undefined) {
                 var result;
@@ -239,7 +239,7 @@ Xr.layers.GridLayer = Xr.Class({
         },
 
         /* value */ value: function (/* number */ mapX, /* number */ mapY, /* optional number */ value) {
-            if(!this._mbr.contain(new Xr.PointD(mapX, mapY))) return undefined;
+            if (!this._mbr.contain(new Xr.PointD(mapX, mapY))) return undefined;
 
             var row = this.row(mapY);
             var column = this.column(mapX);
@@ -263,7 +263,7 @@ Xr.layers.GridLayer = Xr.Class({
         },
 
         /* int */ column: function (/* number */ mapX) {
-            return parseInt(Math.floor((mapX-this._mbr.minX) / this._resolution));
+            return parseInt(Math.floor((mapX - this._mbr.minX) / this._resolution));
         },
 
         refresh: function () {
@@ -295,20 +295,11 @@ Xr.layers.GridLayer = Xr.Class({
                     this._img.style.setProperty("transform-origin", "0px 0px");
                     this._img.style.transform = "rotate(" + cm.rotationAngle() + "deg)";
 
-                    /////////////////
-                    /*
-                    this._img.style.top = lt.y;
-                    this._img.style.left = lt.x;
-                    this._img.style.width = (rb.x - lt.x);
-                    this._img.style.height = (rb.y - lt.y);
-                    */
-
                     this._img.style.top = Math.floor(lt.y);// + "px";
                     this._img.style.left = Math.floor(lt.x);// + "px";
 
                     this._img.style.width = Math.ceil(Math.sqrt(Math.pow(lt.x - rt.x, 2.0) + Math.pow(lt.y - rt.y, 2.0)));// + "px";
                     this._img.style.height = Math.ceil(Math.sqrt(Math.pow(rt.x - rb.x, 2.0) + Math.pow(rt.y - rb.y, 2.0)));// + "px";
-                    /////////////////
 
                     var mapContainer = this.container().parentNode;
                     if (mapContainer) {
