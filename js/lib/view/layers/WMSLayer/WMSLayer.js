@@ -52,9 +52,10 @@ Xr.layers.WMSLayer = Xr.Class({
         },
 
         _getFullUrl: function () {
-            var mbr = this._coordMapper.viewportMBR();
-            var width = this._coordMapper.viewWidth();
-            var height = this._coordMapper.viewHeight();
+            var cm = this._coordMapper;
+            var mbr = cm.viewportMBR();
+            var width = cm.viewWidth();
+            var height = cm.viewHeight();
             var params = this._params;
             var url = params.url;
             var queryString = "request=GetMap" + "&width=" + width + "&height=" + height +

@@ -63,10 +63,14 @@
 			'view/layers/TMSLayer/TMSLayer.js',
 			
             'view/layers/CoordinateLayer/CoordinateLayer.js',
+            'view/layers/CoordinateLayer/CoordinateQueryRequest.js',
 			'view/layers/CoordinateLayer/ShapeMapLayer/ShapeMapLayer.js',
 			'view/layers/CoordinateLayer/ShapeMapLayer/ShapeMapConnectionRequest.js',
 			'view/layers/CoordinateLayer/ShapeMapLayer/ShapeMapQueryRequest.js',
-		
+			'view/layers/CoordinateLayer/WFSLayer/WFSLayer.js',
+            'view/layers/CoordinateLayer/WFSLayer/WFSConnectionRequest.js',
+            'view/layers/CoordinateLayer/WFSLayer/WFSQueryRequest.js',
+
             'view/layers/GraphicLayer/GraphicLayer.js',
 
             'view/layers/GridLayer/GridLayer.js',

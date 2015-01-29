@@ -1,0 +1,252 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head title="FingerEyes-Xr">
+	<style>
+	    body
+	    {
+            margin:0px;
+            padding:0px;
+	    }
+
+	    #mainLayout
+	    {
+			position:relative;
+			width:100%;
+			height:100%;
+			border:none; 		
+	    }
+
+		#mapDiv {
+            top:0px;
+            left:0px;
+			position:absolute;
+			width:100%;
+			height:100%;
+			border:none; 		
+            overflow:auto;
+		}	
+
+        #title {
+            top:12px;
+            left:12px;
+            padding: 12px;
+			position:absolute;
+            background:rgba(0,0,0,0.7);
+			border:none; 		
+            overflow:auto;
+            border-radius: 12px;
+            font-size: 24px;
+            color: #ffffff;
+            font-family: "나눔명조OTF ExtraBold";
+		}
+	</style>
+
+	<script src="../js/Xr.js"></script>
+     
+	<script type="text/javascript">
+	    var map = null;
+
+	    function load() {
+	        map = new Xr.Map("mapDiv", {});
+
+	        var lyr = new Xr.layers.TileMapLayer("basemap",
+				{
+				    proxy: "http://222.237.78.208:8080/Xr",
+				    url: "http://222.237.78.208:8080/muan_tilemaps",
+				    ext: "jpg"
+				}
+			);
+
+	        var parcLyr = new Xr.layers.WFSLayer(
+                "wfs_parc",
+                {
+                    url: "http://localhost:8080/OGC/test/ows",
+                    typeName: "test:muan_parc"
+                }
+            );
+
+	        {
+	            parcLyr.visibility().visibleByScale(true);
+	            parcLyr.visibility().fromScale(0); // 포함
+	            parcLyr.visibility().toScale(1001); // 미포함
+
+	            var theme = parcLyr.theme();
+	            var pen = theme.penSymbol();
+	            var brush = theme.brushSymbol();
+
+	            pen.color('#ffff00');
+	            pen.width(2);
+
+	            brush.color('#ff0000');
+	            brush.opacity(0.0);
+
+	            var label = parcLyr.label();
+	            label.visibility().visibleByScale(true);
+	            label.visibility().fromScale(0); // 포함
+	            label.visibility().toScale(2001); // 미포함
+	            label.enable(true);
+	            label.formatter().fieldName("PAR_LBL");
+
+	            var labelTheme = label.theme();
+	            labelTheme.symbol().strokeColor("#000000");
+	            labelTheme.symbol().strokeWidth(2);
+
+	            labelTheme.symbol().size(14);
+	            labelTheme.symbol().fontFamily('나눔명조OTF ExtraBold');
+	            labelTheme.symbol().color("#ff0000");
+	        }
+
+	        var bldLyr = new Xr.layers.WFSLayer(
+                "wfs_bld",
+                {
+                    url: "http://localhost:8080/OGC/test/ows",
+                    typeName: "test:muan_bld"
+                }
+            );
+
+	        {
+	            bldLyr.visibility().visibleByScale(true);
+	            bldLyr.visibility().fromScale(0); // 포함
+	            bldLyr.visibility().toScale(2501); // 미포함
+
+	            var theme = bldLyr.theme();
+	            var pen = theme.penSymbol();
+	            var brush = theme.brushSymbol();
+
+	            pen.color('#ff0000');
+	            pen.width(2);
+
+	            brush.color('#ffffff');
+	            brush.opacity(0.5);
+	        }
+
+	        var roadLyr = new Xr.layers.WFSLayer(
+                "wfs_road",
+                {
+                    url: "http://localhost:8080/OGC/test/ows",
+                    typeName: "test:BML_NEWROAD_LS"
+                }
+            );
+
+	        {
+	            roadLyr.visibility().visibleByScale(true);
+	            roadLyr.visibility().fromScale(0); // 포함
+	            roadLyr.visibility().toScale(5000); // 미포함
+
+	            var theme = roadLyr.theme();
+	            var pen = theme.penSymbol();
+	            
+	            pen.color('#0000ff');
+	            pen.width(10);
+	        }
+
+	        var treeLyr = new Xr.layers.WFSLayer(
+                "wfs_tree",
+                {
+                    url: "http://localhost:8080/OGC/test/ows",
+                    typeName: "test:RDL_TREE_PS"
+                }
+            );
+
+	        {
+	            treeLyr.visibility().visibleByScale(true);
+	            treeLyr.visibility().fromScale(0); // 포함
+	            treeLyr.visibility().toScale(5000); // 미포함
+
+	            var theme = treeLyr.theme();
+	            var pen = theme.penSymbol();
+	            var brush = theme.brushSymbol();
+
+	            pen.color('#00ff00');
+	            pen.width(2);
+
+	            brush.color('#00ff00');
+	            brush.opacity(0.5);
+	        }
+
+	        var lm = map.layers();
+	        lm.add(lyr);
+	        lm.add(parcLyr);
+	        lm.add(bldLyr);
+	        lm.add(roadLyr);
+	        lm.add(treeLyr);
+
+	        var ctrl = new Xr.ui.ScaleBarControl("sbc", map);
+	        map.userControls().add(ctrl);
+
+	        var ctrl2 = new Xr.ui.ZoomLevelControl("zlc", map);
+	        ctrl2.mapScales(
+                [
+                    383.06022560915073,
+                    766.1204512466478,
+                    1915.3011281307926,
+                    3830.6022556379635,
+                    7661.204511956243,
+                    19153.011279550446,
+                    38305.7388117497,
+                    76612.04511893881,
+                    153224.09023821776
+                ]
+            );
+	        map.userControls().add(ctrl2);
+
+	        var ctrl3 = new Xr.ui.IndexMapControl("imc", map, "http://222.237.78.208:8080/Xr?layerName=INDEXMAP");
+	        ctrl3.size(200, 270);
+	        map.userControls().add(ctrl3);
+
+	        map.onLayersAllReady(function () {
+	            var mbr = bldLyr.MBR();
+	            var cm = map.coordMapper();
+
+	            //cm.zoomByMBR(mbr);
+	            cm.moveTo(151531, 246679);
+	            cm.zoomByMapScale(766.1204512466478);
+
+	            map.update();
+
+	            map.addEventListener(Xr.Events.MapClick, function (e) {
+	                var fids = bldLyr.IdByMousePoint(e.viewX, e.viewY, true);
+	                if (fids.length > 0) {
+	                    var id = fids[0];
+	                    var attribute = bldLyr.attributeById(id);
+	                    var fieldSet = bldLyr.fieldSet();
+	                    var cntFields = fieldSet.count();
+	                    var s = "";
+
+	                    bldLyr.hilighting(id);
+
+	                    for (var i = 0; i < cntFields; i++) {
+	                        var fName = fieldSet.fieldName(i);
+	                        s +=
+                                "<font face='나눔명조OTF ExtraBold' color='black' size='3'>" +
+                                fName + " " +
+                                "<font face='나눔명조OTF ExtraBold' color='gray' size='3'>" +
+                                attribute.valueAsString(i) + "<br />";
+
+	                        if (i == 10) break;
+	                    }
+
+	                    var infoWin = new Xr.ui.InfoWindowControl("iwc", map, new Xr.PointD(e.mapX, e.mapY), s);
+
+	                    map.userControls().remove("iwc");
+	                    map.userControls().add(infoWin);
+	                } else {
+	                    //alert("Nonselection");
+	                }
+	            });
+	        });
+	    }
+	</script>
+</head>
+
+<body onload="load()">
+    <div id="mainLayout">
+        <div id="mapDiv"></div>
+        <div id="title">
+            FingerEyes-Xr for HTML5 : <font color="#349bd6">WFSLayer Example</font>
+            <br />
+            (click the building ...)
+        </div>
+    </div>
+</body>
+</html>
