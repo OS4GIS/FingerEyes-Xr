@@ -49,7 +49,14 @@ Xr.ui.InfoWindowControl = Xr.Class({
 	    this._closeBtnSvg.style.overflow = "visible";
 	    this.container().appendChild(this._closeBtnSvg);
 
-	    this.container().style.visibility = "hidden"; 
+	    this.container().style.visibility = "hidden";
+
+	    //
+	    //this._closeBtnSvg.style.setProperty("border", "1px solid blue");
+	    //this.container().style.setProperty("border", "1px solid red");
+	    //this._infoDiv.style.setProperty("border", "1px solid yellow");
+	    //this._skinSvg.style.setProperty("border", "1px solid green");
+
 	},
  	
 	methods: {
@@ -136,6 +143,11 @@ Xr.ui.InfoWindowControl = Xr.Class({
 	        container.style.visibility = "visible";
 	        container.style.animationDuration = "0.6s";
 	        container.style.animationName = "kf_tileMapShowing";
+
+	        if (!this.container().style.height || this.container().style.height === "") {
+	            this.container().style.width = this._infoDiv.clientWidth;
+	            this.container().style.height = this._infoDiv.clientHeight + 30;
+	        }
 	    },
 
 	    prepare: function () {

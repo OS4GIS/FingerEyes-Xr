@@ -292,8 +292,14 @@ Xr.layers.GridLayer = Xr.Class({
                     var rb = cm.W2V(new Xr.PointD(this._mbr.maxX, this._mbr.minY));
                     var rt = cm.W2V(new Xr.PointD(this._mbr.maxX, this._mbr.maxY));
 
+                    this._img.style.setProperty("-webkit-transform-origin", "0px 0px");
+                    this._img.style.setProperty("-webkit-transform", "rotate(" + cm.rotationAngle() + "deg)");
+
                     this._img.style.setProperty("transform-origin", "0px 0px");
-                    this._img.style.transform = "rotate(" + cm.rotationAngle() + "deg)";
+                    this._img.style.setProperty("transform", "rotate(" + cm.rotationAngle() + "deg)");
+
+                    //this._img.style.setProperty("transform-origin", "0px 0px");
+                    //this._img.style.transform = "rotate(" + cm.rotationAngle() + "deg)";
 
                     this._img.style.top = Math.floor(lt.y);// + "px";
                     this._img.style.left = Math.floor(lt.x);// + "px";

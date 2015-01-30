@@ -10,8 +10,6 @@ Xr.ui.ScaleBarControl = Xr.Class({
 
 	    this._svg = document.createElementNS(Xr.CommonStrings.SVG_NAMESPACE, "svg");
 	    this._svg.style.position = "absolute";
-	    //this._svg.style.top = "0px";
-	    //this._svg.style.left = "0px";
 
 	    this._svg.style.setProperty("pointer-events", "none");
 
@@ -25,8 +23,11 @@ Xr.ui.ScaleBarControl = Xr.Class({
 	    this._scaleBarHeight = 16;
 	    this._scaleBarWidth = 120;
 
-	    this.container().style.bottom = 55;
+	    this.container().style.bottom = 20;
 	    this.container().style.left = 20;
+
+	    //this._svg.style.setProperty("border", "1px solid blue");
+	    //this.container().style.setProperty("border", "1px solid red");
 	},
  	
 	methods: {
@@ -75,43 +76,47 @@ Xr.ui.ScaleBarControl = Xr.Class({
 
 	        // Create and append SVG elements
 	        var coordMapper = this._map.coordMapper();
-	        var baseY = 30;
+            var baseX = 2;
+	        var baseY = this._scaleBarHeight / 2;
+	        
+	        if (this._fontSymbol.size() > baseY) baseY += this._fontSymbol.size() - baseY;
+
 	        var scaleBarWidth = this.scaleBarWidth();
 	        var scaleBarHalfHeight = this.scaleBarHeight() / 2;
 	        var mapScale = "1 : " + Math.ceil(coordMapper.mapScale());
 	        var measureLength = Math.ceil(coordMapper.mapLength(scaleBarWidth)) + "m";
 
-	        var lineStroke = this._createLineSvg(0, baseY, scaleBarWidth, baseY, "#000000", 3, "square");
-	        var lineStrokeV1 = this._createLineSvg(0, baseY - scaleBarHalfHeight, 0, baseY + scaleBarHalfHeight, "#000000", 3, "square");
-	        var lineStrokeV2 = this._createLineSvg(scaleBarWidth, baseY - scaleBarHalfHeight, scaleBarWidth, baseY + scaleBarHalfHeight, "#000000", 3, "square");
+	        var lineStroke = this._createLineSvg(baseX, baseY, scaleBarWidth + baseX, baseY, "#000000", 3, "square");
+	        var lineStrokeV1 = this._createLineSvg(baseX, baseY - scaleBarHalfHeight, baseX, baseY + scaleBarHalfHeight, "#000000", 3, "square");
+	        var lineStrokeV2 = this._createLineSvg(scaleBarWidth + baseX, baseY - scaleBarHalfHeight, scaleBarWidth + baseX, baseY + scaleBarHalfHeight, "#000000", 3, "square");
 
-	        var line = this._createLineSvg(0, baseY, scaleBarWidth, baseY, "#ffffff", 1, "butt");
-	        var lineV1 = this._createLineSvg(0, baseY - scaleBarHalfHeight, 0, baseY + scaleBarHalfHeight, "#ffffff", 1, "butt");
-	        var lineV2 = this._createLineSvg(scaleBarWidth, baseY - scaleBarHalfHeight, scaleBarWidth, baseY + scaleBarHalfHeight, "#ffffff", 1, "butt");
+	        var line = this._createLineSvg(baseX, baseY, scaleBarWidth + baseX, baseY, "#ffffff", 1, "butt");
+	        var lineV1 = this._createLineSvg(baseX, baseY - scaleBarHalfHeight, baseX, baseY + scaleBarHalfHeight, "#ffffff", 1, "butt");
+	        var lineV2 = this._createLineSvg(scaleBarWidth + baseX, baseY - scaleBarHalfHeight, scaleBarWidth + baseX, baseY + scaleBarHalfHeight, "#ffffff", 1, "butt");
 
 	        var strokeMapScaleTextSvg = document.createElementNS(Xr.CommonStrings.SVG_NAMESPACE, "text");
-	        strokeMapScaleTextSvg.setAttribute("x", scaleBarWidth + this._fontSymbol.size() / 2);
+	        strokeMapScaleTextSvg.setAttribute("x", baseX + scaleBarWidth + this._fontSymbol.size() / 2);
 	        strokeMapScaleTextSvg.setAttribute("y", baseY + (this._fontSymbol.size() / 2) - 2);
 	        strokeMapScaleTextSvg.setAttribute("text-anchor", "left");
 	        this._fontSymbol.attributeForStroke(strokeMapScaleTextSvg);
 	        strokeMapScaleTextSvg.textContent = mapScale;
 
 	        var textMapScaleSvg = document.createElementNS(Xr.CommonStrings.SVG_NAMESPACE, "text");
-	        textMapScaleSvg.setAttribute("x", scaleBarWidth + this._fontSymbol.size() / 2);
+	        textMapScaleSvg.setAttribute("x", baseX + scaleBarWidth + this._fontSymbol.size() / 2);
 	        textMapScaleSvg.setAttribute("y", baseY + (this._fontSymbol.size() / 2) - 2);
 	        textMapScaleSvg.setAttribute("text-anchor", "left");
 	        this._fontSymbol.attribute(textMapScaleSvg);
 	        textMapScaleSvg.textContent = mapScale;
 
 	        var strokeLengthTextSvg = document.createElementNS(Xr.CommonStrings.SVG_NAMESPACE, "text");
-	        strokeLengthTextSvg.setAttribute("x", scaleBarWidth/2);
+	        strokeLengthTextSvg.setAttribute("x", baseX + scaleBarWidth / 2);
 	        strokeLengthTextSvg.setAttribute("y", baseY - 2);
 	        strokeLengthTextSvg.setAttribute("text-anchor", "middle");
 	        this._fontSymbol.attributeForStroke(strokeLengthTextSvg);
 	        strokeLengthTextSvg.textContent = measureLength;
 
 	        var textLengthSvg = document.createElementNS(Xr.CommonStrings.SVG_NAMESPACE, "text");
-	        textLengthSvg.setAttribute("x", scaleBarWidth/2);
+	        textLengthSvg.setAttribute("x", baseX + scaleBarWidth / 2);
 	        textLengthSvg.setAttribute("y", baseY - 2);
 	        textLengthSvg.setAttribute("text-anchor", "middle");
 	        this._fontSymbol.attribute(textLengthSvg);
@@ -129,7 +134,12 @@ Xr.ui.ScaleBarControl = Xr.Class({
 	        svg.appendChild(textMapScaleSvg);
 	        svg.appendChild(strokeLengthTextSvg);
 	        svg.appendChild(textLengthSvg);
-            // .
+
+	        if (!this.container().style.height || this.container().style.height === "") {
+	            var svgSize = svg.getBBox();
+	            this.container().style.height = svgSize.height;
+	            this.container().style.width = svgSize.width + 100; // +100 for Safari
+	        }
 	    },
 
 	    prepare: function () {

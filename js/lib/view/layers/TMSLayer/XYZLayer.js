@@ -149,8 +149,11 @@ Xr.layers.XYZLayer = Xr.Class({
 		                        newImg = oldImg;
 		                    }
 
+		                    newImg.style.setProperty("-webkit-transform-origin", "0px 0px");
+		                    newImg.style.setProperty("-webkit-transform", "rotate(" + coordMapper.rotationAngle() + "deg)");
+
 		                    newImg.style.setProperty("transform-origin", "0px 0px");
-		                    newImg.style.transform = "rotate(" + coordMapper.rotationAngle() + "deg)";
+		                    newImg.style.setProperty("transform", "rotate(" + coordMapper.rotationAngle() + "deg)");
 
 
 		                    /*@!

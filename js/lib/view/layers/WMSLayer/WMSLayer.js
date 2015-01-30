@@ -93,8 +93,14 @@ Xr.layers.WMSLayer = Xr.Class({
                             var cm = that._coordMapper;
                             var mbr = cm.viewportMBR();
 
+                            that._img.style.setProperty("-webkit-transform-origin", "0px 0px");
+                            that._img.style.setProperty("-webkit-transform", "rotate(" + cm.rotationAngle() + "deg)");
+
                             that._img.style.setProperty("transform-origin", "0px 0px");
-                            that._img.style.transform = "rotate(" + cm.rotationAngle() + "deg)";
+                            that._img.style.setProperty("transform", "rotate(" + cm.rotationAngle() + "deg)");
+
+                            //that._img.style.setProperty("transform-origin", "0px 0px");
+                            //that._img.style.transform = "rotate(" + cm.rotationAngle() + "deg)";
 
                             var lt = cm.W2V(new Xr.PointD(mbr.minX, mbr.maxY));
                             var rb = cm.W2V(new Xr.PointD(mbr.maxX, mbr.minY));

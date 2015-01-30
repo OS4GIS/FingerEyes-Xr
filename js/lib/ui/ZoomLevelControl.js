@@ -14,14 +14,13 @@ Xr.ui.ZoomLevelControl = Xr.Class({
 	    this._svg.style.position = "absolute";
 	    this._svg.style.top = "0px";
 	    this._svg.style.left = "0px";
-	    this._svg.style.overflow = "visible";
+	    //this._svg.style.overflow = "visible";
 	    //this._svg.style.border = "1px solid red";
-
 	    //this._svg.style.setProperty("pointer-events", "none");
 
 	    this.container().appendChild(this._svg);
-	    this.container().style.right = 70;
-	    this.container().style.top = 10;
+	    this.container().style.right = 24;
+	    this.container().style.top = 24;
 
 	    this._mouseDown = false;
 	    this._mouseDownPt = new Xr.PointD();
@@ -32,6 +31,9 @@ Xr.ui.ZoomLevelControl = Xr.Class({
 
 	    this._thumbDiv = this._createThumb();
 	    this.container().appendChild(this._thumbDiv);
+
+	    //this._svg.style.setProperty("border", "1px solid blue");
+	    //this.container().style.setProperty("border", "1px solid red");
 	},
  	
 	methods: {
@@ -399,6 +401,11 @@ Xr.ui.ZoomLevelControl = Xr.Class({
 
 	        //this._thumbDiv = this._createThumb();
 	        //this.container().appendChild(this._thumbDiv);
+
+	        if (!this.container().style.height || this.container().style.height === "") {
+	            svg.style.height = this.container().style.height = this._getBarHeight() + 30 * 2;
+	            svg.style.width = this.container().style.width = 30 * 2;
+	        }
 	    },
 
 	    prepare: function () {
