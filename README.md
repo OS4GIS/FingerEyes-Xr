@@ -1,12 +1,12 @@
 ## FingerEyes-Xr for HTML5
 
 ### Overview
-FingerEyes-Xr is JavaScript library for building the perfect and high quality GIS system based on Web. FingerEyes-Xr provides rich and powerful functions to user with using HTML5.
+FingerEyes-Xr is a JavaScript library for building the perfect and high quality GIS system based on Web. FingerEyes-Xr provides rich and powerful functions to user with using HTML5.
 
 ### Main Functions
-* Fast map display by using TMS, WFS, WMS, Custom.
-* Fast querying and processing spatial-related attribute
-* Spatial analysis based on grid and vector data.
+* Fast map display by using TMS, WFS, WMS and custom service.
+* Fast querying and processing spatial-related attributes.
+* Spatial analysis based on grid and vector format.
 * Mashup on the map with powerful editing.
 * Perfect editing spatial data based on web(Undo/Redo, Snapping, Split, Merge, Substract, Buffer ...) 
 
@@ -14,7 +14,7 @@ FingerEyes-Xr is JavaScript library for building the perfect and high quality GI
 * FingerEyes-Xr is based on [LGPL](http://www.gnu.org/licenses/lgpl.html) License.
 
 ### Related Sites
-* [GEOSERVICE](http://www.geoservice.co.kr) supports FingerEyes-Xr.
+* [GEOSERVICE](http://www.geoservice.co.kr) supports FingerEyes-Xr developer team.
 * Public news for FingerEyes-Xr informs from [GISDEVELOPER.CO.KR](http://www.gisdeveloper.co.kr). 
 
 ### Materials for introduction
