@@ -1,5 +1,13 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 포인트 그래픽 Row에 대한 도형 정보 값을 담고 있는 클래스입니다. 
+ * @class
+ * @param {Xr.MBR} arg - 포인트에 대한 MBR 객체(Selective-Paramter)
+ * @param {Xr.PointD} arg - 포인트의 좌표(Selective-Paramter)
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.data.PointShapeData = Xr.Class({
 	name: "PointShapeData",
 	requires: [Xr.data.IShapeData, Xr.edit.ISnap],

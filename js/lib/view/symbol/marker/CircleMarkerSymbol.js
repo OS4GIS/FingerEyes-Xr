@@ -1,5 +1,20 @@
-﻿Xr.symbol = Xr.symbol || {};
+﻿/**  
+ * @desc marker 네임스페이스입니다. 포인트 형태의 도형에 대해 어떤 형태 또는 심벌(Symbol)로 표현할지에 대한 클래스들로 구성됩니다.
+ * @namespace
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
+Xr.symbol = Xr.symbol || {};
 
+/**  
+ * @classdesc 포인트 형태의 데이터를 원 심벌(Symbol)로 표현하는 클래스입니다. 포인트 형태의 데이터를 마커(Marker)라고도 합니다.
+ * @class
+ * @param {Xr.symbol.PenSymbol} penSymbol - 원에 대한 외곽선을 표현하기 위한 펜(Pen) 객체
+ * @param {Xr.symbol.BrushSymbol} brushSymbol - 원에 대한 채움색을 표현하기 위한 브러쉬(Brush) 객체
+ * @param {Object} attributes - 심벌 정의를 위한 속성 객체로써 radius를 지정하여 반경 크기를 정할 수 있습니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.symbol.CircleMarkerSymbol = Xr.Class({
     name: "CircleMarkerSymbol",
     requires: [Xr.symbol.IMarkerSymbol],

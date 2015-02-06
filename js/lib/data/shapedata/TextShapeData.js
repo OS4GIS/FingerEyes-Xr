@@ -1,5 +1,12 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 텍스트 그래픽 Row에 대한 도형 정보 값을 담고 있는 클래스입니다. 
+ * @class
+ * @param {Object} arg - 객체이며 x, y, text 속성이 있어야 함. x는 텍스트가 위치할 지도 좌표에 대한 X축 값이며 y는 텍스트가 위치할 지도 좌표에 대한 Y축 값, 그리고 text는 텍스트 문자열입니다.
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.data.TextShapeData = Xr.Class({
     name: "TextShapeData",
     requires: [Xr.data.IShapeData, Xr.edit.ISnap],

@@ -1,5 +1,29 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc OSGeo 스펙인 TMS를 통해 타일맵을 구성하는 레이어에 대한 클래스입니다.
+ * @class
+ * @param {String} name - 레이어의 이름으로 고유한 ID 값
+ * @param {Object} opt - 레이어를 구성하기 위한 파라메터를 지정하기 위한 객체입니다.
+ * @example 
+ * var lyrBase = new Xr.layers.TMSLayer(
+ *     "baseMap", 
+ *     {
+ *         urls: ["http://xdworld.vworld.kr:8080/2d/Base/201310/${z}/${x}/${y}.png"],
+ *         upps: [ 
+ *             78000, 39000, 19600, 9800, 4900, 2400, //Dummy
+ *             1222.9924523925781, 611.4962261962891, 305.74811309814453, 152.87405654907226, 76.43702827453613,
+ *             38.218514137268066, 19.109257068634033, 9.554628534317017,
+ *             4.777314267158508, 2.388657133579254, 1.194328566789627, 0.5971642833948135
+ *         ], 
+ *         mbr: new Xr.MBR(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244), 
+ *         imageSize: 256,
+ *         reversedRows: true
+ *     }
+ * );
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.TMSLayer = Xr.Class({
 	name: "TMSLayer",
 	extend: Xr.layers.XYZLayer,

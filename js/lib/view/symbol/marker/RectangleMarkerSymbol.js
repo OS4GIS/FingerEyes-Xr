@@ -1,5 +1,14 @@
 ﻿Xr.symbol = Xr.symbol || {};
 
+/**  
+ * @classdesc 포인트 형태의 데이터를 사각형 심벌(Symbol)로 표현하는 클래스입니다. 포인트 형태의 데이터를 마커(Marker)라고도 합니다.
+ * @class
+ * @param {Xr.symbol.PenSymbol} penSymbol - 사각형에 대한 외곽선을 표현하기 위한 펜(Pen) 객체
+ * @param {Xr.symbol.BrushSymbol} brushSymbol - 사각형에 대한 채움색을 표현하기 위한 브러쉬(Brush) 객체
+ * @param {Object} attributes - 심벌 정의를 위한 속성 객체로써 width와 height를 지정하여 사각형의 가로와 세로의 크기를 픽셀(Pixel) 단위로 정할 수 있습니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.symbol.RectangleMarkerSymbol = Xr.Class({
     name: "RectangleMarkerSymbol",
     requires: [Xr.symbol.IMarkerSymbol],

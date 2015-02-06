@@ -1,5 +1,13 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 폴리라인(Polyline) 타입에 대한 공간 데이터의 Row
+ * @class
+ * @param {int} fid - Row의 고유 식별자
+ * @param {Xr.data.PolylineShapeData} shapeData - 폴리라인 공간 데이터의 좌표를 담고 있는 클래스
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.data.PolylineShapeRow = Xr.Class({
 	name: "PolylineShapeRow",
 	extend: Xr.data.ShapeRow,

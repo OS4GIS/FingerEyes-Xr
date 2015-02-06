@@ -1,5 +1,13 @@
-Xr.edit = Xr.edit || {};
+﻿Xr.edit = Xr.edit || {};
 
+/**  
+ * @classdesc 편집을 위한 스케치 클래스의 부모 클래스입니다.
+ * @class
+ * @param {Xr.layers.GraphicLayer} graphicLayer - 대상이 되는 그래픽 레이어
+ * @param {int} id - 대상이 되는 그래픽 Row의 고유 ID
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.edit.Sketch = Xr.Class({
     name: "Sketch",
 

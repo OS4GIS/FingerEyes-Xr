@@ -1,5 +1,21 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc Custom 형태의 타일맵 레이어입니다. 이 타일맵 레이어는 TMS와는 다르게 각 피라미트(Piramid)에 대해 서로 다른 MBR을 가질 수 있습니다.
+ * @class
+ * @param {String} name - 레이어에 대한 이름으로 고유한 ID 값이여야 함
+ * @param {Object} opt - 타일맵 레이어를 구성하기 위한 옵션 객체입니다.
+ * @example 
+ * var lyr = new Xr.layers.TileMapLayer("basemap",
+ *     {
+ *         proxy: "http://222.237.78.208:8080/Xr",
+ *         url: "http://www.geoservice.co.kr/tilemap1",
+ *         ext: "png"
+ *     }
+ * );
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.TileMapLayer = Xr.Class({
 	name: "TileMapLayer",
 	extend: Xr.layers.XYZLayer,

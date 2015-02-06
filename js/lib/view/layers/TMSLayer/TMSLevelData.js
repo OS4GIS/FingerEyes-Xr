@@ -1,17 +1,32 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc 타일맵의 각 피라미드(Piramid)를 구성하는 정보를 담고 있는 클래스입니다.
+ * @class
+ * @param {number} scale - 지도 축척에 대한 분모값입니다. 지도 축척 값을 1/N으로 했을 때 N에 해당하는 값입니다.
+ * @param {number} unitsPerPixel - 1 픽셀 당 지도 단위 길이값
+ * @param {number} tileMapWidth - 타일맵 이미지의 지도 단위에 대한 가로 길이
+ * @param {number} tileMapHeight - 타일맵 이미지의 지도 단위에 대한 세로 길이
+ * @param {number} tileMapWidth - 타일맵 이미지의 지도 단위에 대한 가로 길이
+ * @param {number} minX - 전체 MBR에 대한 최소 X축 값
+ * @param {number} minY - 전체 MBR에 대한 최소 Y축 값
+ * @param {int} rows - 타일맵의 전체 행(Row) 수
+ * @param {int} columns - 타일맵의 전체 컬럼(Column) 수
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.TMSLevelData = Xr.Class({
 	name: "TMSLevelData",
 	
 	construct: function(scale, unitsPerPixel, tileMapWidth, tileMapHeight, minX, minY, rows, columns) {
-		this._scale = parseFloat(scale);
-		this._unitsPerPixel = parseFloat(unitsPerPixel);
-		this._tileMapWidth = parseFloat(tileMapWidth);
-		this._tileMapHeight = parseFloat(tileMapHeight);
-		this._minX = parseFloat(minX);
-		this._minY = parseFloat(minY);
-		this._rows = parseFloat(rows);
-		this._columns = parseFloat(columns);
+		this._scale = (scale);
+		this._unitsPerPixel = (unitsPerPixel);
+		this._tileMapWidth = (tileMapWidth);
+		this._tileMapHeight = (tileMapHeight);
+		this._minX = (minX);
+		this._minY = (minY);
+		this._rows = (rows);
+		this._columns = (columns);
 	},
  	
 	methods: {

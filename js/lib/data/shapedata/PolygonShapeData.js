@@ -1,5 +1,13 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 폴리곤 그래픽 Row에 대한 도형 정보 값을 담고 있는 클래스입니다. 
+ * @class
+ * @param {Xr.MBR} arg - 폴리곤에 대한 MBR 객체(Selective-Paramter)
+ * @param {Array} arg - 배열에 대한 배열로써 자식 배열의 요소는 폴리곤을 구성하는 좌표이며 타입은 [Xr.PointD]{@link Xr.PointD}임(Selective-Paramter)
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.data.PolygonShapeData = Xr.Class({
 	name: "PolygonShapeData",
 	requires: [Xr.data.IShapeData, Xr.edit.ISnap],
@@ -262,9 +270,9 @@ Xr.data.PolygonShapeData = Xr.Class({
 	        wkt = wkt.toLowerCase();
 	        wkt = wkt.replace("multipolygon", "");
 	        wkt = wkt.replace("polygon", "");
-	        wkt = wkt.replace(/ +/g, " "); // 2�� �̻� �ݺ��Ǵ� ������ 1���� ��ȯ 
-	        wkt = wkt.replace(/\) {0,}, {0,}\(/g, "|"); // "),("�� "|"�� ��ȯ
-	        wkt = wkt.replace(/\(|\)/g, ""); // "(" �Ǵ� ")"�� ����
+	        wkt = wkt.replace(/ +/g, " "); // 2개 이상 반복되는 공백을 1개로 변환 
+	        wkt = wkt.replace(/\) {0,}, {0,}\(/g, "|"); // "),("을 "|"로 변환
+	        wkt = wkt.replace(/\(|\)/g, ""); // "(" 또는 ")"를 제거
 	        //wkt = wkt.trim();
 
 	        var parts = wkt.split("|");

@@ -1,5 +1,11 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 공간 데이터에 대한 Row가 구현해야 할 인터페이스
+ * @interface
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.data.IShapeRow = Xr.Class({
 	name: "IShapeRow",
 	

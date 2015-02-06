@@ -1,5 +1,11 @@
 ﻿Xr.label = Xr.label || {};
 
+/**  
+ * @classdesc 라벨을 직접 화면에 그리기 위한 SVG 요소를 생성하는 클래스입니다. 
+ * @class
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.label.LabelDrawer = Xr.Class({
     name: "LabelDrawer",
     

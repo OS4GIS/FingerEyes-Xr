@@ -1,5 +1,12 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 사각형 그래픽 Row에 대한 도형 정보 값을 담고 있는 클래스입니다. 
+ * @class
+ * @param {Xr.MBR} arg - 사각형에 대한 MBR 객체
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.data.RectangleShapeData = Xr.Class({
     name: "RectangleShapeData",
     requires: [Xr.data.IShapeData, Xr.edit.ISnap],

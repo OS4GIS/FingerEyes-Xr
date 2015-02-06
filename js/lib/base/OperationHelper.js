@@ -1,3 +1,9 @@
+﻿/**  
+ * @classdesc 공통적으로 사용되는 유틸리티 함수를 제공하는 클래스입니다.
+ * @class
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.OperationHelper = Xr.Class({
     name: "OperationHelper",
 
@@ -11,7 +17,7 @@ Xr.OperationHelper = Xr.Class({
             return xhr;
         },
 		
-        // ASCII �ڵ尪������ �ǹ̰� ����
+        // ASCII 코드값에서만 의미가 있음
         stringFromDataView: function (dataview, offset, length) {
             var array = new Array();
 

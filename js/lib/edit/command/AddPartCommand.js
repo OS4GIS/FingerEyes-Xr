@@ -1,5 +1,20 @@
+﻿/**  
+ * @desc edit 네임스페이스입니다. 편집과 관련된 클래스들을 담고 있습니다. 
+ * @namespace
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.edit = Xr.edit || {};
 
+/**  
+ * @classdesc 도형에 대한 부분(Part)을 추가하는 명령을 나타내는 클래스입니다. 
+ * @class
+ * @param {Xr.layers.GraphicLayer} graphicLayer - 대상이 되는 그래픽 레이어
+ * @param {int} id - 대상이 되는 그래픽 Row의 고유 ID
+ * @param {Array} pointList - 도형의 추가한 부분(Part)을 구성하는 좌표에 대한 배열로써 좌표에 대한 타입은 [Xr.PointD]{@link Xr.PointD}입니다. 
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.edit.AddPartCommand = Xr.Class({
     name: "AddPartCommand",
 	extend: Xr.edit.Command,

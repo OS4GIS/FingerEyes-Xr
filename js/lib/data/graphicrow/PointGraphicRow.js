@@ -1,5 +1,13 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 포인트 그래픽 Row에 대한 클래스입니다. 
+ * @class
+ * @param {int} id - Row에 대한 고유 ID
+ * @param {Xr.data.PointShapeData} graphicData - 포인트 그래픽 데이터에 대한 객체
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.data.PointGraphicRow = Xr.Class({
 	name: "PointGraphicRow",
 	extend: Xr.data.GraphicRow,

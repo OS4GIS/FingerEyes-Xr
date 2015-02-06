@@ -1,5 +1,15 @@
-Xr.edit = Xr.edit || {};
+﻿Xr.edit = Xr.edit || {};
 
+/**  
+ * @classdesc 폴리곤에 대한 스케치 클래스입니다.
+ * @class
+ * @param {Xr.managers.EditManager} editManager - 편집 관리자 클래스 객체
+ * @param {Xr.data.PolygonShapeData} shapeData - 폴리곤을 구성하는 실제 정보에 대한 클래스 객체
+ * @param {int} id - 고유 식별자 Id
+ * @param {boolean} isNew - 신규 생성인지의 여부를 나타냅니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.edit.PolygonSketch = Xr.Class({
     name: "PolygonSketch",
 	extend: Xr.edit.Sketch,
@@ -113,9 +123,9 @@ Xr.edit.PolygonSketch = Xr.Class({
 	                this._bTouchBody = this.shapeData().hitTest(mouseX, mouseY, coordMapper);
 	            }
 
-	            return this._bTouchBody || this._idxTouchVtx != -1; // Sketch�� �ǵ�ȴ���..
+	            return this._bTouchBody || this._idxTouchVtx != -1; // Sketch를 건드렸는지..
 	        } else {
-	            return false; // �ű� �����̹Ƿ� ������ Sketch�� ���� ������ Sketch�� �ǵ帮�� �ʾ����� �ǹ��ϴ� false.
+	            return false; // 신규 생성이므로 기존의 Sketch가 없어 기존의 Sketch를 건드리지 않았음을 의미하는 false.
 	        }
 	    },
 

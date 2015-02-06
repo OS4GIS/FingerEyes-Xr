@@ -1,11 +1,11 @@
-/*
+ï»¿/*
     FingerEyes-Xr for HTML5
     A JavaScript library for building professional GIS System.
     http://www.gisdeveloper.co.kr / http://www.geoservice.co.kr
     (c) 2014 - 2015
-    ÀúÀÛ±ÇÀÚ(Copyright)(ÁÖ)Áö¿À¼­ºñ½º, GEOSERVICE Co.
-    ¶óÀÌ¼±½º : LGPL
-    »ó±â ÁÖ¼® Á¦°Å´Â ÀúÀÛ±ÇÀÚÀÇ ±Ç¸®°ü¸®Á¤º¸ ÈÑ¼ÕÀ¸·Î ÀúÀÛ±ÇÀ» Ä§ÇØÇÏ´Â ÇàÀ§ÀÔ´Ï´Ù.
+    ì €ìž‘ê¶Œìž(Copyright)(ì£¼)ì§€ì˜¤ì„œë¹„ìŠ¤, GEOSERVICE Co.
+    ë¼ì´ì„ ìŠ¤ : LGPL
+    ìƒê¸° ì£¼ì„ ì œê±°ëŠ” ì €ìž‘ê¶Œìžì˜ ê¶Œë¦¬ê´€ë¦¬ì •ë³´ í›¼ì†ìœ¼ë¡œ ì €ìž‘ê¶Œì„ ì¹¨í•´í•˜ëŠ” í–‰ìœ„ìž…ë‹ˆë‹¤.
 */
 
 (function () {
@@ -25,7 +25,7 @@
     }
 
     /*
-        ÇÏ´ÜÀÇ jsFiles ¹è¿­ ¿ä¼Ò¿¡ ´ëÇÑ ¸ðµç js ÆÄÀÏÀº LGPL ¶óÀÌ¼±½º¸¦ µû¸¨´Ï´Ù.
+        í•˜ë‹¨ì˜ jsFiles ë°°ì—´ ìš”ì†Œì— ëŒ€í•œ ëª¨ë“  js íŒŒì¼ì€ LGPL ë¼ì´ì„ ìŠ¤ë¥¼ ë”°ë¦…ë‹ˆë‹¤.
     */
 	var jsFiles = 
 		[
@@ -194,7 +194,6 @@
 		LICENSE: 'LGPL',
 		VERSION: '1.0',
 
-	    // °³¹ß Âü¿© ¹®ÀÇ : hjkim@geoservice.co.kr
 		DEVELOPERS: 
 		[
 			{ name: 'Kim Hyoung-Jun', nickName: 'Dip2K', eMail: 'hjkim@geoservice.co.kr', homepage: 'www.gisdeveloper.co.kr' }

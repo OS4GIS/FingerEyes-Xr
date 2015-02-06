@@ -1,5 +1,15 @@
-Xr.ui = Xr.ui || {};
+﻿Xr.ui = Xr.ui || {};
 
+/**  
+ * @classdesc 정보를 지도 위에 표시하기 위한 윈도우 UI 컨트롤에 대한 클래스입니다. 표시되는 정보는 유연하게 HTML로 구성됩니다.
+ * @class
+ * @param {String} name - UI 컨트롤에 대한 식별자로써 고유해야 합니다.
+ * @param {Xr.Map} map - UI 컨트롤과 상호작용을 하는 지도 객체
+ * @param {Xr.PointD} position - 정보 윈도우가 표시될 지도 좌표입니다.
+ * @param {String} innerHtml - 표시될 정보에 대한 HTML
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.ui.InfoWindowControl = Xr.Class({
     name: "InfoWindowControl",
 	extend: Xr.ui.UserControl,

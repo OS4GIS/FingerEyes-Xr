@@ -1,4 +1,10 @@
-﻿Xr.Events = Xr.Class({
+﻿/**  
+ * @classdesc 이벤트의 등록 및 FingerEyes-Xr에서 사용하는 이벤트 종류에 대한 정보를 담고 있는 정적 클래스입니다. 
+ * @class
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
+Xr.Events = Xr.Class({
     name: "Events",
     statics: {
         create: function(/* String */ eventName, /* object */ data, /* boolean */ bubbleable, /* boolean */ cancelable) {

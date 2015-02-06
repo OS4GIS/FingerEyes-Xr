@@ -1,5 +1,15 @@
-Xr.edit = Xr.edit || {};
+﻿Xr.edit = Xr.edit || {};
 
+/** 
+ * @classdesc 정점을 제거하는 명령을 나타내는 클래스입니다.
+ * @class
+ * @param {Xr.layers.GraphicLayer} graphicLayer - 대상이 되는 그래픽 레이어
+ * @param {int} id - 대상이 되는 그래픽 Row의 고유 ID
+ * @param {int} partIndex - 제거된 정점이 위치하는 도형의 부분(Part)에 대한 인덱스(Index)
+ * @param {int} controlPointIndex - 제거된 정점이 위치하는 도형의 부분(Part)을 구성하는 좌표 인덱스(Index)
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.edit.RemoveVertexCommand = Xr.Class({
     name: "RemoveVertexCommand",
 	extend: Xr.edit.Command,

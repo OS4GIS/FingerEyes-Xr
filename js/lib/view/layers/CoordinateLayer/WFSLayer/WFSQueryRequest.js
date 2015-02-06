@@ -1,10 +1,22 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc WFSLayer가 공간 서버로부터 공간 데이터와 속성 데이터에 대한 요청을 실행하는 클래스입니다.
+ * @class
+ * @param {String} url - 공간 서버에 필요한 공간 데이터와 속성 데이터를 요청하기 위한 URL
+ * @param {Xr.layers.WFSLayer} layer - 데이터 요청을 실행하는 레이어 객체
+ * @param {Xr.CoordMapper} coordMapper - 지도와 화면 간의 좌표계 변환 객체
+ * @param {Xr.MouseActionEnum} mouseAction - 이 요청을 할 때 마우스의 조작 상태에 대한 값
+ * @param {function} onCompleted - 공간 서버 연결이 성공할 경우 호출될 함수이며 선택 사항입니다.
+ * @param {function} onFailed - 공간 서버 연결이 실패했을 때 호출될 함수이며 선택 사항입니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.WFSQueryRequest = Xr.Class({
     name: "WFSQueryRequest",
     extend: Xr.layers.CoordinateQueryRequest,
 
-	construct: function (/* string */ url, /* ShapeMapLayr */ layer, /* CoordMapper */ coordMapper,
+	construct: function (/* string */ url, /* WFSLayr */ layer, /* CoordMapper */ coordMapper,
                         /* MouseAction enum */ mouseAction, /* optional function */ onCompleted, /* optional function */ onFailed) {
 	    this.superclass(url, layer, coordMapper, mouseAction, onCompleted, onFailed);
 	},

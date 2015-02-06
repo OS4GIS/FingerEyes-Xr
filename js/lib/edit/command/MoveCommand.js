@@ -1,5 +1,15 @@
-Xr.edit = Xr.edit || {};
+﻿Xr.edit = Xr.edit || {};
 
+/**  
+ * @classdesc 도형 전체를 이동하는 명령을 나타내는 클래스입니다. 
+ * @class
+ * @param {Xr.layers.GraphicLayer} graphicLayer - 대상이 되는 그래픽 레이어
+ * @param {int} id - 대상이 되는 그래픽 Row의 고유 ID
+ * @param {int} deltaX - 기존 위치에서 새로운 위치로 이동했을 때에 대한 상대적인 가로 축 거리
+ * @param {int} deltaY - 기존 위치에서 새로운 위치로 이동했을 때에 대한 상대적인 세로 축 거리
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.edit.MoveCommand = Xr.Class({
     name: "MoveCommand",
 	extend: Xr.edit.Command,

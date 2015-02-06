@@ -1,5 +1,15 @@
 ﻿Xr.symbol = Xr.symbol || {};
 
+/**  
+ * @classdesc 문자를 표현하기 위한 심벌(Symbol)을 지정하기 위한 클래스입니다. 
+ * @class
+ * @param {Object} propertyObj - 문자에 대한 표현 심벌을 정의하기 위한 속성 객체로써 폰트를 지정하기 위한 fontFamily와 크기 지정을 위한 size를 지정할 수 있습니다.
+ * 또한 폰트의 색상을 color로 지정할 수 있으며 #ffffff 또는 rgb(255,255,255)와 같은 문자열 값이 가능하고 weight를 지정하여 글자의 굵기를 조정할 수 있습니다.
+ * 문자에 대한 외곽선 지정을 위해 strokeColor, strokeWidth, strokeLineCap, strokeLineJoin, strokeOpacity가 가능합니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
+
 Xr.symbol.FontSymbol = Xr.Class({
     name: "FontSymbol",
 

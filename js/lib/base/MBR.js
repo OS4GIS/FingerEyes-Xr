@@ -1,3 +1,13 @@
+﻿/**  
+ * @classdesc MBR(Minimum Bounding Rectangle)에 대한 클래스 
+ * @class
+ * @param {double} MinX - MBR을 구성하는 최소 X 좌표값
+ * @param {double} MinY - MBR을 구성하는 최소 Y 좌표값
+ * @param {double} MaxX - MBR을 구성하는 최대 X 좌표값
+ * @param {double} MaxY - MBR을 구성하는 최대 Y 좌표값
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.MBR = Xr.Class({
 	name: 'MBR',
 	

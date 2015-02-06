@@ -1,5 +1,12 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 그래픽 데이터에 대한 Row의 집합(Set)
+ * @class
+ * @param {Xr.layers.GraphicLayer} layer - 관계되는 그래픽 레이어
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.data.GraphicRowSet = Xr.Class({
 	name: "GraphicRowSet",
 

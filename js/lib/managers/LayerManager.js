@@ -1,5 +1,15 @@
-Xr.managers = Xr.managers || {};
+﻿Xr.managers = Xr.managers || {};
 
+/**  
+ * @classdesc 레이어를 관리하는 클래스입니다. 레이어의 추가, 삭제와 같이 레이어에 대한 제어 및 존재 여부 등에 대한 기능을 제공합니다.
+ * @class
+ * @param {DIV} mapDiv - 맵이 표시될 HTML DIV 요소
+ * @param {Xr.label.LabelDrawer} labelDrawer - 라벨을 화면에 표출하기 위한 클래스 객체
+ * @param {Xr.managers.EditManager} editManager - 편집 관리자 객체
+ * @param {Xr.managers.UserControlManager} userControls - 축척바, 인덱스맵, 줌레벨컨트롤 또는 사용자 정의 UI를 관리하는 클래스 객체입니다. 
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.managers.LayerManager = Xr.Class({
 	name: "LayerManager",
 

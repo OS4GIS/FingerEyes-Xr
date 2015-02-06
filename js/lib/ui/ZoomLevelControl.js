@@ -1,5 +1,14 @@
-Xr.ui = Xr.ui || {};
+﻿Xr.ui = Xr.ui || {};
 
+/**  
+ * @classdesc 줌레벨(Zoom Level)에 대한 설정을 위한 UI 컨트롤에 대한 클래스입니다. 이 컨트롤을 이용해 지정된 지도 축척으로 지도를 확대, 축소할 수 있습니다.
+ * @class
+ * @param {String} name - UI 컨트롤에 대한 식별자로써 고유해야 합니다.
+ * @param {Xr.Map} map - UI 컨트롤과 상호작용을 하는 지도 객체
+ * @param {Array} mapScales - 지정될 지도 축척값에 대한 분모값입니다. 이 값은 지도 축척을 1/N으로 표현했을 때 N에 해당합니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.ui.ZoomLevelControl = Xr.Class({
     name: "ZoomLevelControl",
 	extend: Xr.ui.UserControl,

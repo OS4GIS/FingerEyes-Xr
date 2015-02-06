@@ -1,5 +1,13 @@
-Xr.ui = Xr.ui || {};
+﻿Xr.ui = Xr.ui || {};
 
+/**  
+ * @classdesc 사용자 정의 UI 클래스의 부모 클래스입니다.
+ * @class
+ * @param {String} name - UI 컨트롤에 대한 식별자로써 고유해야 합니다.
+ * @param {Xr.Map} map - UI 컨트롤과 상호작용을 하는 지도 객체
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.ui.UserControl = Xr.Class({
     name: "UserControl",
 

@@ -1,5 +1,12 @@
-Xr.edit = Xr.edit || {};
+﻿Xr.edit = Xr.edit || {};
 
+/**  
+ * @classdesc 편집 이력을 관리하는 클래스입니다. 이 클래스를 이용하여 Undo, Redo 기능에 대한 API를 호출할 수 있습니다.
+ * @class
+ * @param {Xr.managers.EditManager} editManager - 편집 관리자 클래스 객체
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.edit.EditHistory = Xr.Class({
     name: "EditHistory",
 

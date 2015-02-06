@@ -1,3 +1,11 @@
+﻿/**  
+ * @classdesc 레이어의 라벨을 구성하기 위한 정보를 관리하는 클래스입니다.
+ * 해당 정보에는 대상 레이어, 라벨 표시 여부, 라벨의 스타일 지정을 위한 심(Theme) 정보, 라벨 문자열 구성을 위한 구성자(Formatter)입니다.
+ * @class
+ * @param {Xr.layers.ShapeMapLayer} layer - 해당 라벨과 직접적인 연관이 있는 레이어 객체입니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.Label = Xr.Class({
 	name: "Label",
 	
@@ -41,7 +49,7 @@ Xr.Label = Xr.Class({
 	    },
 
 		toString: function() {
-			return "Label: " + this._layer.getName + ", " + this._fieldName;
+		    return "Label: " + this._layer.getName;
 		}
 	}
 });

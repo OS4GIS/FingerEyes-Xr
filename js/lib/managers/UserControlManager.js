@@ -1,5 +1,12 @@
-Xr.managers = Xr.managers || {};
+﻿Xr.managers = Xr.managers || {};
 
+/**  
+ * @classdesc 축척바, 인덱스맵, 줌레벨컨트롤 또는 사용자 정의 UI를 관리하는 클래스입니다.  
+ * @class
+ * @param {Xr.Map} map - UI와 실제 상호 작용을 하는 지도 객체
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.managers.UserControlManager = Xr.Class({
     name: "UserControlManager",
     requires: [Xr.IMouseInteraction],

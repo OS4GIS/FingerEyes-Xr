@@ -1,5 +1,15 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc WFSLayer가 공간 서버와 연결(Connection)을 맺기 위한 요청을 실행하는 클래스입니다.
+ * @class
+ * @param {String} urlHeader - 공간 서버와 연결을 위한 최종 URL을 구성하기 위한 시작 url
+ * @param {String} typeName - 공간 서버로부터 연결하고자 하는 레이어 데이터에 대한 이름
+ * @param {function} onCompleted - 공간 서버 연결이 성공할 경우 호출될 함수
+ * @param {function} onFailed - 공간 서버 연결이 실패했을 때 호출될 함수
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.WFSConnectionRequest = Xr.Class({
     name: "WFSConnectionRequest",
 

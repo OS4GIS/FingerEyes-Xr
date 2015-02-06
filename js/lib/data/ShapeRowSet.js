@@ -1,5 +1,12 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 공간 데이터에 대한 Row의 집합(Set)
+ * @class
+ * @param {Xr.data.ShapeType} shapeType - 공간 데이터 도형의 타입
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.data.ShapeRowSet = Xr.Class({
 	name: "ShapeRowSet",
 

@@ -1,5 +1,13 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc Custom Format 형태의 공간 데이터를 사용하는 수치지도 레이어에 대한 클래스입니다.
+ * @class
+ * @param {String} name - 레이어의 이름으로 고유한 ID 값
+ * @param {Object} opt - 레이어에 대한 옵션을 담기 위한 객체
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.ShapeMapLayer = Xr.Class({
     name: "ShapeMapLayer",
     extend: Xr.layers.CoordinateLayer,

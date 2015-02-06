@@ -1,4 +1,11 @@
-﻿Xr.Visibility = Xr.Class({
+﻿/**  
+ * @classdesc 가시화(Visibility) 여부에 대한 지정을 위한 클래스입니다. 
+ * 단순한 가시화 여부의 지정 및 축척 범위에 따른 가시화 여부도 지정할 수도 있습니다.
+ * @class
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
+Xr.Visibility = Xr.Class({
     name: "Visibility",
 
     construct: function () {

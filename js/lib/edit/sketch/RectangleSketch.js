@@ -1,5 +1,15 @@
-Xr.edit = Xr.edit || {};
+﻿Xr.edit = Xr.edit || {};
 
+/**  
+ * @classdesc 사각형에 대한 스케치 클래스입니다.
+ * @class
+ * @param {Xr.managers.EditManager} editManager - 편집 관리자 클래스 객체
+ * @param {Xr.data.RectangleShapeData} shapeData - 사각형을 구성하는 실제 정보에 대한 클래스 객체
+ * @param {int} id - 고유 식별자 Id
+ * @param {boolean} isNew - 신규 생성인지의 여부를 나타냅니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.edit.RectangleSketch = Xr.Class({
     name: "RectangleSketch",
     extend: Xr.edit.Sketch,
@@ -97,7 +107,7 @@ Xr.edit.RectangleSketch = Xr.Class({
 	            var mouseDownMapPt = Xr.UserState.snapMapPt;
 	            rectMbr.minX = mouseDownMapPt.x;
 	            rectMbr.minY = mouseDownMapPt.y;
-	            return false; // �ű� �����̹Ƿ� ������ Sketch�� ���� ������ Sketch�� �ǵ帮�� �ʾ����� �ǹ��ϴ� false.
+	            return false; // 신규 생성이므로 기존의 Sketch가 없어 기존의 Sketch를 건드리지 않았음을 의미하는 false.
 	        } else {
 	            var coordMapper = this._editManager.coordMapper();
 	            var mouseDownPt = new Xr.PointD(mouseX, mouseY);
@@ -117,7 +127,7 @@ Xr.edit.RectangleSketch = Xr.Class({
 	            else if (Xr.GeometryHelper.pointIn(lt.x, (lt.y + rb.y) / 2, 7, mouseDownPt)) this._idxTouchControl = 7;
                 else this._bTouchBody = this.shapeData().hitTest(mouseX, mouseY, coordMapper);
 
-	            return this._bTouchBody || this._idxTouchControl != -1; // Sketch�� �ǵ�ȴ���
+	            return this._bTouchBody || this._idxTouchControl != -1; // Sketch를 건드렸는지
 	        }
 	    },
 

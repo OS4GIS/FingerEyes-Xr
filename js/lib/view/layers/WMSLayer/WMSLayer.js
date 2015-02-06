@@ -1,5 +1,26 @@
 ﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc OGC 표준인 WMS로부터 레이어를 구성하는 클래스입니다.
+ * @class
+ * @param {String} name - 레이어의 이름으로 고유한 ID 값
+ * @param {Object} params - 레이어를 구성하기 위한 파라메터로써 url, layers, srs가 반드시 담겨야 합니다. 
+ * url은 WMS 서버에 대한 url이며 layers는 레이어 데이터에 대한 식별자이고 srs는 공간참조체계 값입니다.
+ * @example
+ * var wmsLyr = new Xr.layers.WMSLayer(
+ *     "wms",
+ *     {
+ *         url: "http://2d.vworld.kr:8895/2DCache/gis/map/WMS2",
+ *         layers: "LP_PA_CBND_BUBUN,LP_PA_CBND_BONBUN",
+ *         srs: "EPSG:900913",
+ *         transparent: "TRUE",
+ *         format: "image/png",
+ *         APIKEY: "01CFB355-75CD-321E-BC87-C8AD8206D0D1"
+ *     }
+ * );
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.WMSLayer = Xr.Class({
     name: "WMSLayer",
     extend: Xr.layers.Layer,

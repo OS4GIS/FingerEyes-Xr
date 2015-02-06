@@ -1,3 +1,11 @@
+﻿/**  
+ * @classdesc 지도 클래스입니다. 
+ * @class
+ * @param {DIV} div - 지도가 표현될 HTML의 DIV 요소 또는 DIV의 id 값
+ * @param {Object} options - 지도를 생성할 때 필요한 옵션값
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.Map = Xr.Class({
 	name: "Map",
 

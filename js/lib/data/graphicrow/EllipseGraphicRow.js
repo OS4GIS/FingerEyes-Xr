@@ -1,5 +1,19 @@
+﻿/**  
+ * @desc data 네임스페이스입니다. 공간 데이터 및 속성 데이터와 관련된 정보를 관리하는 클래스들을 담고 있습니다. 
+ * @namespace
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 타원 그래픽 Row에 대한 클래스입니다. 
+ * @class
+ * @param {int} id - Row에 대한 고유 ID
+ * @param {Xr.data.EllipseShapeData} graphicData - 타원 그래픽 데이터에 대한 객체
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.data.EllipseGraphicRow = Xr.Class({
     name: "EllipseGraphicRow",
 	extend: Xr.data.GraphicRow,

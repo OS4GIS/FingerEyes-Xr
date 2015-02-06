@@ -1,5 +1,13 @@
-Xr.data = Xr.data || {};
+﻿Xr.data = Xr.data || {};
 
+/**  
+ * @classdesc 타원체 그래픽 Row에 대한 도형 정보 값을 담고 있는 클래스입니다. 
+ * @class
+ * @param {Xr.MBR} arg - 타원체에 대한 MBR 객체(Selective-Paramter)
+ * @param {Object} arg - 타원체를 구성하는 정보를 담고 있는 객체로 cx와 cy는 타원체의 중심점이고 rx와 ry는 각각 x축에 대한 반지름과 y축에 반지름 값(Selective-Paramter)
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
 Xr.data.EllipseShapeData = Xr.Class({
     name: "EllipseShapeData",
     requires: [Xr.data.IShapeData, Xr.edit.ISnap],

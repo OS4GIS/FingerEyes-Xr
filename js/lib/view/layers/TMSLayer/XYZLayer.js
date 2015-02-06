@@ -1,5 +1,13 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc 구체적인 타일맵 레이어가 상속받는 부모 클래스입니다.
+ * @class
+ * @param {String} name - 레이어의 이름으로 고유한 ID 값
+ * @param {String} connectionString - 연결 문자열
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.XYZLayer = Xr.Class({
 	name: "XYZLayer",
 	extend: Xr.layers.Layer,

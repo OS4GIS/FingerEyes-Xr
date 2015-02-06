@@ -1,5 +1,12 @@
-Xr.edit = Xr.edit || {};
+﻿Xr.edit = Xr.edit || {};
 
+/**
+ * @classdesc 편집시 정점 또는 선분에 대한 스냅핑(Snapping) 기능을 관리하는 클래스입니다.
+ * @class
+ * @param {Xr.managers.EditManager} editManager - 편집 관리자 클래스 객체
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.edit.SnapManager = Xr.Class({
     name: "SnapManager",
 

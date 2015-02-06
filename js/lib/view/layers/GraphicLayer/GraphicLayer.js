@@ -1,5 +1,12 @@
 ﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc 지도 위에 다양한 그래픽 요소를 매쉬업(Mashup)하고 편집할 수 있는 그래픽 레이어에 대한 클래스입니다.
+ * @class
+ * @param {String} name - 레이어의 이름으로 고유한 ID 값
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.GraphicLayer = Xr.Class({
     name: "GraphicLayer",
     extend: Xr.layers.Layer,

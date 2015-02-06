@@ -1,5 +1,15 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc 타일맵의 연결 요청을 위한 클래스입니다.
+ * @class
+ * @param {String} url - 연결 요청을 위한 url입니다.
+ * @param {Array} levelDataList - {Xr.layers.TMSLevelData} 타입의 객체를 요소로 하는 배열 객체
+ * @param {function} onCompleted - 공간 서버 연결이 성공할 경우 호출될 함수
+ * @param {function} onFailed - 공간 서버 연결이 실패했을 때 호출될 함수
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.TMSConnectionRequest = Xr.Class({
 	name: "TMSConnectionRequest",
 

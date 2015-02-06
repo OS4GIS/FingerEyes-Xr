@@ -1,4 +1,11 @@
-﻿Xr.ColorTable = Xr.Class({
+﻿/**  
+ * @classdesc 색상표(Color Table)을 쉽게 구성할 수 있는 유틸리티 클래스입니다.
+ * @class
+ * @param {int} countColors - 구성할 색상의 개수
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
+Xr.ColorTable = Xr.Class({
     name: "ColorTable",
 
     construct: function (/* int */ countColors) {

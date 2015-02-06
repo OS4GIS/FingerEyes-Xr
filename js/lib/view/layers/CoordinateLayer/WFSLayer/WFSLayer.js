@@ -1,5 +1,13 @@
-Xr.layers = Xr.layers || {};
+﻿Xr.layers = Xr.layers || {};
 
+/**  
+ * @classdesc OGC 표준인 WFS로 공간 데이터와 속성 데이터를 사용하는 수치지도 레이어에 대한 클래스입니다.
+ * @class
+ * @param {String} name - 레이어의 이름으로 고유한 ID 값
+ * @param {Object} params - 레이어에 대한 옵션을 담기 위한 객체로써 최소한 WFS 서버에 대한 URL과 연결할 레이어 데이터의 이름을 각각 url 및 typeName에 담아야 합니다.
+ * @copyright GEOSERVICE.CO.KR
+ * @license LGPL
+ */
 Xr.layers.WFSLayer = Xr.Class({
     name: "WFSLayer",
     extend: Xr.layers.CoordinateLayer,
