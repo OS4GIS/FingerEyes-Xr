@@ -78,7 +78,9 @@ Xr.layers.XYZLayer = Xr.Class({
 		        var div = this.container();
 
 		        var imgs = div.getElementsByClassName("tilemap");
-		        for (var iImg = (imgs.length - 1) ; iImg >= 0; iImg--) {
+		        var imgsLength = imgs.length;
+
+		        for (var iImg = (imgsLength - 1) ; iImg >= 0; iImg--) {
 		            imgs[iImg].candidateBeDeleted = true;
 		        }
 
@@ -116,7 +118,7 @@ Xr.layers.XYZLayer = Xr.Class({
 		            var bRevRows = this._bReversedRows;
 		            var piramidRows = piramid.rows;
 		            var piramidCols = piramid.columns();
-
+		            
 		            for (var iRow = RightUpRow; iRow >= LeftDownRow; iRow--) {
 		                for (var iColumn = LeftDownColumn; iColumn <= RightUpColumn; ++iColumn) {
 		                    if (iRow < 0 || iColumn < 0 || iRow > (piramidRows - 1) || iColumn > (piramidCols - 1)) continue;
@@ -124,7 +126,7 @@ Xr.layers.XYZLayer = Xr.Class({
 		                    var bCreateNewImage = true;
 		                    var oldImg;
 
-		                    for (var iImg = (imgs.length - 1) ; iImg >= 0; iImg--) {
+		                    for (var iImg = (imgsLength - 1) ; iImg >= 0; iImg--) {
 		                        oldImg = imgs[iImg];
 
 		                        if (oldImg.nPiramid == nPiramid && oldImg.nRow == iRow && oldImg.nColumn == iColumn) {
