@@ -170,30 +170,32 @@ Xr.Map = Xr.Class({
 		},
 		
 		_mouseMoveEvent: function (e) {
+		    var map = this.map;
 		    if (Xr.UserState.mouseDown) {
 		        var offsetXY = Xr.OperationHelper.offsetXY(e);
 			    var deltaX = offsetXY.x - Xr.UserState.mouseDownAndMovePt.x;
 			    var deltaY = offsetXY.y - Xr.UserState.mouseDownAndMovePt.y;
 
-			    if (this._bMapPanning || this.map._userMode == Xr.UserModeEnum.VIEW) {
-				    this.map.coordMapper().translate(deltaX, deltaY);
-				    this.map.layers().update(Xr.MouseActionEnum.MOUSE_DRAG,
+			    if (this._bMapPanning || map._userMode == Xr.UserModeEnum.VIEW) {
+				    map.coordMapper().translate(deltaX, deltaY);
+				    map.layers().update(Xr.MouseActionEnum.MOUSE_DRAG,
                         offsetXY.x - Xr.UserState.mouseDownPt.x, offsetXY.y - Xr.UserState.mouseDownPt.y);
 
-				    this.map._userControlManager.mouseMove(e);
+				    map._userControlManager.mouseMove(e);
 				}
 			}
 
-		    if (this.map._userMode == Xr.UserModeEnum.EDIT) {
+		    if (map._userMode == Xr.UserModeEnum.EDIT) {
 		        if (this._bMapPanning) {
-		            this.map._editManager.mouseMoveOnPanningMode(e);
+		            map._editManager.mouseMoveOnPanningMode(e);
 		        } else {
-		            this.map._editManager.mouseMove(e);
+		            map._editManager.mouseMove(e);
 		        }
 			}
 
 			if (Xr.UserState.mouseDown) {
 			    var offsetXY = Xr.OperationHelper.offsetXY(e);
+
 			    Xr.UserState.mouseDownAndMovePt.x = offsetXY.x;
 			    Xr.UserState.mouseDownAndMovePt.y = offsetXY.y;
 			}

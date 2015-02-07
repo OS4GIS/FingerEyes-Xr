@@ -226,10 +226,10 @@ Xr.CoordMapper = Xr.Class({
          * @return {boolean} 두 MBR이 교차되었다면 true를 반환하고 교차되지 않았다면 false를 반환합니다.
          */
 		intersectMBR: function(mbrA, mbrB) {
-			return mbrA.minX<=mbrB.maxX &&
-					(mbrA.maxX>=mbrB.minX) &&
-						(mbrA.minY<=mbrB.maxY) &&
-							(mbrA.maxY>=mbrB.minY);
+			return mbrA.minX <= mbrB.maxX &&
+					(mbrA.maxX >= mbrB.minX) &&
+						(mbrA.minY <= mbrB.maxY) &&
+							(mbrA.maxY >= mbrB.minY);
 		},
 
 	    /**       

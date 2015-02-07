@@ -55,14 +55,14 @@ Xr.layers.TMSConnectionRequest = Xr.Class({
 		
 			for(var iLevel=0; iLevel<levels.length; ++iLevel) {
 				var level = levels[iLevel];
-				var scale = level.getElementsByTagName("Scale")[0].childNodes[0].nodeValue;
-				var unitsPerPixel = level.getElementsByTagName("UnitsPerPixel")[0].childNodes[0].nodeValue;;
-				var tileMapWidth = level.getElementsByTagName("TileMapWidth")[0].childNodes[0].nodeValue;
-				var tileMapHeight = level.getElementsByTagName("TileMapHeight")[0].childNodes[0].nodeValue;
-				var minX = level.getElementsByTagName("MinX")[0].childNodes[0].nodeValue;
-				var minY = level.getElementsByTagName("MinY")[0].childNodes[0].nodeValue;
-				var rows = level.getElementsByTagName("Rows")[0].childNodes[0].nodeValue;
-				var columns = level.getElementsByTagName("Columns")[0].childNodes[0].nodeValue;
+				var scale = parseFloat(level.getElementsByTagName("Scale")[0].childNodes[0].nodeValue);
+				var unitsPerPixel = parseFloat(level.getElementsByTagName("UnitsPerPixel")[0].childNodes[0].nodeValue);
+				var tileMapWidth = parseFloat(level.getElementsByTagName("TileMapWidth")[0].childNodes[0].nodeValue);
+				var tileMapHeight = parseFloat(level.getElementsByTagName("TileMapHeight")[0].childNodes[0].nodeValue);
+				var minX = parseFloat(level.getElementsByTagName("MinX")[0].childNodes[0].nodeValue);
+				var minY = parseFloat(level.getElementsByTagName("MinY")[0].childNodes[0].nodeValue);
+				var rows = parseInt(level.getElementsByTagName("Rows")[0].childNodes[0].nodeValue);
+				var columns = parseInt(level.getElementsByTagName("Columns")[0].childNodes[0].nodeValue);
 			
 				var levelData = new Xr.layers.TMSLevelData(scale, unitsPerPixel, tileMapWidth, tileMapHeight, minX, minY, rows, columns);
 				levelDataList[iLevel] = levelData;
