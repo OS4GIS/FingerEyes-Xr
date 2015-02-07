@@ -7,18 +7,7 @@
 Xr.UserModeEnum = Xr.Class({
     name: "UserModeEnum",
     statics: {
-        /**       
-         * @desc 지도 이동/확대/축소/회전 모드
-         * @memberOf Xr.UserModeEnum
-         * @static
-         */
         VIEW: 0,
-
-        /**       
-         * @desc 편집 모드
-         * @memberOf Xr.UserModeEnum
-         * @static
-         */
         EDIT: 1,
     }
 });
