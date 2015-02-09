@@ -10,6 +10,11 @@ FingerEyes-Xr is a JavaScript library for building the perfect and high quality 
 * Mashup on the map with powerful editing.
 * Perfect editing spatial data based on web(Undo/Redo, Snapping, Split, Merge, Substract, Buffer ...) 
 
+###CDN
+```
+<script src="http://www.geoservice.co.kr/z/Xr.min.1.0.js"></script>
+```
+
 ### License
 * FingerEyes-Xr is based on [LGPL](http://www.gnu.org/licenses/lgpl.html) License.
 
