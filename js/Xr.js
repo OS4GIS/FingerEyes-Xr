@@ -173,10 +173,10 @@
 		];
 		
 	var scriptTags = new Array(jsFiles.length);
-        
+
 	var host = l + "lib/";
 
-    scriptTags.push("<link rel='stylesheet' type='text/css' href='" + host + "Xr.css'>");
+    scriptTags.push("<link rel='stylesheet' type='text/css' href='" + l + "/Xr.css'>");
 
     for (var i = 0, len = jsFiles.length; i < len; i++) {
         scriptTags.push("<script src='" + host + jsFiles[i] + "'></script>");
@@ -238,5 +238,5 @@
 		} 
 	};
 
-	window.Xr.jsPath = host;
+	window.Xr.rasterOperatorsPath = host + "view/layers/GridLayer/operators/"
 })();

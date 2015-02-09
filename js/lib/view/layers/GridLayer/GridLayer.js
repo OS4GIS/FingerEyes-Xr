@@ -128,7 +128,8 @@ Xr.layers.GridLayer = Xr.Class({
                 return false;
             }
 
-            var worker = new Worker(window.Xr.jsPath + "view/layers/GridLayer/operators/density.js");
+            var jsFile = window.Xr.rasterOperatorsPath + "density.js";
+            var worker = new Worker(jsFile)
             var canvas = document.createElement("canvas");
 
             canvas.style.position = "absolute";
