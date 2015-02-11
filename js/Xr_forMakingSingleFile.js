@@ -70,6 +70,5 @@
 		} 
 	};
 
-    // 라스터 연산을 위해 필요함
 	window.Xr.rasterOperatorsPath = l + "rasterOperators/"
 })();
