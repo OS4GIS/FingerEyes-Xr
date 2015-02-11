@@ -186,15 +186,16 @@ Xr.layers.XYZLayer = Xr.Class({
 		                    var vPtRT = coordMapper.W2V(wPtRT);
 		                    var vPtRB = coordMapper.W2V(wPtRB);
 
-		                    imgStyle.top = Math.floor(vPtLT.y);// + "px";
-		                    imgStyle.left = Math.floor(vPtLT.x);// + "px";
+		                    imgStyle.top = (vPtLT.y);// + "px";
+		                    imgStyle.left = (vPtLT.x);// + "px";
 
-		                    imgStyle.width = Math.ceil(Math.sqrt(Math.pow(vPtLT.x - vPtRT.x, 2.0) + Math.pow(vPtLT.y - vPtRT.y, 2.0)));// + "px";
-		                    imgStyle.height = Math.ceil(Math.sqrt(Math.pow(vPtRT.x - vPtRB.x, 2.0) + Math.pow(vPtRT.y - vPtRB.y, 2.0)));// + "px";
+		                    imgStyle.width = (Math.sqrt(Math.pow(vPtLT.x - vPtRT.x, 2.0) + Math.pow(vPtLT.y - vPtRT.y, 2.0)));// + "px";
+		                    imgStyle.height = (Math.sqrt(Math.pow(vPtRT.x - vPtRB.x, 2.0) + Math.pow(vPtRT.y - vPtRB.y, 2.0)));// + "px";
 
-		                    //console.log(newImg.style.width + " x " + newImg.style.height);
+		                    console.log(newImg.style.width + " x " + newImg.style.height);
 		                }
 		            }
+		            console.log("-------------------------------------------------------");
 
 		            if (mouseAction == Xr.MouseActionEnum.NO_MOUSE) {
 		                var that = this;
