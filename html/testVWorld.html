@@ -37,15 +37,19 @@
             border-radius: 12px;
             font-size: 24px;
             color: #ffffff;
-            font-family: "나눔명조OTF ExtraBold";
+            font-family: "맑은 고딕";
 		}
 	</style>
 
-	<script src="../js/Xr.js"></script>
+
+    <script src="../js/Xr.js"></script>
+    <!--
+	<script src="http://www.geoservice.co.kr/z/Xr.min.1.0.js"></script>
+    -->
 
 	<script type="text/javascript">
 		var map = null;
-		
+
 		function diplayBaseMap(bShow) {
 		    var baseMap = map.layers("baseMap");
 		    var satelliteMap = map.layers("satelliteMap");
@@ -57,7 +61,8 @@
 		}
 
 		function load() {
-			map = new Xr.Map("mapDiv", {});
+		    map = new Xr.Map("mapDiv", {});
+
 			var lyrBase = new Xr.layers.TMSLayer(
 				"baseMap", 
 				{
@@ -134,7 +139,7 @@
 			    var cm = map.coordMapper();
 			    
 				cm.moveTo(14289580, 4436964);
-				cm.zoomByMapScale(cm.mapScaleFromMetersPerOnePixel(2.388652344));
+				cm.zoomByMapScale(3385.4915111811065);
 
 				map.update();
 			}); 

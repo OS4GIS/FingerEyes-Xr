@@ -40,7 +40,10 @@
 		}
 	</style>
 
-	<script src="../js/Xr.js"></script>
+    <script src="http://www.geoservice.co.kr/z/Xr.min.1.0.js"></script>
+    <!--
+	<script src="../js/Xr.min.1.0.js"></script>
+    -->
 
 	<script type="text/javascript">
 	    var map = null;
@@ -154,7 +157,7 @@
 	        map.userMode(Xr.UserModeEnum.VIEW);
 	    }
 
-	    var newId = 10000;
+	    var newId = 0;
 
 	    function onAddPolygon() {
 	        if (!map.edit().newPolygon(newId++)) {
@@ -216,18 +219,18 @@
         <div id="title">
             FingerEyes-Xr for HTML5 : <font color="#349bd6">Graphic Edit Example</font>
             <br />
-            <input type="button" value="확대" onclick="onZoomInMap();">
-            <input type="button" value="축소" onclick="onZoomOutMap();">
-            <input type="button" value="맵뷰" onclick="onView();">
-            <input type="button" value="편집" onclick="onEdit();">
-            <input type="button" value="포인트 추가" onclick="onAddPoint();" />
-            <input type="button" value="폴리라인 추가" onclick="onAddPolyline();" />
-            <input type="button" value="폴리곤 추가" onclick="onAddPolygon();" />
-            <input type="button" value="텍스트 추가" onclick="onAddText();" />
-            <input type="button" value="사각형 추가" onclick="onAddRect();" />
-            <input type="button" value="타원 추가" onclick="onAddEllipse();" />
-            <input type="button" value="되돌리기" onclick="onUndo();" id="btnUndo" />
-            <input type="button" value="재실행" onclick="onRedo();" id="btnRedo" />
+            <input type="button" value="ZoomIn" onclick="onZoomInMap();">
+            <input type="button" value="ZoomOut" onclick="onZoomOutMap();">
+            <input type="button" value="MapView" onclick="onView();">
+            <input type="button" value="Edit" onclick="onEdit();">
+            <input type="button" value="New Point" onclick="onAddPoint();" />
+            <input type="button" value="New Polyline" onclick="onAddPolyline();" />
+            <input type="button" value="New Polygon" onclick="onAddPolygon();" />
+            <input type="button" value="New Text" onclick="onAddText();" />
+            <input type="button" value="New Text" onclick="onAddRect();" />
+            <input type="button" value="New Ellipse" onclick="onAddEllipse();" />
+            <input type="button" value="Undo" onclick="onUndo();" id="btnUndo" />
+            <input type="button" value="Redo" onclick="onRedo();" id="btnRedo" />
         </div>
     </div>
 </body>

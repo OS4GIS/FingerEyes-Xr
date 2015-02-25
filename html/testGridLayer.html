@@ -56,7 +56,15 @@
         }
 	</style>
 
+    <!--
+    <script src="http://www.geoservice.co.kr/z/Xr.min.1.0.js"></script>
+    -->
+
 	<script src="../js/Xr.js"></script>
+
+    <!--
+    <script src="../js/Xr.min.1.0.js"></script>
+    -->
 
 	<script type="text/javascript">
 	    var map = null;
@@ -77,7 +85,7 @@
 	        shpLyr.needAttribute(true);
 	        shpLyr.visibility().visibleByScale(true);
 	        shpLyr.visibility().fromScale(0);
-	        shpLyr.visibility().toScale(15000);
+	        shpLyr.visibility().toScale(25000);
             
 	        var label = shpLyr.label();
 	        label.visibility().visibleByScale(true);
@@ -225,7 +233,7 @@
 
 	        var gridLyr = new Xr.layers.GridLayer("grid",
                 {
-                    mbr: new Xr.MBR(mbr.minX, mbr.minY, mbr.maxX, mbr.maxY),
+                    mbr: new Xr.MBR(mbr.minX - radius, mbr.minY - radius, mbr.maxX + radius, mbr.maxY + radius),
                     resolution: resolution
                 }
             );
@@ -235,11 +243,11 @@
 
 	        var shapeLyr = map.layers("population");
 	        var label = shapeLyr.label();
-	        var clrTbl = new Xr.ColorTable(16);
+	        var clrTbl = new Xr.ColorTable(9);
 
-	        clrTbl.set(0, 0, 255, 0, 0);
-	        clrTbl.set(7, 255, 255, 0, 180);
-	        clrTbl.set(15, 255, 0, 0, 240);
+	        clrTbl.set(0, 0, 0, 255, 40);
+	        clrTbl.set(5, 255, 255, 0, 190);
+	        clrTbl.set(8, 255, 0, 0, 255);
 
 	        if (clrTbl.build()) {
 	            var fieldName = label.enable() ? label.formatter().fieldName() : undefined;
