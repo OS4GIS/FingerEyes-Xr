@@ -32,6 +32,7 @@ Xr.symbol.PenSymbol = Xr.Class({
                 return this._color;
             } else {
                 this._color = v;
+                return this;
             }
         },
 
@@ -40,6 +41,7 @@ Xr.symbol.PenSymbol = Xr.Class({
                 return this._width;
             } else {
                 this._width = v;
+                return this;
             }
         },
 
@@ -48,6 +50,7 @@ Xr.symbol.PenSymbol = Xr.Class({
                 return this._cap;
             } else {
                 this._cap = v;
+                return this;
             }
         },
 
@@ -56,6 +59,7 @@ Xr.symbol.PenSymbol = Xr.Class({
                 return this._lineJoin;
             } else {
                 this._lineJoin = v;
+                return this;
             }
         },
 
@@ -64,6 +68,7 @@ Xr.symbol.PenSymbol = Xr.Class({
                 return this._miterLimit;
             } else {
                 this._miterLimit = v;
+                return this;
             }
         },
 
@@ -72,6 +77,7 @@ Xr.symbol.PenSymbol = Xr.Class({
                 return this._dash;
             } else {
                 this._dash = v;
+                return this;
             }
         },
 
@@ -81,6 +87,7 @@ Xr.symbol.PenSymbol = Xr.Class({
                 return this._dashOffset;
             } else {
                 this._dashOffset = v;
+                return this;
             }
         },
 
@@ -89,6 +96,7 @@ Xr.symbol.PenSymbol = Xr.Class({
                 return this._opacity;
             } else {
                 this._opacity = v;
+                return this;
             }
         },
 

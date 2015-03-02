@@ -15,9 +15,8 @@ Xr.symbol.ImageMarkerSymbol = Xr.Class({
 
     construct: function (/* object */ attributes) {        
         attributes = attributes || {};
-        if (!attributes.url) throw new Error("ImageMarkerSymbol requires url option.");
-        else this._url = attributes['url'];
 
+        this._url = attributes['url'];
         this._width = attributes['width'] || 64;
         this._height = attributes['height'] || 64;
     },
@@ -38,12 +37,32 @@ Xr.symbol.ImageMarkerSymbol = Xr.Class({
             return svg;
         },
 
-        width: function () {
-            return this._width;
+        url: function(/* optional string */ v) {
+            if (arguments.length == 0) {
+                return this._url;
+            } else {
+                this._url = v;
+                return this;
+            }
         },
 
-        height: function () {
-            return this._height;
+        width: function (/* optional int */ v) {
+            if (arguments.length == 0) {
+                return this._width;
+            } else {
+                this._width = v;
+                return this;
+            }
+        },
+
+        height: function (/* optional int */ v) {
+            if (arguments.length == 0) {
+                return this._height;
+            } else {
+                this._height = v;
+                return this;
+            }
+
         }
     }
 });

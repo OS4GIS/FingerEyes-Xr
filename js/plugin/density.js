@@ -1,4 +1,11 @@
-﻿self.onmessage = function (event) {
+﻿/** 
+ * @desc FingerEyes-Xr for HTML5을 위한 가중치값을 고려한 밀도 분석 플러그인(Plug-In)
+ * @version 1.0
+ * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
+ * @license LGPL
+ */
+
+self.onmessage = function (event) {
     var postData = event.data;
     var cntRows = postData.countRows;
     var resolution = postData.resolution;
@@ -40,7 +47,7 @@
                     var v = value * fx;
 
                     var row = cntRows - parseInt(Math.floor((y - mbrMinY) / resolution)) - 1;
-                    var column = parseInt(Math.floor((x-mbrMinX) / resolution));
+                    var column = parseInt(Math.floor((x - mbrMinX) / resolution));
                     var cellIdx = row * cntColumns + column;
                     var prevValue = cells[cellIdx];
                     if (prevValue != undefined) {
@@ -72,7 +79,7 @@
                 if (cellValue && !isNaN(cellValue)) {
                     var xx = cellValue - minValue;
                     var indexIntv = Math.floor((cellValue - minValue) / lenIntv);
-                    
+
                     if (indexIntv == countIntv) indexIntv--;
                     var clr = colorTable[indexIntv];
 

@@ -113,6 +113,7 @@ Xr.layers.ShapeMapLayer = Xr.Class({
 	            return this._label.enable() || this._theme.needAttribute() || this._bAlwaysNeedAttribute;
 	        } else {
 	            this._bAlwaysNeedAttribute = bAlwaysNeedAttribute;
+	            return this;
 	        }
 	    },
 	}

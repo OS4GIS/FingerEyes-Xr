@@ -37,6 +37,7 @@ Xr.layers.Layer = Xr.Class({
 		        return this._labelDrawer;
 		    } else {
 		        this._labelDrawer = v;
+		        return this;
 		    }
 		},
 

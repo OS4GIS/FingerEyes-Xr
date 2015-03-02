@@ -47,6 +47,7 @@ Xr.layers.CoordinateLayer = Xr.Class({
                 return this._theme;
             } else {
                 this._theme = v;
+                return this;
             }
         },
 

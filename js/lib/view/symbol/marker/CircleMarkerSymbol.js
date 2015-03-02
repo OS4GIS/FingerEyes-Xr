@@ -53,12 +53,14 @@ Xr.symbol.CircleMarkerSymbol = Xr.Class({
             return this._brushSymbol;
         },
 
-        width: function () {
-            return this._radius * 2;
-        },
+        radius: function (/* optional int */ v) {
+            if (arguments.length == 0) {
+                return this._radius;
+            } else {
+                this._radius = v;
+                return this;
+            }
 
-        height: function () {
-            return this._radius * 2;
         }
     }
 });

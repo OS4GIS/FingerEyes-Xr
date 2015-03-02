@@ -25,6 +25,7 @@ Xr.Label = Xr.Class({
 	            return this._formatter;
 	        } else {
 	            this._formatter = v;
+	            return this;
 	        }
 	    },
 
@@ -33,6 +34,7 @@ Xr.Label = Xr.Class({
 	            return this._theme;
 	        } else {
 	            this._theme = v;
+	            return this;
 	        }
 	    },
 
@@ -41,6 +43,7 @@ Xr.Label = Xr.Class({
 	            return this._enable;
 	        } else {
 	            this._enable = enable;
+	            return this;
 	        }
 		},
 

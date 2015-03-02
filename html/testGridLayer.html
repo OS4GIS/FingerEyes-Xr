@@ -56,15 +56,12 @@
         }
 	</style>
 
-    <!--
     <script src="http://www.geoservice.co.kr/z/Xr.min.1.0.js"></script>
-    -->
-
-	<script src="../js/Xr.js"></script>
 
     <!--
-    <script src="../js/Xr.min.1.0.js"></script>
+	<script src="../js/Xr.js"></script>
     -->
+    
 
 	<script type="text/javascript">
 	    var map = null;
@@ -251,7 +248,7 @@
 
 	        if (clrTbl.build()) {
 	            var fieldName = label.enable() ? label.formatter().fieldName() : undefined;
-	            if (!gridLyr.densityByLayer(shapeLyr, radius, clrTbl.colors(), fieldName, progressCallback)) {
+	            if (!gridLyr.densityByLayer(shapeLyr, radius, clrTbl.colors(), fieldName, progressCallback, "js/density.js")) {
 	                alert("Error setting CellValues By ShapeMapLayer");
 	            } else {
 	                var btn = document.getElementById("density");

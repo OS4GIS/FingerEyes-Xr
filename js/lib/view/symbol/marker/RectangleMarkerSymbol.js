@@ -49,12 +49,23 @@ Xr.symbol.RectangleMarkerSymbol = Xr.Class({
             return this._brushSymbol;
         },
 
-        width: function () {
-            return this._width;
+        width: function (/* optional int */ v) {
+            if (arguments.length == 0) {
+                return this._width;
+            } else {
+                this._width = v;
+                return this;
+            }
         },
 
-        height: function () {
-            return this._height;
+        height: function (/* optional int */ v) {
+            if (arguments.length == 0) {
+                return this._height;
+            } else {
+                this._height = v;
+                return this;
+            }
+            
         }
     }
 });

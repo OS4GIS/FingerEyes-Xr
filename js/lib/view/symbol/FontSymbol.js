@@ -34,6 +34,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 return this._fontFamily;
             } else {
                 this._fontFamily = v;
+                return this;
             }
         },
 
@@ -42,6 +43,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 return this._size;
             } else {
                 this._size = v;
+                return this;
             }
         },
 
@@ -50,6 +52,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 return this._color;
             } else {
                 this._color = v;
+                return this;
             }
         },
 
@@ -58,6 +61,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 return this._weight;
             } else {
                 this._weight = v;
+                return this;
             }
         },
 
@@ -66,6 +70,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 return this._strokeColor;
             } else {
                 this._strokeColor = v;
+                return this;
             }
         },
 
@@ -74,6 +79,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 return this._strokeOpacity;
             } else {
                 this._strokeOpacity = v;
+                return this;
             }
         },
 
@@ -82,6 +88,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 return this._strokeWidth;
             } else {
                 this._strokeWidth = v;
+                return this;
             }
         },
 
@@ -90,6 +97,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 this._strokeLineJoin;
             } else {
                 this._strokeLineJoin = v;
+                return this;
             }
         },
 
@@ -98,6 +106,7 @@ Xr.symbol.FontSymbol = Xr.Class({
                 return this._strokeOpacity;
             } else {
                 this._strokeOpacity = v;
+                return this;
             }
         },
 

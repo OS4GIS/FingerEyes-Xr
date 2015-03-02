@@ -316,6 +316,7 @@ Xr.CoordMapper = Xr.Class({
 		    } else {
 		        this._scale = scale;
 		        this.transform(0, 0, 0);
+		        return this;
 		    }
 		},
 
@@ -385,6 +386,7 @@ Xr.CoordMapper = Xr.Class({
 		        var newScale = currentScale * mapScaleRatio;
 
 		        this.scale(newScale);
+		        return this;
 		    }
 		}
 	}

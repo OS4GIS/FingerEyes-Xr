@@ -1,0 +1,128 @@
+﻿<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<html>
+<head title="FingerEyes-Xr">
+    <style>
+    body {
+        margin:0px;
+        padding:0px;
+    }
+
+    #mainLayout {
+        position:relative;
+        width:100%;
+        height:100%;
+        border: none; 		
+    }
+
+    #mapDiv {
+        top:0px;
+        left:0px;
+        position:relative;
+        width:100%;
+        height:100%;
+        border: none; 		
+        overflow:auto;	
+    }	
+
+    #title {
+        top:12px;
+        left:12px;
+        padding: 12px;
+        position:absolute;
+        background:rgba(0,0,0,0.7);
+        border:none; 		
+        overflow:auto;
+        border-radius: 12px;
+        font-size: 24px;
+        color: #ffffff;
+        font-family: "Arial";
+    }
+    </style>
+
+
+    <script src="http://www.geoservice.co.kr/z/Xr.min.1.0.js"></script>
+    <script src="js/CustomShapeDrawTheme.js"></script>
+    
+	<script type="text/javascript">
+	    var map = null;
+
+	    function load() {
+	        map = new Xr.Map("mapDiv", {});
+
+	        var lyr = new Xr.layers.TileMapLayer("basemap",
+				{
+				    proxy: "http://222.237.78.208:8080/Xr",
+				    url: "http://222.237.78.208:8080/muan_tilemaps",
+				    ext: "jpg"
+				}
+			);
+
+	        var jibunLyr = new Xr.layers.ShapeMapLayer("jibun",
+				{
+				    url: "http://222.237.78.208:8080/Xr?layerName=BML_PARC_AS"
+				}
+			);
+
+	        {
+	            var visibility = jibunLyr.visibility();
+	            visibility.visibleByScale(true).fromScale(0).toScale(1001);
+
+	            var theme = new CustomShapeDrawTheme(jibunLyr);
+	            jibunLyr.theme(theme);
+
+	            var label = jibunLyr.label();
+	            label.visibility().visibleByScale(true).fromScale(0).toScale(2001);
+	            label.enable(true).formatter().fieldName("PAR_LBL");
+
+	            var labelTheme = label.theme();
+	            labelTheme.symbol().strokeColor("#000000").strokeWidth(2).size(14).fontFamily('맑은 고딕').color("#ff0000");
+	        }
+
+	        var lm = map.layers();
+	        lm.add(lyr);
+	        lm.add(jibunLyr);
+
+	        var ctrl = new Xr.ui.ScaleBarControl("sbc", map);
+	        map.userControls().add(ctrl);
+
+	        var ctrl2 = new Xr.ui.ZoomLevelControl("zlc", map);
+	        ctrl2.mapScales(
+                [
+                    383.06022560915073,
+                    766.1204512466478,
+                    1915.3011281307926,
+                    3830.6022556379635,
+                    7661.204511956243,
+                    19153.011279550446,
+                    38305.7388117497,
+                    76612.04511893881,
+                    153224.09023821776
+                ]
+                );
+	        map.userControls().add(ctrl2);
+
+	        var ctrl3 = new Xr.ui.IndexMapControl("imc", map, "http://222.237.78.208:8080/Xr?layerName=INDEXMAP");
+	        ctrl3.size(200, 270);
+	        map.userControls().add(ctrl3);
+
+	        map.onLayersAllReady(function () {
+	            var cm = map.coordMapper();
+
+	            cm.moveTo(151531, 246679);
+	            cm.zoomByMapScale(766.1204512466478);
+
+	            map.update();
+	        });
+	    }
+	</script>
+</head>
+
+<body onload="load()">
+    <div id="mainLayout">
+        <div id="mapDiv"></div>
+        <div id="title">
+            FingerEyes-Xr for HTML5 : <font color="#349bd6">ThemeMap Example</font>
+        </div>
+    </div>
+</body>
+</html>

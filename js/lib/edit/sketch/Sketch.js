@@ -44,6 +44,7 @@ Xr.edit.Sketch = Xr.Class({
 	            return this._isNew;
 	        } else {
 	            this._isNew = isNew;
+	            return this;
 	        }
 	    },
 
@@ -97,6 +98,7 @@ Xr.edit.Sketch = Xr.Class({
 	            return this._bStay;
 	        } else {
 	            this._bStay = bStay;
+	            return this;
 	        }
 	    },
 

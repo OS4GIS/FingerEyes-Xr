@@ -51,6 +51,7 @@ Xr.ui.ZoomLevelControl = Xr.Class({
 	            return this._thumbWidth;
 	        } else {
 	            this._thumbWidth = v;
+	            return this;
 	        }
 	    },
 
@@ -59,6 +60,7 @@ Xr.ui.ZoomLevelControl = Xr.Class({
 	            return this._thumbHeight;
 	        } else {
 	            this._thumbHeight = v;
+	            return this;
 	        }
 	    },
 
@@ -113,6 +115,8 @@ Xr.ui.ZoomLevelControl = Xr.Class({
 	            if (oldLvl != v) {
 	                this._setScaleLevel(v, true);
 	            }
+
+	            return this;
 	        }
 	    },
 

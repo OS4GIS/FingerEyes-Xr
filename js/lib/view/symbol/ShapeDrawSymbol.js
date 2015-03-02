@@ -18,8 +18,13 @@ Xr.symbol.ShapeDrawSymbol = Xr.Class({
             return this._penSymbol;
         },
 
-        /* IMarkerSymbol */ markerSymbol: function () {
-            return this._markerSymbol;
+        /* IMarkerSymbol */ markerSymbol: function (/* optional IMarkerSymbol */ markerSym) {
+            if (arguments.length == 0) {
+                return this._markerSymbol;
+            } else {
+                this._markerSymbol = markerSym;
+                return this;
+            }
         },
 
         attribute: function (/* SVG Element */ SVG) {

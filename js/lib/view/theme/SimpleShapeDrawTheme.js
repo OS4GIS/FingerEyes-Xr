@@ -14,7 +14,6 @@ Xr.theme.SimpleShapeDrawTheme = Xr.Class({
 
     construct: function (/* ShapeMapLayer */ layer) {
         this.superclass(layer);
-        //Xr.theme.ProgrammableShapeDrawTheme.call(this, lyer);
 
         this._symbol = new Xr.symbol.ShapeDrawSymbol();
     },
@@ -32,8 +31,13 @@ Xr.theme.SimpleShapeDrawTheme = Xr.Class({
             return this._symbol.brushSymbol();
         },
 
-        /* IMarkerSymbol */ makerSymbol: function () {
-            return this._symbol.markerSymbol();
+        /* IMarkerSymbol */ makerSymbol: function (/* optional IMarkerSymbol */ markerSym) {
+            if (arguments.length == 0) {
+                return this._symbol.markerSymbol();
+            } else {
+                this._symbol.markerSymbol(markerSym);
+                return this;
+            }
         },
 
         /* boolean */ needAttribute: function () {

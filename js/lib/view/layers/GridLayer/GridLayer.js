@@ -89,7 +89,8 @@ Xr.layers.GridLayer = Xr.Class({
             return this._maxValue;
         },
 
-        /* boolean */ densityByLayer: function (/* ILayer */ lyr, /* number */ radius, /* Array */ colorTable, /* optinal string */ weightedFieldName, /* function */ progressCallback) {
+        /* boolean */ densityByLayer: function (/* ILayer */ lyr, /* number */ radius, /* Array */ colorTable, /* optinal string */ weightedFieldName,
+            /* function */ progressCallback, /* optional String */ jsFileName) {
             var data = new Array();
 
             if (lyr instanceof Xr.layers.ShapeMapLayer) {
@@ -106,7 +107,6 @@ Xr.layers.GridLayer = Xr.Class({
                     weightedFieldIndex = fieldSet.fieldIndex(weightedFieldName);
                     if (weightedFieldIndex == -1) return false;
                 }
-
 
                 var mbr = this.MBR();
                 for (var fid in shpRows) {
@@ -128,7 +128,7 @@ Xr.layers.GridLayer = Xr.Class({
                 return false;
             }
 
-            var jsFile = window.Xr.rasterOperatorsPath + "density.js";
+            var jsFile = jsFileName == undefined ? window.Xr.rasterOperatorsPath + "density.js" : jsFileName;
             var worker = new Worker(jsFile)
             var canvas = document.createElement("canvas");
 

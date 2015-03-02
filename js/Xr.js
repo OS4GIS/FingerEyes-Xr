@@ -238,6 +238,6 @@
 		} 
 	};
 
-	window.Xr.rasterOperatorsPath = l + "rasterOperators/"
+	window.Xr.rasterOperatorsPath = l + "plugin/"
 	//window.Xr.rasterOperatorsPath = host + "view/layers/GridLayer/operators/"
 })();

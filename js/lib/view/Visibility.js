@@ -21,6 +21,7 @@ Xr.Visibility = Xr.Class({
                 return this._bVisible;
             } else {
                 this._bVisible = bVisible;
+                return this;
             }
         },
 
@@ -29,6 +30,7 @@ Xr.Visibility = Xr.Class({
                 return this._bVisibleByScale;
             } else {
                 this._bVisibleByScale = bUse;
+                return this;
             }
         },
 
@@ -37,6 +39,7 @@ Xr.Visibility = Xr.Class({
                 return this._fromScale;
             } else {
                 this._fromScale = v;
+                return this;
             }
         },
 
@@ -45,6 +48,7 @@ Xr.Visibility = Xr.Class({
                 return this._toScale;
             } else {
                 this._toScale = v;
+                return this;
             }
         },
 

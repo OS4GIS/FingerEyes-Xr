@@ -69,6 +69,8 @@ Xr.Map = Xr.Class({
 	            if (v == Xr.UserModeEnum.VIEW) {
 	                this.edit().cancelSketch();
 	            }
+
+	            return this;
 	        }
 	    },
 

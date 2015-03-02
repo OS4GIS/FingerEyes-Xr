@@ -24,6 +24,7 @@ Xr.symbol.BrushSymbol = Xr.Class({
                 return this._color;
             } else {
                 this._color = v;
+                return this;
             }
         },
 
@@ -32,6 +33,7 @@ Xr.symbol.BrushSymbol = Xr.Class({
                 return this._opacity;
             } else {
                 this._opacity = v;
+                return this;
             }
         },
 

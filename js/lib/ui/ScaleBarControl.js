@@ -45,12 +45,18 @@ Xr.ui.ScaleBarControl = Xr.Class({
 
 	    scaleBarWidth: function(/* int */ v) {
 	        if (arguments.length == 0) return this._scaleBarWidth;
-	        else this._scaleBarWidth = v;
+	        else {
+	            this._scaleBarWidth = v;
+	            return this;
+	        }
 	    },
 
 	    scaleBarHeight: function(/* int */ v) {
 	        if (arguments.length == 0) return this._scaleBarHeight;
-	        else this._scaleBarHeight = v;
+	        else {
+	            this._scaleBarHeight = v;
+	            return this;
+	        }
 	    },
 
 	    _createLineSvg: function(/* number */ x1, /* number */ y1, /* number */ x2, /* number */ y2,
