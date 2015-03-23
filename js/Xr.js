@@ -82,7 +82,7 @@
             'view/label/formatter/ILabelFormatter.js',
             'view/label/formatter/ProgrammableLabelFormatter.js',
             'view/label/formatter/SingleValueLabelFormatter.js',
-            'view/label/labelDrawer.js',
+            'view/label/LabelDrawer.js',
 
             'view/symbol/PenSymbol.js',
 			'view/symbol/BrushSymbol.js',

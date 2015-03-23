@@ -160,6 +160,10 @@ Xr.layers.GridLayer = Xr.Class({
 
                     that._img.src = canvas.toDataURL();
                     that._img.style.display = "block";
+                    that._img.style.animationDuration = "0.7s";
+                    that._img.style.animationName = "kf_tileMapShowing";
+                    that._img.style.setProperty("-webkit-animation", "kf_tileMapShowing 0.7s");
+
                     that.refresh();
 
                     canvas = undefined;

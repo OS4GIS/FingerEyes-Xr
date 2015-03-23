@@ -127,6 +127,16 @@ Xr.layers.GraphicLayer = Xr.Class({
             this._removeAllChildNode();
         },
 
+        remove: function(/* int */ id) {
+            this._rowSet.remove(id);
+
+            var svgId = this.name() + id;
+            var container = this._svg;
+            var child = container.getElementById(svgId);
+            container.removeChild(child);
+
+        },
+
         reset: function() {
             this.removeAll();
         },

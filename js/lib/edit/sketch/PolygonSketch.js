@@ -263,9 +263,8 @@ Xr.edit.PolygonSketch = Xr.Class({
 	                if (polygons.length == 1) { // Add New Row
 	                    var graphicRow = new Xr.data.PolygonGraphicRow(id, this.shapeData());
 
-	                    graphicRow.penSymbol().color('#383838');
-	                    graphicRow.penSymbol().width(3);
-	                    graphicRow.brushSymbol().color('#cecece');
+	                    graphicRow.penSymbol().color('#ffff00').width(3);
+	                    graphicRow.brushSymbol().color('#000000').opacity(0.6);
 
 	                    var cmd = new Xr.edit.NewCommand(targetLayer, this.id(), graphicRow);
 	                    this.editManager().synchronize(cmd);

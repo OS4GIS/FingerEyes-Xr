@@ -5,6 +5,12 @@
     }
 }
 
+@-webkit-keyframes kf_hilighting {
+    to {
+        opacity: 0.1;
+    }
+}
+
 @keyframes kf_tileMapShowing 
 {
     from {
@@ -15,6 +21,16 @@
         opacity: 1.0;
     }
 }
+
+@-webkit-keyframes kf_tileMapShowing {
+    from {
+        opacity: 0.0;
+    }
+    
+    to {
+        opacity: 1.0;
+    }
+} 
 
 .tilemap
 {

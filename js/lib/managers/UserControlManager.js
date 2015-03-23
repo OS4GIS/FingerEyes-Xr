@@ -16,16 +16,45 @@ Xr.managers.UserControlManager = Xr.Class({
 		this._map = map;
 
 		this._div = document.createElement("div");
-		this._div.style.position = "absolute";
-		this._div.style.top = "0px";
-		this._div.style.left = "0px";
-		this._div.style.width = "100%";
-		this._div.style.height = "100%";
-		this._div.style.overflow = "hidden";
-		//this._div.style.setProperty("pointer-events", "none");
+		var styleDiv = this._div.style;
+		styleDiv.position = "absolute";
+		styleDiv.top = "0px";
+		styleDiv.left = "0px";
+		styleDiv.width = "100%";
+		styleDiv.height = "100%";
+		styleDiv.overflow = "hidden";
+		styleDiv.setProperty("pointer-events", "auto");
 	},
  	
 	methods: {
+	    enableMouse: function (/* bool */ bEnable) {
+	        var strEnable = "none"
+
+	        if (bEnable) strEnable = "auto";
+
+	        this._div.style.setProperty("pointer-events", strEnable);
+	    },
+
+	    showInfoWindows: function (/* bool */ bShow) {
+	        var cntCtrls = this._controls.length;
+
+	        for (var iCtrl = 0; iCtrl < cntCtrls; iCtrl++) {
+	            var ctrl = this._controls[iCtrl];
+	            if (ctrl instanceof Xr.ui.InfoWindowControl) {
+	                var div = ctrl.container();
+	                var style = div.style;
+
+	                if (bShow) {
+	                    style.display = "block";
+	                    style.animationDuration = "0.25s";
+	                    style.animationName = "kf_tileMapShowing";
+	                } else {
+	                    style.display = "none";
+	                }
+	            }
+	        }
+	    },
+
 	    /* DIV Element */ container: function() {
 	        return this._div;
 	    },

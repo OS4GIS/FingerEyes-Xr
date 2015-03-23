@@ -34,7 +34,8 @@ Xr.Events = Xr.Class({
         MapViewChanged: "mapviewchanged",
         MapClick: "mapclick",
         EditCompleted: "editcompleted",
-        LayerUpdateCompleted: "layerupdatecompleted"
+        LayerUpdateCompleted: "layerupdatecompleted",
+        InfoWindowClosed: "infowindowclosed"
         // .
     }
 });

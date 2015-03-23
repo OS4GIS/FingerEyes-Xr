@@ -56,12 +56,11 @@
         }
 	</style>
 
-    <script src="http://www.geoservice.co.kr/z/Xr.min.1.0.js"></script>
-
     <!--
-	<script src="../js/Xr.js"></script>
+    <script src="http://www.geoservice.co.kr/z/Xr.min.1.0.js"></script>
     -->
-    
+
+	<script src="../js/Xr.js"></script>
 
 	<script type="text/javascript">
 	    var map = null;
@@ -230,7 +229,8 @@
 
 	        var gridLyr = new Xr.layers.GridLayer("grid",
                 {
-                    mbr: new Xr.MBR(mbr.minX - radius, mbr.minY - radius, mbr.maxX + radius, mbr.maxY + radius),
+                    //mbr: new Xr.MBR(mbr.minX - radius, mbr.minY - radius, mbr.maxX + radius, mbr.maxY + radius),
+                    mbr: new Xr.MBR(mbr.minX, mbr.minY, mbr.maxX, mbr.maxY),
                     resolution: resolution
                 }
             );
@@ -240,11 +240,11 @@
 
 	        var shapeLyr = map.layers("population");
 	        var label = shapeLyr.label();
-	        var clrTbl = new Xr.ColorTable(9);
+	        var clrTbl = new Xr.ColorTable(10);
 
-	        clrTbl.set(0, 0, 0, 255, 40);
-	        clrTbl.set(5, 255, 255, 0, 190);
-	        clrTbl.set(8, 255, 0, 0, 255);
+	        clrTbl.set(0, 0, 255, 0, 0);
+	        clrTbl.set(5, 255, 255, 0, 127);
+	        clrTbl.set(9, 255, 0, 0, 255);
 
 	        if (clrTbl.build()) {
 	            var fieldName = label.enable() ? label.formatter().fieldName() : undefined;

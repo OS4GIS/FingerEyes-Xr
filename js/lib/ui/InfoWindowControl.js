@@ -34,8 +34,8 @@ Xr.ui.InfoWindowControl = Xr.Class({
 	    this._infoDiv.style.position = "absolute";
 	    this._infoDiv.style.top = 0;
 	    this._infoDiv.style.left = 0;
-	    this._infoDiv.style.width = 365;
-	    this._infoDiv.style.padding = "17px";
+	    //this._infoDiv.style.width = 365;
+	    this._infoDiv.style.padding = "16px";
 	    //this._infoDiv.style.setProperty("pointer-events", "none");
 
 	    this._infoDiv.addEventListener("mousedown", function (e) {
@@ -51,7 +51,6 @@ Xr.ui.InfoWindowControl = Xr.Class({
 	    });
 
 	    this._infoDiv.innerHTML = this._innerHtml;
-
 	    this.container().appendChild(this._infoDiv);
 
 	    this._closeBtnSvg = document.createElementNS(Xr.CommonStrings.SVG_NAMESPACE, "svg");
@@ -61,7 +60,6 @@ Xr.ui.InfoWindowControl = Xr.Class({
 
 	    this.container().style.visibility = "hidden";
 
-	    //
 	    //this._closeBtnSvg.style.setProperty("border", "1px solid blue");
 	    //this.container().style.setProperty("border", "1px solid red");
 	    //this._infoDiv.style.setProperty("border", "1px solid yellow");
@@ -70,8 +68,16 @@ Xr.ui.InfoWindowControl = Xr.Class({
 	},
  	
 	methods: {
+	    topMost: function () {
+	        this.map().userControls().container().appendChild(this.container());
+	    },
+
+	    addEventListener: function (/* eventName */ eventName, /* function */ callback, /* boolean */ useCapture) {
+	        this.container().addEventListener(eventName, callback, useCapture == undefined ? false : useCapture);
+	    },
+
 	    _createSkin: function() {
-	        var infoW = this._infoDiv.clientWidth;
+	        var infoW = this._infoDiv.clientWidth;// + parseFloat(this._infoDiv.style.padding)/2;
 	        var infoH = this._infoDiv.clientHeight;
 	        var svg = this._skinSvg;
 
@@ -84,17 +90,20 @@ Xr.ui.InfoWindowControl = Xr.Class({
 	        shape.setAttribute("d", d);
 	        shape.setAttribute("stroke", "#454545");
 	        shape.setAttribute("stroke-width", "1");
-	        shape.setAttribute("fill", "#fefefe");
+	        shape.setAttribute("fill", "#efefef");
 
 	        svg.appendChild(shape);
 
-	        this._closeBtnSvg.style.top = 0;
-	        this._closeBtnSvg.style.left = 0;
-
 	        var closeBtnPart1 = document.createElementNS(Xr.CommonStrings.SVG_NAMESPACE, "circle");
 	        var r = 12;
-	        var cx = infoW - r - 8;
-	        var cy = r + 8;
+	        var cx = r;
+	        var cy = r;
+
+	        this._closeBtnSvg.style.top = 8;
+	        this._closeBtnSvg.style.left = infoW - (r*2) - 8;
+	        this._closeBtnSvg.style.width = r * 2;
+	        this._closeBtnSvg.style.height = r * 2;
+
 	        closeBtnPart1.setAttribute("cx", cx);
 	        closeBtnPart1.setAttribute("cy", cy);
 	        closeBtnPart1.setAttribute("r", r);
@@ -122,25 +131,44 @@ Xr.ui.InfoWindowControl = Xr.Class({
 	        this._closeBtnSvg.appendChild(closeButtonPart3);
             
 	        var that = this;
+
+	        this.container().addEventListener("click", function (e) {
+	            var lastChild = that.map().userControls().container().lastChild;
+	            var thatChild = that.container();
+
+	            if (thatChild != lastChild) that.topMost();
+
+	            e.stopPropagation();
+	        });
+
 	        this._closeBtnSvg.addEventListener("mousedown", function (e) {
 	            e.stopPropagation();
 	        });
 
 	        this._closeBtnSvg.addEventListener("click", function (e) {
 	            e.stopPropagation();
+
+	            var e = Xr.Events.create(Xr.Events.InfoWindowClosed, { name: that.name() });
+	            Xr.Events.fire(that.container(), e);
+
 	            that.map().userControls().remove(that.name());
 	        });
+	    },
+
+	    infoDiv: function () {
+	        return this._infoDiv;
 	    },
 
 	    update: function () {
 	        var bSkinReady = this._skinSvg.childNodes.length > 0;
 	        if(!bSkinReady) this._createSkin();
 
+	        var infoDiv = this._infoDiv;
 	        var coordMapper = this.map().coordMapper();
 	        var vp = coordMapper.W2V(this._position);
 
-	        var infoW = this._infoDiv.clientWidth;
-	        var infoH = this._infoDiv.clientHeight;
+	        var infoW = infoDiv.clientWidth;// + parseFloat(infoDiv.style.padding) * 2;
+	        var infoH = infoDiv.clientHeight;
 
 	        var offsetW = infoW / 2;
 	        var offsetH = infoH + 30;
@@ -154,9 +182,9 @@ Xr.ui.InfoWindowControl = Xr.Class({
 	        container.style.animationDuration = "0.6s";
 	        container.style.animationName = "kf_tileMapShowing";
 
-	        if (!this.container().style.height || this.container().style.height === "") {
-	            this.container().style.width = this._infoDiv.clientWidth;
-	            this.container().style.height = this._infoDiv.clientHeight + 30;
+	        if (!container.style.height || container.style.height === "") {
+	            container.style.width = infoDiv.clientWidth;
+	            container.style.height = infoDiv.clientHeight + 30;
 	        }
 	    },
 
