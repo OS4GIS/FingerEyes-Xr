@@ -72,19 +72,26 @@ Xr.layers.XYZLayer = Xr.Class({
 		},
 
 		update: function (coordMapper, mouseAction, offsetX, offsetY) {
+            // 지도 축척값 얻기
 		    var mapScale = coordMapper.mapScale();
 
+            // 해당 축척에서 지도 그릴 필요가 있는지?
 		    if (this.visibility().needRendering(mapScale)) {
 		        var div = this.container();
 
+                // 현재 화면에 표시된 타일맵 이미지의 개수 얻기
 		        var imgs = div.getElementsByClassName("tilemap");
 		        var imgsLength = imgs.length;
 
+                // 모든 타일맵에 삭제 대상으로 지정
 		        for (var iImg = (imgsLength - 1) ; iImg >= 0; iImg--) {
 		            imgs[iImg].candidateBeDeleted = true;
 		        }
 
+                // 현재 뷰의 MBR 얻기
 		        var viewportMBR = coordMapper.viewportMBR();
+
+                // 현재 최적의 피리미드 인덱스 얻기
 		        var nPiramid = this._getOptimizePiramidIndex(coordMapper);
 		        var piramid = this._levelDataList[nPiramid];
 		        if (!piramid) return;
@@ -98,6 +105,7 @@ Xr.layers.XYZLayer = Xr.Class({
 
 		        var mbrOfPiramid = new Xr.MBR(piramidMinX, piramidMinY, piramidMaxX, piramidMaxY);
 
+                // 현재 뷰의 MBR과 피리미드의 MBR이 중첩된다면 ...
 		        if (coordMapper.intersectMBR(mbrOfPiramid, viewportMBR)) {
 		            var LeftDownColumn = parseInt((viewportMBR.minX - mbrOfPiramid.minX) / piramidTileMapWidth);
 
@@ -116,9 +124,9 @@ Xr.layers.XYZLayer = Xr.Class({
 
 		            var PointDClass = Xr.PointD;
 		            var bRevRows = this._bReversedRows;
-		            var piramidRows = piramid.rows;
+		            var piramidRows = piramid.rows();
 		            var piramidCols = piramid.columns();
-		            
+
 		            for (var iRow = RightUpRow; iRow >= LeftDownRow; iRow--) {
 		                for (var iColumn = LeftDownColumn; iColumn <= RightUpColumn; ++iColumn) {
 		                    if (iRow < 0 || iColumn < 0 || iRow > (piramidRows - 1) || iColumn > (piramidCols - 1)) continue;
@@ -192,17 +200,17 @@ Xr.layers.XYZLayer = Xr.Class({
 		                    imgStyle.width = (Math.sqrt(Math.pow(vPtLT.x - vPtRT.x, 2.0) + Math.pow(vPtLT.y - vPtRT.y, 2.0)));// + "px";
 		                    imgStyle.height = (Math.sqrt(Math.pow(vPtRT.x - vPtRB.x, 2.0) + Math.pow(vPtRT.y - vPtRB.y, 2.0)));// + "px";
 
-		                    console.log(newImg.style.width + " x " + newImg.style.height);
+		                    //console.log(newImg.style.width + " x " + newImg.style.height);
 		                }
 		            }
-		            console.log("-------------------------------------------------------");
+		            //console.log("-------------------------------------------------------");
 
-		            if (mouseAction == Xr.MouseActionEnum.NO_MOUSE) {
+		            if (mouseAction == Xr.MouseActionEnum.NO_MOUSE) { // Zoom In/Out
 		                var that = this;
 		                setTimeout(function () {
 		                    that._removeTileImages(false);
 		                }, 800);
-		            } else {
+		            } else { // Pan
 		                this._removeTileImages(false);
 		            }
 		        }
