@@ -121,7 +121,7 @@
 			'data/shapedata/TextShapeData.js',
 
 			'data/FieldType.js',
-			'data/AttributeRowSet.js',
+			'data/AttributeRowSet.js', 
 			'data/FieldSet.js',
 			'data/Field.js',
 
