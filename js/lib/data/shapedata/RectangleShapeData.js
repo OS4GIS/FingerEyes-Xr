@@ -5,7 +5,7 @@
  * @class
  * @param {Xr.MBR} arg - 사각형에 대한 MBR 객체
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.data.RectangleShapeData = Xr.Class({
     name: "RectangleShapeData",

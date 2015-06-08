@@ -7,7 +7,7 @@
  * @param {Xr.symbol.BrushSymbol} brushSymbol - 사각형에 대한 채움색을 표현하기 위한 브러쉬(Brush) 객체
  * @param {Object} attributes - 심벌 정의를 위한 속성 객체로써 width와 height를 지정하여 사각형의 가로와 세로의 크기를 픽셀(Pixel) 단위로 정할 수 있습니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.symbol.RectangleMarkerSymbol = Xr.Class({
     name: "RectangleMarkerSymbol",

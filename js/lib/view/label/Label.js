@@ -4,7 +4,7 @@
  * @class
  * @param {Xr.layers.ShapeMapLayer} layer - 해당 라벨과 직접적인 연관이 있는 레이어 객체입니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.Label = Xr.Class({
 	name: "Label",

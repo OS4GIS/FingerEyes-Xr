@@ -2,7 +2,7 @@
  * @desc edit 네임스페이스입니다. 편집과 관련된 클래스들을 담고 있습니다. 
  * @namespace
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.edit = Xr.edit || {};
 
@@ -13,7 +13,7 @@ Xr.edit = Xr.edit || {};
  * @param {int} id - 대상이 되는 그래픽 Row의 고유 ID
  * @param {Array} pointList - 도형의 추가한 부분(Part)을 구성하는 좌표에 대한 배열로써 좌표에 대한 타입은 [Xr.PointD]{@link Xr.PointD}입니다. 
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.AddPartCommand = Xr.Class({
     name: "AddPartCommand",

@@ -5,7 +5,7 @@
  * @class
  * @param {Xr.data.ShapeType} shapeType - 공간 데이터 도형의 타입
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.data.ShapeRowSet = Xr.Class({
 	name: "ShapeRowSet",

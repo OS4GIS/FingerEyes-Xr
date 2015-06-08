@@ -5,7 +5,7 @@
  * @class
  * @param {Object} arg - 객체이며 x, y, text 속성이 있어야 함. x는 텍스트가 위치할 지도 좌표에 대한 X축 값이며 y는 텍스트가 위치할 지도 좌표에 대한 Y축 값, 그리고 text는 텍스트 문자열입니다.
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.data.TextShapeData = Xr.Class({
     name: "TextShapeData",

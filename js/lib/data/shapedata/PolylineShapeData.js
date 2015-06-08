@@ -6,7 +6,7 @@
  * @param {Xr.MBR} arg - 폴리라인에 대한 MBR 객체(Selective-Paramter)
  * @param {Array} arg - 배열에 대한 배열로써 자식 배열의 요소는 폴리라인을 구성하는 좌표이며 타입은 [Xr.PointD]{@link Xr.PointD}임(Selective-Paramter)
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.data.PolylineShapeData = Xr.Class({
 	name: "PolylineShapeData",

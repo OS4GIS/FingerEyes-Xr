@@ -6,7 +6,7 @@
  * @param {int} id - Row에 대한 고유 ID
  * @param {Xr.data.PolygonShapeData} graphicData - 폴리곤 그래픽 데이터에 대한 객체
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.data.PolygonGraphicRow = Xr.Class({
 	name: "PolygoneGraphicRow",

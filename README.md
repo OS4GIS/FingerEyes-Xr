@@ -16,7 +16,7 @@ FingerEyes-Xr is a JavaScript library for building the perfect and high quality 
 ```
 
 ### License
-* FingerEyes-Xr is based on [LGPL](http://www.gnu.org/licenses/lgpl.html) License.
+* FingerEyes-Xr is based on [GPL](http://www.gnu.org/licenses/gpl.html) License.
 
 ### Related Sites
 * [GEOSERVICE](http://www.geoservice.co.kr) supports FingerEyes-Xr developer team.

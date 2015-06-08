@@ -5,7 +5,7 @@
  * @class
  * @param {Xr.layers.GraphicLayer} layer - 관계되는 그래픽 레이어
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.data.GraphicRowSet = Xr.Class({
 	name: "GraphicRowSet",

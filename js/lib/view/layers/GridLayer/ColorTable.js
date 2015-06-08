@@ -3,7 +3,7 @@
  * @class
  * @param {int} countColors - 구성할 색상의 개수
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.ColorTable = Xr.Class({
     name: "ColorTable",

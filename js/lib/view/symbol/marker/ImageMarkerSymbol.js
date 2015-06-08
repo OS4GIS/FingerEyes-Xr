@@ -7,7 +7,7 @@
  * 그 외에 width와 height를 지정하여 표현되는 이미지 심벌의 가로와 세로의 크기를 정할 수 있습니다.
  * attributes에 width와 height를 지정하지 않으면 기본적으로 64x64 픽셀 크기로 표현됩니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.symbol.ImageMarkerSymbol = Xr.Class({
     name: "ImageMarkerSymbol",

@@ -7,7 +7,7 @@
  * @param {int} id - 대상이 되는 그래픽 Row의 고유 ID
  * @param {Array} pointList - 도형의 제거된 부분(Part)에 대한 인덱스
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.RemovePartCommand = Xr.Class({
     name: "RemovePartCommand",

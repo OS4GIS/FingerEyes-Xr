@@ -8,7 +8,7 @@
  * @param {int} id - 고유 식별자 Id
  * @param {boolean} isNew - 신규 생성인지의 여부를 나타냅니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.RectangleSketch = Xr.Class({
     name: "RectangleSketch",

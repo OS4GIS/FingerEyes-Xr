@@ -4,7 +4,7 @@
  * @classdesc 공간 데이터의 도형에 대한 타입을 나타내는 열거형 클래스입니다. 
  * @class
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.data.ShapeType = Xr.Class({
 	name: "ShapeType",

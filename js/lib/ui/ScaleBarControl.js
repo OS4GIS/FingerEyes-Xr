@@ -6,7 +6,7 @@
  * @param {String} name - UI 컨트롤에 대한 식별자로써 고유해야 합니다.
  * @param {Xr.Map} map - UI 컨트롤과 상호작용을 하는 지도 객체
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.ui.ScaleBarControl = Xr.Class({
     name: "ScaleBarControl",

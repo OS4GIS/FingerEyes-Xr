@@ -8,7 +8,7 @@
  * @param {Xr.managers.EditManager} editManager - 편집 관리자 객체
  * @param {Xr.managers.UserControlManager} userControls - 축척바, 인덱스맵, 줌레벨컨트롤 또는 사용자 정의 UI를 관리하는 클래스 객체입니다. 
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.managers.LayerManager = Xr.Class({
 	name: "LayerManager",

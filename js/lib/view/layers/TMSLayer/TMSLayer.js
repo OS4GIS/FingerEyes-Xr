@@ -22,7 +22,7 @@
  *     }
  * );
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.TMSLayer = Xr.Class({
 	name: "TMSLayer",

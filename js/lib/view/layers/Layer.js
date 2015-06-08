@@ -6,7 +6,7 @@
  * @param {String} name - 레이어에 대한 이름으로 고유한 ID 값이여야 함
  * @param {String} connectionString - 데이터 소스 연결 문자열
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.Layer = Xr.Class({
 	name: "Layer",

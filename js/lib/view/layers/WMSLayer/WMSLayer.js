@@ -19,7 +19,7 @@
  *     }
  * );
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.WMSLayer = Xr.Class({
     name: "WMSLayer",

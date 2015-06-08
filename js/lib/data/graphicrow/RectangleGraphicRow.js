@@ -6,7 +6,7 @@
  * @param {int} id - Row에 대한 고유 ID
  * @param {Xr.data.RectangleShapeData} graphicData - 사각형 그래픽 데이터에 대한 객체
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.data.RectangleGraphicRow = Xr.Class({
 	name: "RectangleGraphicRow",

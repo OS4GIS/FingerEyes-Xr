@@ -7,7 +7,7 @@
  * @param {int} id - 대상이 되는 그래픽 Row의 고유 ID
  * @param {Xr.data.IGraphicRow} graphicRow - 새롭게 추가된 그래픽 Row에 대한 클래스 객체
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.NewCommand = Xr.Class({
     name: "NewCommand",

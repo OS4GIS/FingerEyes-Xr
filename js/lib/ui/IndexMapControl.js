@@ -2,7 +2,7 @@
  * @desc ui 네임스페이스입니다. 축척바, 인덱스맵, 줌레벨컨트롤 또는 사용자 정의 UI에 대한 클래스를 담고 있습니다.
  * @namespace
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.ui = Xr.ui || {};
 
@@ -13,7 +13,7 @@ Xr.ui = Xr.ui || {};
  * @param {Xr.Map} map - UI 컨트롤과 상호작용을 하는 지도 객체
  * @param {String} indexMapUrl - 인덱스맵에 표시되는 지도에 대한 연결 문자열에 대한 URL 입니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.ui.IndexMapControl = Xr.Class({
     name: "IndexMapControl",

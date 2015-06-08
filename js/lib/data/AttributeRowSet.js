@@ -5,7 +5,7 @@
  * @class
  * @param {Xr.data.FieldSet} fieldSet - 속성 데이터 필드 구조를 나타내는 클래스 객체
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.data.AttributeRowSet = Xr.Class({
 	name: "AttributeRowSet",

@@ -2,7 +2,7 @@
  * @desc FingerEyes-Xr for HTML5을 위한 가중치값을 고려한 밀도 분석 플러그인(Plug-In)
  * @version 1.0
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 
 self.onmessage = function (event) {

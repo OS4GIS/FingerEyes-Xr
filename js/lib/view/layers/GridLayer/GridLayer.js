@@ -7,7 +7,7 @@
  * @param {Object} params - 그리드 레이어를 구성하기 위한 파라메터를 지정하기 위한 객체로 mbr과 resolution를 지정해야 합니다.
  * mbr은 {Xr.MBR} 타입의 객체이며 resolution은 그리드를 구성하는 셀(Cell)의 해상도입니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.GridLayer = Xr.Class({
     name: "GridLayer",

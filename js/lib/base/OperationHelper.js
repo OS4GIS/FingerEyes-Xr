@@ -2,7 +2,7 @@
  * @classdesc 공통적으로 사용되는 유틸리티 함수를 제공하는 클래스입니다.
  * @class
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.OperationHelper = Xr.Class({
     name: "OperationHelper",

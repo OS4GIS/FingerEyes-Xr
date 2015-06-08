@@ -5,7 +5,7 @@
  * @class
  * @param {Xr.layers.ShapeMapDrawer} layer - 그려질 공간 데이터에 대한 레이어 객체
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.theme.SimpleLabelDrawTheme = Xr.Class({
     name: "SimpleLabelDrawTheme",

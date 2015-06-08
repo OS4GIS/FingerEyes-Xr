@@ -2,7 +2,7 @@
  * @desc layers 네임스페이스입니다. ShapeMapLayer, WMSLayer, WFSLayer, GraphicLayer, GridLayer, TMSLayer, TileMapLayer 등과 같은 클래스들이 담겨 있습니다.
  * @namespace
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.layers = Xr.layers || {};
 
@@ -13,7 +13,7 @@ Xr.layers = Xr.layers || {};
  * @param {function} onCompleted - 공간 서버 연결이 성공할 경우 호출될 함수
  * @param {function} onFailed - 공간 서버 연결이 실패했을 때 호출될 함수
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.ShapeMapConnectionRequest = Xr.Class({
 	name: "ShapeMapConnectionRequest",

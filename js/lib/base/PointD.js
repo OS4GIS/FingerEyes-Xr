@@ -4,7 +4,7 @@
  * @param {number} x - X 좌표값
  * @param {number} y - Y 좌표값
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.PointD = Xr.Class({
 	name: "PointD",

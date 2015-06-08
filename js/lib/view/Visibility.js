@@ -3,7 +3,7 @@
  * 단순한 가시화 여부의 지정 및 축척 범위에 따른 가시화 여부도 지정할 수도 있습니다.
  * @class
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.Visibility = Xr.Class({
     name: "Visibility",

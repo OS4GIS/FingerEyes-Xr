@@ -6,7 +6,7 @@
  * @param {Xr.MBR} arg - 포인트에 대한 MBR 객체(Selective-Paramter)
  * @param {Xr.PointD} arg - 포인트의 좌표(Selective-Paramter)
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.data.PointShapeData = Xr.Class({
 	name: "PointShapeData",

@@ -8,7 +8,7 @@
  * @param {int} partIndex - 제거된 정점이 위치하는 도형의 부분(Part)에 대한 인덱스(Index)
  * @param {int} controlPointIndex - 제거된 정점이 위치하는 도형의 부분(Part)을 구성하는 좌표 인덱스(Index)
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.RemoveVertexCommand = Xr.Class({
     name: "RemoveVertexCommand",

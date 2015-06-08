@@ -13,7 +13,7 @@
  * @param {int} rows - 타일맵의 전체 행(Row) 수
  * @param {int} columns - 타일맵의 전체 컬럼(Column) 수
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.TMSLevelData = Xr.Class({
 	name: "TMSLevelData",

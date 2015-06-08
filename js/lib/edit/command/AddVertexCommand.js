@@ -9,7 +9,7 @@
  * @param {int} controlPointIndex - 추가된 정점이 위치하는 도형의 부분(Part)을 구성하는 좌표 인덱스(Index)
  * @param {Xr.PointD} vtxAdded - 추가된 정점(Vertex)
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.AddVertexCommand = Xr.Class({
     name: "AddVertexCommand",

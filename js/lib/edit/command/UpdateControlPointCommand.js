@@ -9,7 +9,7 @@
  * @param {int} controlPointIndex - 대상이 되는 정점이 위치하는 도형의 부분(Part)을 구성하는 좌표 인덱스(Index)
  * @param {Xr.PointD} newPt - 정점에 새롭게 설정되는 좌표(Vertex)
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.UpdateControlPointCommand = Xr.Class({
     name: "UpdateControlPointCommand",

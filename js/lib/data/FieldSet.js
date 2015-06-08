@@ -4,7 +4,7 @@
  * @classdesc 필드(Field)의 집합(Set)을 나타내는 클래스입니다.
  * @class
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.data.FieldSet = Xr.Class({
 	name: "FieldSet",

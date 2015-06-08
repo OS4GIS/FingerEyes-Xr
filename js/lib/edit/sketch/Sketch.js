@@ -6,7 +6,7 @@
  * @param {Xr.layers.GraphicLayer} graphicLayer - 대상이 되는 그래픽 레이어
  * @param {int} id - 대상이 되는 그래픽 Row의 고유 ID
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.Sketch = Xr.Class({
     name: "Sketch",

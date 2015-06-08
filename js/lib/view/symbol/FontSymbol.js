@@ -7,7 +7,7 @@
  * 또한 폰트의 색상을 color로 지정할 수 있으며 #ffffff 또는 rgb(255,255,255)와 같은 문자열 값이 가능하고 weight를 지정하여 글자의 굵기를 조정할 수 있습니다.
  * 문자에 대한 외곽선 지정을 위해 strokeColor, strokeWidth, strokeLineCap, strokeLineJoin, strokeOpacity가 가능합니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 
 Xr.symbol.FontSymbol = Xr.Class({

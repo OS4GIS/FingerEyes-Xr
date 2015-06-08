@@ -14,7 +14,7 @@
  *     }
  * );
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.TileMapLayer = Xr.Class({
 	name: "TileMapLayer",

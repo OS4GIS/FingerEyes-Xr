@@ -5,7 +5,7 @@
  * @class
  * @param {String} name - 레이어의 이름으로 고유한 ID 값
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.GraphicLayer = Xr.Class({
     name: "GraphicLayer",

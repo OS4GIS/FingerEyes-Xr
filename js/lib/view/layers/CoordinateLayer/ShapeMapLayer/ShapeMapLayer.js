@@ -6,7 +6,7 @@
  * @param {String} name - 레이어의 이름으로 고유한 ID 값
  * @param {Object} opt - 레이어에 대한 옵션을 담기 위한 객체
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.ShapeMapLayer = Xr.Class({
     name: "ShapeMapLayer",

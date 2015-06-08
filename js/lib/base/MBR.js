@@ -6,7 +6,7 @@
  * @param {double} MaxX - MBR을 구성하는 최대 X 좌표값
  * @param {double} MaxY - MBR을 구성하는 최대 Y 좌표값
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.MBR = Xr.Class({
 	name: 'MBR',

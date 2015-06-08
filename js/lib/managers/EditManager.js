@@ -2,7 +2,7 @@
  * @desc managers 네임스페이스입니다. 복합적인 연산 또는 기능과 연관된 클래스들에 대한 제어(Control) 및 관리를 위한 클래스를 담고 있습니다.
  * @namespace
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.managers = Xr.managers || {};
 
@@ -11,7 +11,7 @@ Xr.managers = Xr.managers || {};
  * @class
  * @param {Xr.Map} map - 편집에 대한 기능을 사용자에게 제공하는 지도 객체
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.managers.EditManager = Xr.Class({
     name: "EditManager",

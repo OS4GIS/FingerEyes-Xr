@@ -7,7 +7,7 @@
  * 이외에 선의 끝 모양을 지정하기 위한 cap, 선이 꺾이는 곳의 모양을 지정하는 lineJoin과 miterLimit, dash, dashOffset이 가능합니다. 
  * color(색상값)는 #ffffff 또는 rgb(255,255,255)와 같은 문자열 값이 가능하며 opacity(투명도)는 0과 1사이가 가능합니다. 투명도가 0일때 완전히 투명한 상태로 표현됩니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 
 Xr.symbol.PenSymbol = Xr.Class({

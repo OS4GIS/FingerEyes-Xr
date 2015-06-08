@@ -6,7 +6,7 @@
  * @param {String} fieldName - 필드명
  * @param {Xr.Data.FieldType} fieldType - 필드 타입
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.data.Field = Xr.Class({
 	name: "Field",

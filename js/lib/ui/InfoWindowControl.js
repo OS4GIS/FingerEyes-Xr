@@ -8,7 +8,7 @@
  * @param {Xr.PointD} position - 정보 윈도우가 표시될 지도 좌표입니다.
  * @param {String} innerHtml - 표시될 정보에 대한 HTML
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.ui.InfoWindowControl = Xr.Class({
     name: "InfoWindowControl",

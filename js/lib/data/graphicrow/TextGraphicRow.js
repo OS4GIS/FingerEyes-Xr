@@ -6,7 +6,7 @@
  * @param {int} id - Row에 대한 고유 ID
  * @param {Xr.data.TextShapeData} graphicData - 텍스트 그래픽 데이터에 대한 객체
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.data.TextGraphicRow = Xr.Class({
     name: "TextGraphicRow",

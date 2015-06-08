@@ -5,7 +5,7 @@
  * @param {int} viewWidth - 지도가 표출될 DIV의 가로 길이로써 픽셀 단위입니다.
  * @param {int} viewHeight - 지도가 표출될 DIV의 세로 길이로써 픽셀 단위입니다.
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.CoordMapper = Xr.Class({
 	name: "CoordMapper",

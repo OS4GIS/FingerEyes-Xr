@@ -5,7 +5,7 @@
  * @class
  * @param {Xr.managers.EditManager} editManager - 편집 관리자 클래스 객체
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.edit.EditHistory = Xr.Class({
     name: "EditHistory",

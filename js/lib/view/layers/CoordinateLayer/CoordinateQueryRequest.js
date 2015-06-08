@@ -10,7 +10,7 @@
  * @param {function} onCompleted - 공간 서버 연결이 성공할 경우 호출될 함수이며 선택 사항입니다.
  * @param {function} onFailed - 공간 서버 연결이 실패했을 때 호출될 함수이며 선택 사항입니다.
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.layers.CoordinateQueryRequest = Xr.Class({
     name: "CoordinateQueryRequest",

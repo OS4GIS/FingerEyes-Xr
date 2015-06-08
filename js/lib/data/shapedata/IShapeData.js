@@ -4,7 +4,7 @@
  * @classdesc 그래픽 Row의 구체적인 데이터 클래스가 구현해야 할 매서드를 정의하고 있는 인터페이스입니다. 
  * @interface
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL
+ * @license GPL
  */
 Xr.data.IShapeData = Xr.Class({
     name: "IShapeData",

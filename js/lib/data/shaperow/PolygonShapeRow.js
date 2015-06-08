@@ -6,7 +6,7 @@
  * @param {int} fid - Row의 고유 식별자
  * @param {Xr.data.PolygonShapeData} shapeData - 폴리곤 공간 데이터의 좌표를 담고 있는 클래스
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.data.PolygonShapeRow = Xr.Class({
     name: "PolygonShapeRow",

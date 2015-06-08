@@ -6,7 +6,7 @@
  * @param {int} fid - 고유 ID 값
  * @param {int} fieldCount - 필드의 개수
  * @copyright [(주)지오서비스]{@link http://www.geoservice.co.kr}
- * @license LGPL 
+ * @license GPL 
  */
 Xr.data.AttributeRow = Xr.Class({
 	name: "AttributeRow",

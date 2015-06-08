@@ -4,7 +4,7 @@
  * @classdesc 필드의 타입을 나타내는 열거형 클래스입니다. 
  * @class
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.data.FieldType = Xr.Class({
 	name: "FieldTypeType",

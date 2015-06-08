@@ -5,7 +5,7 @@
  * @class
  * @param {Xr.Map} map - UI와 실제 상호 작용을 하는 지도 객체
  * @copyright GEOSERVICE.CO.KR
- * @license LGPL
+ * @license GPL
  */
 Xr.managers.UserControlManager = Xr.Class({
     name: "UserControlManager",
