@@ -1,0 +1,167 @@
+﻿@keyframes kf_hilighting 
+{
+    to {
+        opacity: 0.1;
+    }
+}
+
+@-webkit-keyframes kf_hilighting {
+    to {
+        opacity: 0.1;
+    }
+}
+
+
+@keyframes kf_infoWindowShowing {
+    from {
+        opacity: 0;
+        margin-top: -77px;
+    }
+
+    to {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+@-webkit-keyframes kf_infoWindowShowing {
+    from {
+        opacity: 0;
+        margin-top: -77px;
+    }
+
+    to {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+@keyframes kf_infoWindowShowingRepeat {
+    0% {
+        opacity: 0;
+        margin-top: -30px;
+    }
+
+    34% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+@-webkit-keyframes kf_infoWindowShowingRepeat {
+    0% {
+        opacity: 0;
+        margin-top: -30px;
+    }
+
+    34% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+/*
+@keyframes kf_tileMapShowing {
+    from {
+        opacity: 0.0;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes kf_tileMapShowing {
+    from {
+        opacity: 0.0;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+} 
+
+.tilemap_anim
+{
+    animation-duration: 0.6s;
+	animation-name: kf_tileMapShowing;
+
+    -webkit-animation-name: kf_tileMapShowing;
+    -webkit-animation-duration: 0.6s;
+}
+*/
+
+.tilemap
+{
+    position: absolute;
+	/*pointer-events: none;*/
+    /*user-select: none;*/
+	border: none;
+
+    -webkit-transform-origin: 0px 0px;
+    transform-origin: 0px 0px;
+}
+
+.shadow_ui {
+    filter: drop-shadow( -5px -5px 5px #000 );
+}
+
+/*
+svg text {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+*/
+
+svg text::selection {
+    background: none;
+}
+
+.scale-input {
+    width: auto;
+    color: white;
+    background-color: transparent;
+    border: none;
+    text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+    outline: none;
+    padding: 2px 4px;
+    font-size: 15px;
+    _font-weight: bold;
+    position: relative;
+    left: 145px;
+    top: 2px;
+}
+
+.highlighting_dom_animation {
+    animation-name: keyframes-highlighting_dom;
+    animation-duration: 0.5s;
+    animation-iteration-count: 4;
+}
+
+@keyframes keyframes-highlighting_dom {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
