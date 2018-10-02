@@ -30,3 +30,6 @@ FingerEyes-Xr is a JavaScript library for building the perfect and high quality 
 * [Advance editing for spatial data](http://www.youtube.com/watch?v=iUZm-14yM1w)
 * [Density analysis using grid data](http://www.youtube.com/watch?v=t-bZOcpGQHg)
 * [Average slope and crossection analysis for terrain](http://www.youtube.com/watch?v=gU6i0D9fDQQ)
+
+### More Articles
+If you want to see more articles about FingerEyes-Xr, please visit the <a href='http://www.gisdeveloper.co.kr/?s=FingerE'>gisdeveloper</a> web site.
