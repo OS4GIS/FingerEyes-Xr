@@ -77,7 +77,7 @@
             'view/layers/GridLayer/ColorTable.js',
 
             'view/layers/WMSLayer/WMSLayer.js',
-            'view/layers/ImageLayer/ImageLayer.js', // New Add
+            'view/layers/ImageLayer/ImageLayer.js',
 
             'view/label/Label.js',
             'view/label/formatter/ILabelFormatter.js',
@@ -94,7 +94,7 @@
             'view/symbol/marker/RectangleMarkerSymbol.js',
             'view/symbol/marker/CircleMarkerSymbol.js',
             'view/symbol/marker/ImageMarkerSymbol.js',
-            'view/symbol/marker/TextMarkerSymbol.js', // New Add
+            'view/symbol/marker/TextMarkerSymbol.js',
 
             'view/theme/IShapeDrawTheme.js',
             'view/theme/ProgrammableShapeDrawTheme.js',
@@ -182,6 +182,7 @@
             'ui/ZoomLevelControl.js',
             'ui/InfoWindowControl.js',
             'ui/TextControl.js',
+            'ui/HotSpotControl.js'
 		];
 		
 	var scriptTags = new Array(jsFiles.length);
